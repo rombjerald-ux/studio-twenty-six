@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Studio Twenty Six</title>
+  <meta name="description" content="Contact Studio Twenty Six for classes, camps, private events, and partnerships.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="index.html" class="nav-logo">Studio Twenty Six</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="camps.html">Summer Camps</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" style="color:var(--primary);">Contact</a></li>
+      <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.85rem;">Register</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>Questions, bookings, and collaborations all start here.</h1>
+    <p>Use this page for classes, camps, private events, team-building, partnerships, and sliding scale questions.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-grid">
+    <div class="sidebar-card">
+      <h3>Studio Contact</h3>
+      <div class="contact-info" style="margin-top:20px;">
+        <div class="detail">
+          <span class="detail-label">Location</span>
+          <span>Temescal, Oakland, CA<br>address coming soon</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Email</span>
+          <span>hello@theartway.studio</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Instagram</span>
+          <span>@theartway</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Hours</span>
+          <span>Classes and events run through the week. See current pages for schedules and seasonal programming.</span>
+        </div>
+      </div>
+      <div class="register-note" style="margin-top:24px;background:rgba(255,255,255,0.08);color:rgba(252,246,235,0.86);">
+        <strong>Sliding scale</strong>
+        <p style="margin:10px 0 0;color:rgba(252,246,235,0.76);">If cost is a barrier, reach out. Community spots are part of the model and the conversation can stay simple.</p>
+      </div>
+    </div>
+    <div class="register-card">
+      <h2 style="margin-bottom:18px;">Send a message</h2>
+      <form class="contact-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
+        <input type="hidden" name="_subject" value="New contact form message - Studio Twenty Six">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-grid">
+          <div>
+            <label for="contact-name">Your name</label>
+            <input id="contact-name" type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="contact-email">Your email</label>
+            <input id="contact-email" type="email" name="email" placeholder="Your email" required>
+          </div>
+          <div class="full-width">
+            <label for="contact-interest">What are you interested in?</label>
+            <select id="contact-interest" name="interest" required>
+              <option value="">Choose one</option>
+              <option>Adult classes</option>
+              <option>Kids summer camps</option>
+              <option>Festival costume classes</option>
+              <option>Burning Man Thursday series</option>
+              <option>Painting or drawing night</option>
+              <option>Private event / party</option>
+              <option>Corporate team building</option>
+              <option>Private event</option>
+              <option>Sliding scale inquiry</option>
+              <option>Partnership / collaboration</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="full-width">
+            <label for="contact-message">Tell us more</label>
+            <textarea id="contact-message" name="message" placeholder="Tell us more..." required></textarea>
+          </div>
+        </div>
+        <div style="margin-top:18px;">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="text-align:center;">
+    <div class="footer-logo">Studio Twenty Six</div>
+    <div class="footer-tagline">Art isn't a privilege, it's a necessity.</div>
+    <ul class="footer-links">
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="camps.html">Summer Camps</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="copyright">Oakland, California • Reach out for classes, camps, events, and partnerships.</div>
+  </div>
+</footer>
+
+</body>
+</html>
