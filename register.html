@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register — Studio Twenty Six</title>
-  <meta name="description" content="Register for Studio Twenty Six evening studio, Wake & Make, salon nights, and upcoming special events in Oakland.">
+  <meta name="description" content="Register for Studio Twenty Six monthly studio nights in Oakland, including Open Studio, Bad Art Nights, Paint & Vinyl, Costume Chaos, Messy Mornings, Events, and Ride or Dye.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400;9..144,1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -28,8 +28,8 @@
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">Registration</span>
-    <h1>Pick your entry point and we will take it from there.</h1>
-    <p>Use this form for evening studio, Wake &amp; Make, salon nights, private events, and sliding scale support.</p>
+    <h1>Choose one session and sign up fast.</h1>
+    <p>This page now works like a standard single-slot registration flow for the September-start monthly schedule.</p>
   </div>
 </section>
 
@@ -37,8 +37,8 @@
   <div class="container register-layout">
     <div class="register-card">
       <div class="register-note">
-        <h2>Program Signup</h2>
-        <p>Studio Twenty Six is built for adults, teens, beginners, and practiced makers. Use one form and tell us what rhythm fits.</p>
+        <h2>Single Session Signup</h2>
+        <p>Pick one class, event, or monthly session. If you want more than one slot, mention it in the notes and we can follow up from there.</p>
       </div>
 
       <form class="lead-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
@@ -60,6 +60,41 @@
             <input id="phone" type="tel" name="phone" placeholder="Best phone number">
           </div>
           <div>
+            <label for="signup-for">What are you signing up for?</label>
+            <select id="signup-for" name="signup_for" required>
+              <option value="">Choose one</option>
+              <option>Open Studio - First Wednesday</option>
+              <option>Events - First Thursday</option>
+              <option>Bad Art Nights - Second Tuesday</option>
+              <option>Paint & Vinyl - Third Tuesday</option>
+              <option>Costume Chaos - Fourth Tuesday</option>
+              <option>Events - Fourth Thursday</option>
+              <option>Messy Mornings - Last Sunday</option>
+              <option>Ride or Dye - Fifth Tuesday</option>
+              <option>Private group or partnership</option>
+              <option>Need help deciding</option>
+            </select>
+          </div>
+          <div>
+            <label for="signup-month">Starting month</label>
+            <select id="signup-month" name="signup_month" required>
+              <option value="">Choose one</option>
+              <option>September 2026</option>
+              <option>October 2026</option>
+              <option>November 2026</option>
+              <option>December 2026</option>
+            </select>
+          </div>
+          <div>
+            <label for="seat-count">How many seats?</label>
+            <select id="seat-count" name="seat_count">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+          </div>
+          <div>
             <label for="participant-type">Who is this for?</label>
             <select id="participant-type" name="participant_type" required>
               <option value="">Select one</option>
@@ -68,40 +103,17 @@
               <option>Private group / multiple people</option>
             </select>
           </div>
-          <div>
-            <label for="child-name">Second participant name</label>
-            <input id="child-name" type="text" name="child_name" placeholder="If relevant">
-          </div>
-          <div>
-            <label for="child-age">Age</label>
-            <input id="child-age" type="text" name="child_age" placeholder="Age or age range">
-          </div>
         </div>
-
-        <fieldset>
-          <legend>Which programs are you signing up for?</legend>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Evening studio"><div><strong>Evening studio</strong><span>Tuesday or Thursday adult and teen sessions.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Wake and Make"><div><strong>Wake &amp; Make</strong><span>Weekend morning art ritual for adults.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Salon night or special event"><div><strong>Salon night or special event</strong><span>First Friday, figure marathon, mending club, or gallery night.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Private group or partnership"><div><strong>Private group or partnership</strong><span>Birthdays, school programs, or community events.</span></div></label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Wake &amp; Make preference</legend>
-          <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="wake_make_preference" value="Saturday"><div><strong>Saturday</strong><span>Higher energy, bolder projects, social rhythm.</span></div></label>
-            <label class="choice-card"><input type="radio" name="wake_make_preference" value="Sunday"><div><strong>Sunday</strong><span>Slower, quieter, more meditative start.</span></div></label>
-            <label class="choice-card"><input type="radio" name="wake_make_preference" value="No preference"><div><strong>No preference</strong><span>I can do either weekend morning.</span></div></label>
-          </div>
-        </fieldset>
 
         <div class="form-grid">
           <div class="full-width">
             <label for="notes">Anything we should know?</label>
-            <textarea id="notes" name="notes" placeholder="Dates, accessibility needs, sliding scale request, partnership details, or the kind of making you want more of."></textarea>
+            <textarea id="notes" name="notes" placeholder="Specific date, second participant name, accessibility needs, sliding scale request, or anything else we should know."></textarea>
           </div>
+        </div>
+
+        <div class="sliding-scale" style="margin:0 0 22px;">
+          <strong>If you can&apos;t pay the listed price, say that here.</strong> Use the notes field and keep it simple. We will follow up with a sliding scale option.
         </div>
 
         <button type="submit" class="btn btn-primary">Complete Signup</button>
@@ -112,14 +124,15 @@
       <div class="sidebar-card">
         <h3>At a glance</h3>
         <ul>
-          <li>Evening studio: Tuesdays and Thursdays, 6 PM to 9 PM.</li>
-          <li>Wake &amp; Make: rotating weekends, 9 AM to 11:30 AM.</li>
-          <li>Salon nights and special events: rotating dates.</li>
+          <li>One form, one selected slot.</li>
+          <li>Monthly schedule starts September 2026.</li>
+          <li>If you want multiple nights, say so in notes.</li>
+          <li>Sliding scale stays available.</li>
         </ul>
       </div>
       <div class="sidebar-card" style="margin-top:24px;">
         <h3>Sliding Scale</h3>
-        <p>Access is built into the studio model. If cost is a barrier, note that in the form and we will follow up directly.</p>
+        <p>Access is built into the studio model. If cost is a barrier, say so in the notes field and we will follow up directly.</p>
       </div>
       <div class="sliding-scale" style="margin-top:24px;">
         <strong>Not sure where you fit?</strong> Use the notes field and describe the kind of rhythm, age group, or project style you are looking for.
