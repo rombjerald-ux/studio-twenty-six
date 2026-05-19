@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register — Studio Twenty Six</title>
-  <meta name="description" content="Register for Studio Twenty Six summer camps, workshops, classes, and upcoming night events in Oakland.">
+  <meta name="description" content="Register for Studio Twenty Six evening studio, Wake & Make, salon nights, and upcoming special events in Oakland.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400;9..144,1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,20 +17,19 @@
     <a href="index.html" class="nav-logo">Studio Twenty Six</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
     <ul class="nav-links">
-      <li><a href="classes.html">Classes</a></li>
-      <li><a href="camps.html">Summer Camps</a></li>
+      <li><a href="classes.html">Programs</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.85rem;">Register</a></li>
+      <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.82rem;">Register</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow">Signup</span>
-    <h1>Reserve your spot.</h1>
-    <p>Use this form for the 5-week summer art camp series, July costume workshops, August weekly classes, and future evening events.</p>
+    <span class="eyebrow">Registration</span>
+    <h1>Pick your entry point and we will take it from there.</h1>
+    <p>Use this form for evening studio, Wake &amp; Make, salon nights, private events, and sliding scale support.</p>
   </div>
 </section>
 
@@ -37,8 +37,8 @@
   <div class="container register-layout">
     <div class="register-card">
       <div class="register-note">
-        <h2>Registration</h2>
-        <p>Families and adults can sign up now, choose program interests, and tell us which camp weeks fit best.</p>
+        <h2>Program Signup</h2>
+        <p>Studio Twenty Six is built for adults, teens, beginners, and practiced makers. Use one form and tell us what rhythm fits.</p>
       </div>
 
       <form class="lead-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
@@ -48,7 +48,7 @@
 
         <div class="form-grid">
           <div>
-            <label for="adult-name">Parent or adult name</label>
+            <label for="adult-name">Name</label>
             <input id="adult-name" type="text" name="adult_name" placeholder="Full name" required>
           </div>
           <div>
@@ -63,17 +63,17 @@
             <label for="participant-type">Who is this for?</label>
             <select id="participant-type" name="participant_type" required>
               <option value="">Select one</option>
-              <option>Summer camp child</option>
-              <option>Adult class participant</option>
-              <option>Both</option>
+              <option>Adult participant</option>
+              <option>Teen participant</option>
+              <option>Private group / multiple people</option>
             </select>
           </div>
           <div>
-            <label for="child-name">Child name</label>
-            <input id="child-name" type="text" name="child_name" placeholder="If registering for camp">
+            <label for="child-name">Second participant name</label>
+            <input id="child-name" type="text" name="child_name" placeholder="If relevant">
           </div>
           <div>
-            <label for="child-age">Child age</label>
+            <label for="child-age">Age</label>
             <input id="child-age" type="text" name="child_age" placeholder="Age or age range">
           </div>
         </div>
@@ -81,39 +81,26 @@
         <fieldset>
           <legend>Which programs are you signing up for?</legend>
           <div class="choice-grid">
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Kids summer art camp"><div><strong>Kids summer art camp</strong><span>5 artist-inspired weeks with a 9:00 AM - 2:00 PM camp day.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="July festival costume workshop"><div><strong>July festival costume workshop</strong><span>Three-hour costume making class.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="August Burning Man Thursday class"><div><strong>August Burning Man Thursday class</strong><span>Weekly costume-making series.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Surrealist painting class"><div><strong>Surrealist painting class</strong><span>Evening painting event.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Still life drawing class"><div><strong>Still life drawing class</strong><span>Guided drawing session.</span></div></label>
-            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Other painting or night events"><div><strong>Other painting or night events</strong><span>Use the notes field to tell us what else you want to see.</span></div></label>
+            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Evening studio"><div><strong>Evening studio</strong><span>Tuesday or Thursday adult and teen sessions.</span></div></label>
+            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Wake and Make"><div><strong>Wake &amp; Make</strong><span>Weekend morning art ritual for adults.</span></div></label>
+            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Salon night or special event"><div><strong>Salon night or special event</strong><span>First Friday, figure marathon, mending club, or gallery night.</span></div></label>
+            <label class="choice-card"><input type="checkbox" name="program_interest[]" value="Private group or partnership"><div><strong>Private group or partnership</strong><span>Birthdays, school programs, or community events.</span></div></label>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Camp day preference</legend>
+          <legend>Wake &amp; Make preference</legend>
           <div class="choice-grid">
-            <label class="choice-card"><input type="radio" name="camp_time_slot" value="9:00 AM - 2:00 PM"><div><strong>9:00 AM - 2:00 PM</strong><span>Standard summer camp day.</span></div></label>
-            <label class="choice-card"><input type="radio" name="camp_time_slot" value="Interested but need schedule details"><div><strong>Interested but need schedule details</strong><span>Use this if you want to talk through timing before committing.</span></div></label>
-            <label class="choice-card"><input type="radio" name="camp_time_slot" value="Need alternate arrangement"><div><strong>Need alternate arrangement</strong><span>Use the notes field if you need early dropoff, sibling coordination, or another schedule conversation.</span></div></label>
+            <label class="choice-card"><input type="radio" name="wake_make_preference" value="Saturday"><div><strong>Saturday</strong><span>Higher energy, bolder projects, social rhythm.</span></div></label>
+            <label class="choice-card"><input type="radio" name="wake_make_preference" value="Sunday"><div><strong>Sunday</strong><span>Slower, quieter, more meditative start.</span></div></label>
+            <label class="choice-card"><input type="radio" name="wake_make_preference" value="No preference"><div><strong>No preference</strong><span>I can do either weekend morning.</span></div></label>
           </div>
         </fieldset>
 
         <div class="form-grid">
           <div class="full-width">
-            <label for="camp-weeks">Preferred camp weeks</label>
-            <select id="camp-weeks" name="camp_weeks[]" multiple size="5">
-              <option>Week 1 - Color &amp; Joy (Henri Matisse)</option>
-              <option>Week 2 - Nature &amp; Texture (Georgia O&apos;Keeffe)</option>
-              <option>Week 3 - Street Art &amp; Self Expression (Jean-Michel Basquiat)</option>
-              <option>Week 4 - Dreams &amp; Surrealism (Salvador Dali)</option>
-              <option>Week 5 - The Big Art Studio (Picasso + Open Studio Week)</option>
-            </select>
-            <p class="micro-copy">Hold Command on Mac or Ctrl on Windows to choose more than one week.</p>
-          </div>
-          <div class="full-width">
             <label for="notes">Anything we should know?</label>
-            <textarea id="notes" name="notes" placeholder="Preferred dates, sibling signups, accessibility needs, sliding scale request, or specific classes you want us to add."></textarea>
+            <textarea id="notes" name="notes" placeholder="Dates, accessibility needs, sliding scale request, partnership details, or the kind of making you want more of."></textarea>
           </div>
         </div>
 
@@ -123,19 +110,19 @@
 
     <aside>
       <div class="sidebar-card">
-        <h3>Camp Highlights</h3>
+        <h3>At a glance</h3>
         <ul>
-          <li>5 artist-inspired weeks.</li>
-          <li>9:00 AM - 2:00 PM camp rhythm.</li>
-          <li>Small-group instruction with hands-on projects every week.</li>
+          <li>Evening studio: Tuesdays and Thursdays, 6 PM to 9 PM.</li>
+          <li>Wake &amp; Make: rotating weekends, 9 AM to 11:30 AM.</li>
+          <li>Salon nights and special events: rotating dates.</li>
         </ul>
       </div>
       <div class="sidebar-card" style="margin-top:24px;">
-        <h3>Studio Twenty Six</h3>
-        <p>Summer camps, costume classes, painting nights, and creative workshops for kids, teens, and adults in Oakland.</p>
+        <h3>Sliding Scale</h3>
+        <p>Access is built into the studio model. If cost is a barrier, note that in the form and we will follow up directly.</p>
       </div>
       <div class="sliding-scale" style="margin-top:24px;">
-        <strong>Sliding scale available.</strong> If cost is a barrier, you can mention that in the notes field.
+        <strong>Not sure where you fit?</strong> Use the notes field and describe the kind of rhythm, age group, or project style you are looking for.
       </div>
     </aside>
   </div>
@@ -144,14 +131,13 @@
 <footer>
   <div class="container" style="text-align:center;">
     <div class="footer-logo">Studio Twenty Six</div>
-    <div class="footer-tagline">Art isn't a privilege, it's a necessity.</div>
+    <div class="footer-tagline">Make. Circle. Repeat.</div>
     <ul class="footer-links">
-      <li><a href="classes.html">Classes</a></li>
-      <li><a href="camps.html">Summer Camps</a></li>
+      <li><a href="classes.html">Programs</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="copyright">Oakland, California • Signup first, refinements after launch.</div>
+    <div class="copyright">Oakland, California • Register first, refine the fit together.</div>
   </div>
 </footer>
 
