@@ -1,23 +1,23 @@
 /* STUDIO TWENTY SIX */
 
 :root {
-  --background: #f6eedf;
-  --surface: #fff8ed;
-  --surface-soft: #f0e4cf;
-  --surface-strong: #e5d3b3;
-  --surface-ink: #15110f;
-  --text: #1f1714;
-  --text-muted: #5f5248;
-  --outline: #c8b89d;
-  --primary: #de4024;
-  --primary-bright: #f07b2f;
-  --secondary: #f2c230;
-  --secondary-ink: #4e3900;
-  --tertiary: #157a6e;
+  --background: #f2e2db;
+  --surface: #fff7f2;
+  --surface-soft: #f4e2db;
+  --surface-strong: #e7c9be;
+  --surface-ink: #190d14;
+  --text: #26141a;
+  --text-muted: #6f5658;
+  --outline: #d5b5ab;
+  --primary: #b53952;
+  --primary-bright: #e1703c;
+  --secondary: #dbb25c;
+  --secondary-ink: #4a3310;
+  --tertiary: #8a3b5f;
   --violet: #6d4dd8;
   --white: #ffffff;
-  --shadow: 0 24px 60px rgba(21, 17, 15, 0.14);
-  --shadow-soft: 0 14px 32px rgba(21, 17, 15, 0.1);
+  --shadow: 0 28px 70px rgba(25, 13, 20, 0.16);
+  --shadow-soft: 0 16px 36px rgba(25, 13, 20, 0.12);
   --font-heading: "Bebas Neue", sans-serif;
   --font-body: "Fraunces", Georgia, serif;
   --font-detail: "Space Mono", "SFMono-Regular", Consolas, monospace;
@@ -36,9 +36,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(242, 194, 48, 0.28), transparent 28%),
-    radial-gradient(circle at right 20%, rgba(21, 122, 110, 0.18), transparent 24%),
-    linear-gradient(180deg, #fbf4e8 0%, var(--background) 100%);
+    radial-gradient(circle at top left, rgba(219, 178, 92, 0.24), transparent 28%),
+    radial-gradient(circle at right 20%, rgba(181, 57, 82, 0.12), transparent 26%),
+    linear-gradient(180deg, #f8ece7 0%, var(--background) 100%);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.7;
@@ -200,7 +200,10 @@ nav .container {
 }
 
 .hero {
-  padding: 74px 0 96px;
+  padding: 84px 0 108px;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(181, 57, 82, 0.16), transparent 18%),
+    linear-gradient(180deg, rgba(255, 247, 242, 0.24), rgba(255, 247, 242, 0));
 }
 
 .hero-split {
@@ -245,6 +248,25 @@ nav .container {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 28px;
+}
+
+.hero-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.hero-notes span {
+  padding: 8px 12px;
+  border: 1px solid rgba(38, 20, 26, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-detail);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-collage {
@@ -434,7 +456,7 @@ nav .container {
 }
 
 .mission {
-  background: rgba(255, 248, 237, 0.78);
+  background: linear-gradient(180deg, rgba(255, 247, 242, 0.6), rgba(255, 247, 242, 0.28));
 }
 
 .mission .statement {
@@ -450,6 +472,83 @@ nav .container {
   color: var(--text-muted);
   font-size: 1.08rem;
   text-align: center;
+}
+
+.material-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.8fr) minmax(0, 0.9fr);
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+.material-photo {
+  overflow: hidden;
+  min-height: 380px;
+  border-radius: 28px 8px 28px 8px;
+  box-shadow: var(--shadow);
+}
+
+.material-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.material-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(180deg, rgba(181, 57, 82, 0.08), var(--surface));
+  border: 1px solid rgba(38, 20, 26, 0.08);
+  border-radius: 28px 8px 28px 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+.material-card .badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  background: rgba(181, 57, 82, 0.1);
+  font-family: var(--font-detail);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.material-card p:last-child {
+  margin-bottom: 0;
+}
+
+.touch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.touch-card {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(38, 20, 26, 0.08);
+  border-radius: 22px 6px 22px 6px;
+}
+
+.touch-card strong {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-family: var(--font-detail);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.touch-card p:last-child {
+  margin-bottom: 0;
 }
 
 .art-grid,
@@ -1311,6 +1410,11 @@ footer {
   }
 
   .launch-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .material-strip,
+  .touch-grid {
     grid-template-columns: 1fr;
   }
 
