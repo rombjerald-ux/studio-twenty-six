@@ -709,7 +709,7 @@ nav .container {
 }
 
 .gs-hero-image.hero-banner img {
-  object-position: center 38%;
+  object-position: center center;
 }
 
 .gs-sticker {
@@ -752,11 +752,10 @@ nav .container {
 }
 
 .scene-strip {
-  padding: 34px 0 24px;
+  padding: 26px 0 18px;
   background: transparent;
 }
 
-.scene-banner,
 .gs-banner-photo {
   overflow: hidden;
   min-height: 300px;
@@ -766,25 +765,16 @@ nav .container {
   box-shadow: var(--shadow);
 }
 
-.scene-banner img,
 .gs-banner-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.scene-banner {
-  min-height: 420px;
-}
-
-.scene-banner img {
-  object-position: center 42%;
-}
-
 .scene-note {
   max-width: 720px;
-  margin: -42px auto 0;
-  padding: 22px 26px;
+  margin: 0 auto;
+  padding: 26px 30px;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(58, 62, 66, 0.12);
   border-radius: 28px;
@@ -834,16 +824,6 @@ nav .container {
   box-shadow: var(--shadow);
 }
 
-.gs-card.image-card {
-  background: var(--surface);
-}
-
-.gs-card.image-card img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-}
-
 .gs-card-body,
 .gs-card.text-card {
   padding: 24px;
@@ -878,6 +858,11 @@ nav .container {
 .gs-card.text-card.hot {
   background: var(--tertiary);
   color: var(--white);
+}
+
+.gs-card.text-card.sand {
+  background: linear-gradient(180deg, rgba(229, 213, 191, 0.72), rgba(245, 243, 237, 0.96));
+  color: var(--text);
 }
 
 .gs-card.text-card.dark {
