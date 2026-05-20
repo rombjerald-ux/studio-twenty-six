@@ -708,6 +708,10 @@ nav .container {
   border-radius: 40px;
 }
 
+.gs-hero-image.hero-banner img {
+  object-position: center 38%;
+}
+
 .gs-sticker {
   position: absolute;
   left: 24px;
@@ -769,6 +773,14 @@ nav .container {
   object-fit: cover;
 }
 
+.scene-banner {
+  min-height: 420px;
+}
+
+.scene-banner img {
+  object-position: center 42%;
+}
+
 .scene-note {
   max-width: 720px;
   margin: -42px auto 0;
@@ -817,20 +829,8 @@ nav .container {
   transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.gs-card:nth-child(1) {
-  transform: rotate(-1.2deg);
-}
-
-.gs-card:nth-child(2) {
-  transform: rotate(1.5deg);
-}
-
-.gs-card:nth-child(3) {
-  transform: rotate(-1deg);
-}
-
 .gs-card:hover {
-  transform: translateY(-4px) rotate(0deg);
+  transform: translateY(-4px);
   box-shadow: var(--shadow);
 }
 
@@ -840,7 +840,7 @@ nav .container {
 
 .gs-card.image-card img {
   width: 100%;
-  height: 250px;
+  height: 320px;
   object-fit: cover;
 }
 
@@ -933,24 +933,8 @@ nav .container {
 }
 
 .gs-program-tile:hover {
-  transform: translateY(-3px) rotate(0deg);
+  transform: translateY(-3px);
   text-decoration: none;
-}
-
-.gs-program-tile:nth-child(1) {
-  transform: rotate(-1deg);
-}
-
-.gs-program-tile:nth-child(2) {
-  transform: rotate(1deg);
-}
-
-.gs-program-tile:nth-child(3) {
-  transform: rotate(-1.3deg);
-}
-
-.gs-program-tile:nth-child(4) {
-  transform: rotate(1.1deg);
 }
 
 .gs-program-tile p {
@@ -985,7 +969,7 @@ nav .container {
 
 .gs-story-banner {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -993,8 +977,8 @@ nav .container {
   min-height: 520px;
 }
 
-.gs-banner-photo.narrow {
-  min-height: 520px;
+.gs-banner-photo.wide img {
+  object-position: center 45%;
 }
 
 .gs-story-copy h2 {
@@ -1033,16 +1017,12 @@ nav .container {
   color: var(--text);
   text-decoration: none;
   box-shadow: var(--shadow-soft);
-  transform: rotate(-1.2deg);
+  transform: none;
 }
 
 .gs-calendar-card:hover {
-  transform: translateY(-5px) rotate(0deg);
+  transform: translateY(-5px);
   text-decoration: none;
-}
-
-.gs-calendar-card:nth-child(2n) {
-  transform: rotate(1deg);
 }
 
 .gs-calendar-card span,
@@ -2204,8 +2184,7 @@ footer {
   .gs-card,
   .gs-program-tile,
   .gs-calendar-card,
-  .gs-banner-photo.wide,
-  .gs-banner-photo.narrow {
+  .gs-banner-photo.wide {
     transform: none;
   }
 
