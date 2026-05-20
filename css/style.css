@@ -1,25 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Caveat:wght@600;700&family=Libre+Franklin:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap");
+
 /* STUDIO TWENTY SIX */
 
 :root {
-  --background: #f2e2db;
-  --surface: #fff7f2;
-  --surface-soft: #f4e2db;
-  --surface-strong: #e7c9be;
-  --surface-ink: #190d14;
-  --text: #26141a;
-  --text-muted: #6f5658;
-  --outline: #d5b5ab;
-  --primary: #b53952;
-  --primary-bright: #e1703c;
-  --secondary: #dbb25c;
-  --secondary-ink: #4a3310;
-  --tertiary: #8a3b5f;
-  --violet: #6d4dd8;
+  --background: #fcf9f0;
+  --surface: #fcf9f0;
+  --surface-soft: #f6f3ea;
+  --surface-strong: #ebe8df;
+  --surface-ink: #31312b;
+  --text: #1c1c17;
+  --text-muted: #414848;
+  --outline: #717878;
+  --primary: #406262;
+  --primary-bright: #587b7b;
+  --secondary: #50652a;
+  --secondary-ink: #ffffff;
+  --tertiary: #934433;
+  --violet: #934433;
   --white: #ffffff;
-  --shadow: 0 28px 70px rgba(25, 13, 20, 0.16);
-  --shadow-soft: 0 16px 36px rgba(25, 13, 20, 0.12);
-  --font-heading: "Bebas Neue", sans-serif;
-  --font-body: "Fraunces", Georgia, serif;
+  --charcoal: #2d2d2d;
+  --accent-yellow: #e8b923;
+  --shadow: none;
+  --shadow-soft: none;
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Libre Franklin", sans-serif;
   --font-detail: "Space Mono", "SFMono-Regular", Consolas, monospace;
   --font-hand: "Caveat", cursive;
 }
@@ -37,9 +41,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(219, 178, 92, 0.24), transparent 28%),
-    radial-gradient(circle at right 20%, rgba(181, 57, 82, 0.12), transparent 26%),
-    linear-gradient(180deg, #f8ece7 0%, var(--background) 100%);
+    radial-gradient(circle at top left, rgba(201, 230, 229, 0.28), transparent 28%),
+    radial-gradient(circle at right 20%, rgba(147, 68, 51, 0.09), transparent 26%),
+    linear-gradient(180deg, #fffcf5 0%, var(--background) 100%);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.7;
@@ -85,10 +89,10 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: none;
 }
 
 h1 {
@@ -125,9 +129,9 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(246, 238, 223, 0.86);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(31, 23, 20, 0.08);
+  background: rgba(252, 249, 240, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--charcoal);
 }
 
 nav .container {
@@ -143,7 +147,7 @@ nav .container {
   font-family: var(--font-heading);
   font-size: 2rem;
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.03em;
 }
 
 .nav-links {
@@ -181,43 +185,43 @@ nav .container {
   justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  border: none;
-  border-radius: 999px;
+  border: 2px solid var(--charcoal);
+  border-radius: 0;
   font-family: var(--font-detail);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
   text-decoration: none;
+  box-shadow: 6px 6px 0 var(--charcoal);
 }
 
 .btn:hover {
   text-decoration: none;
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
 }
 
 .btn-primary {
   color: var(--white);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bright) 100%);
-  box-shadow: var(--shadow-soft);
+  background: var(--tertiary);
+  box-shadow: 6px 6px 0 var(--charcoal);
 }
 
 .btn-secondary {
-  color: var(--text);
+  color: var(--secondary-ink);
   background: var(--secondary);
 }
 
 .btn-outline {
   color: var(--text);
-  background: transparent;
-  border: 2px solid rgba(31, 23, 20, 0.14);
+  background: var(--surface);
 }
 
 .btn-gold {
   color: var(--text);
-  background: var(--secondary);
+  background: var(--accent-yellow);
 }
 
 .hero {
@@ -238,14 +242,15 @@ nav .container {
   display: inline-block;
   margin-bottom: 18px;
   padding: 8px 14px;
-  background: var(--secondary);
-  color: var(--secondary-ink);
+  background: var(--accent-yellow);
+  color: var(--text);
   font-family: var(--font-detail);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
+  border: 2px solid var(--charcoal);
 }
 
 .hero-copy p {
@@ -312,13 +317,15 @@ nav .container {
   text-align: center;
   font-size: 0.88rem;
   line-height: 1.5;
-  box-shadow: var(--shadow);
+  border: 3px solid var(--charcoal);
+  box-shadow: none;
 }
 
 .photo-frame {
   overflow: hidden;
   background: var(--surface-strong);
-  box-shadow: var(--shadow);
+  border: 3px solid var(--charcoal);
+  box-shadow: none;
 }
 
 .photo-frame img {
@@ -328,12 +335,9 @@ nav .container {
   object-position: center;
 }
 
-.clip-a {
-  border-radius: 34px 6px 34px 6px;
-}
-
+.clip-a,
 .clip-b {
-  border-radius: 6px 34px 6px 34px;
+  border-radius: 0;
 }
 
 .collage-card.tall,
@@ -348,14 +352,15 @@ nav .container {
   bottom: -20px;
   display: inline-block;
   padding: 14px 18px;
-  background: var(--tertiary);
-  color: var(--white);
+  background: var(--accent-yellow);
+  color: var(--text);
   font-family: var(--font-detail);
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
   transform: rotate(-3deg);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--charcoal);
+  box-shadow: none;
 }
 
 .section-header {
@@ -375,9 +380,9 @@ nav .container {
 .section-rule {
   width: 92px;
   height: 8px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: var(--tertiary);
   margin-top: 14px;
-  border-radius: 999px;
+  border-radius: 0;
 }
 
 .card-grid {
@@ -398,7 +403,7 @@ nav .container {
 .class-item,
 .kit-card,
 .thread-card {
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
 }
 
 .feature-card {
@@ -407,7 +412,7 @@ nav .container {
   min-height: 280px;
   padding: 30px;
   background: var(--surface);
-  border: 1px solid rgba(31, 23, 20, 0.06);
+  border: 3px solid var(--charcoal);
 }
 
 .feature-card.dark {
@@ -416,12 +421,12 @@ nav .container {
 }
 
 .feature-card.hot {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--violet) 100%);
+  background: var(--tertiary);
   color: var(--white);
 }
 
 .feature-card.soft {
-  background: linear-gradient(180deg, rgba(242, 194, 48, 0.18) 0%, rgba(255, 248, 237, 1) 100%);
+  background: var(--surface-soft);
 }
 
 .feature-card p,
@@ -444,7 +449,8 @@ nav .container {
   display: inline-block;
   margin-bottom: 16px;
   padding: 7px 12px;
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--accent-yellow);
+  color: var(--text);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -477,7 +483,9 @@ nav .container {
 }
 
 .mission {
-  background: linear-gradient(180deg, rgba(255, 247, 242, 0.6), rgba(255, 247, 242, 0.28));
+  background: var(--surface-soft);
+  border-top: 3px solid var(--charcoal);
+  border-bottom: 3px solid var(--charcoal);
 }
 
 .mission .statement {
@@ -821,8 +829,9 @@ nav .container {
 .gs-card {
   overflow: hidden;
   min-height: 360px;
-  border-radius: 28px 8px 28px 8px;
-  box-shadow: var(--shadow-soft);
+  border-radius: 0;
+  border: 3px solid var(--charcoal);
+  box-shadow: none;
   transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -840,7 +849,7 @@ nav .container {
 
 .gs-card:hover {
   transform: translateY(-4px) rotate(0deg);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .gs-card.image-card {
@@ -885,7 +894,7 @@ nav .container {
 }
 
 .gs-card.text-card.hot {
-  background: linear-gradient(135deg, var(--primary), var(--primary-bright));
+  background: var(--tertiary);
   color: var(--white);
 }
 
@@ -902,6 +911,8 @@ nav .container {
 .gs-program-band {
   background: var(--surface-ink);
   color: var(--background);
+  border-top: 3px solid var(--charcoal);
+  border-bottom: 3px solid var(--charcoal);
 }
 
 .gs-program-head {
@@ -931,7 +942,8 @@ nav .container {
   display: block;
   min-height: 260px;
   padding: 24px;
-  border-radius: 28px 8px 28px 8px;
+  border-radius: 0;
+  border: 3px solid var(--charcoal);
   color: inherit;
   text-decoration: none;
   position: relative;
@@ -964,12 +976,12 @@ nav .container {
 }
 
 .tile-sand {
-  background: linear-gradient(180deg, rgba(219, 178, 92, 0.28), rgba(255, 247, 242, 0.92));
+  background: var(--surface-soft);
   color: var(--text);
 }
 
 .tile-red {
-  background: linear-gradient(180deg, rgba(181, 57, 82, 0.92), rgba(225, 112, 60, 0.96));
+  background: var(--tertiary);
 }
 
 .tile-ink {
@@ -977,7 +989,8 @@ nav .container {
 }
 
 .tile-blush {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+  background: var(--surface-strong);
+  color: var(--text);
 }
 
 .gs-split-grid {
@@ -996,8 +1009,9 @@ nav .container {
 .gs-photo {
   overflow: hidden;
   min-height: 250px;
-  border-radius: 28px 8px 28px 8px;
-  box-shadow: var(--shadow-soft);
+  border-radius: 0;
+  border: 3px solid var(--charcoal);
+  box-shadow: none;
 }
 
 .gs-photo.large {
@@ -1027,6 +1041,8 @@ nav .container {
 
 .gs-calendar-preview {
   background: rgba(255, 255, 255, 0.44);
+  border-top: 3px solid var(--charcoal);
+  border-bottom: 3px solid var(--charcoal);
 }
 
 .gs-calendar-grid {
@@ -1039,10 +1055,11 @@ nav .container {
   display: block;
   padding: 22px;
   background: var(--surface);
-  border-radius: 24px 8px 24px 8px;
+  border-radius: 0;
+  border: 3px solid var(--charcoal);
   color: var(--text);
   text-decoration: none;
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transform: rotate(-1deg);
 }
 
@@ -1076,8 +1093,10 @@ nav .container {
 }
 
 .gs-signup-band {
-  background: linear-gradient(135deg, rgba(181, 57, 82, 0.9), rgba(225, 112, 60, 0.92));
+  background: var(--primary);
   color: var(--white);
+  border-top: 3px solid var(--charcoal);
+  border-bottom: 3px solid var(--charcoal);
 }
 
 .gs-signup-grid {
@@ -1102,6 +1121,145 @@ nav .container {
 .site-home .gs-calendar-card:active,
 .site-home .gs-card:active {
   transform: scale(0.98);
+}
+
+.page-banner {
+  padding: 12px 20px;
+  background: var(--primary);
+  color: var(--white);
+  font-family: var(--font-detail);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.poster-hero {
+  background:
+    radial-gradient(circle at top right, rgba(64, 98, 98, 0.22), transparent 22%),
+    linear-gradient(180deg, #2f4c4c 0%, #406262 100%);
+}
+
+.poster-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.poster-head p {
+  max-width: 540px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.poster-head.invert p {
+  color: rgba(244, 241, 232, 0.78);
+}
+
+.poster-section,
+.paper-section,
+.signup-poster {
+  position: relative;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.roster-card {
+  display: block;
+  min-height: 100%;
+  padding: 24px;
+  border: 3px solid var(--charcoal);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.roster-card:hover {
+  text-decoration: none;
+  transform: translate(-2px, -2px);
+}
+
+.roster-card.sand {
+  background: var(--surface-soft);
+}
+
+.roster-card.paper {
+  background: var(--surface);
+}
+
+.roster-card.red,
+.roster-card.ink {
+  color: var(--white);
+}
+
+.roster-card.red {
+  background: var(--tertiary);
+}
+
+.roster-card.ink {
+  background: var(--surface-ink);
+}
+
+.roster-card.blush {
+  background: var(--surface-strong);
+}
+
+.tilt-left {
+  transform: rotate(-1.2deg);
+}
+
+.tilt-right {
+  transform: rotate(1.2deg);
+}
+
+.flyer-layout,
+.manifesto-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.flyer-board,
+.manifesto-note,
+.sticky-note {
+  padding: 24px;
+  background: var(--surface);
+  border: 3px solid var(--charcoal);
+}
+
+.sticky-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.sticky-note {
+  transform: rotate(-1deg);
+}
+
+.sticky-note.alt {
+  background: var(--surface-soft);
+  transform: rotate(1deg);
+}
+
+.sticky-note span,
+.manifesto-note span {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--tertiary);
+}
+
+.tilted-photo {
+  transform: rotate(1.2deg);
 }
 
 .art-grid,
