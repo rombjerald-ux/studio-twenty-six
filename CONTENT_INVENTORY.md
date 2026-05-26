@@ -1,0 +1,602 @@
+# Studio Twenty Six Content Inventory
+
+Current visible/verbatim content from the main site HTML files, organized by page and section for rewrite planning.
+
+## about.html
+- Page title: About — Studio Twenty Six
+- Meta description: Learn the mission, values, public-health framing, and Oakland studio philosophy behind Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Banner / marquee copy: about the studio • circles not audiences • access for all • mess is part of the medicine • oakland • about the studio
+- Section 1: A creative sanctuary with Oakland grit and radical warmth.
+  - Mission
+  - A creative sanctuary with Oakland grit and radical warmth.
+  - Studio Twenty Six is built around a simple belief: when communal making disappears, the body suffers. We are here to put art back where it belongs, inside everyday health, connection, and civic life.
+- Section 2: Why we exist
+  - Why we exist
+  - Studio Twenty Six is not trying to become a polished little enrichment brand. It is a living studio for adults, teens, and community to make things together with real materials, real atmosphere, and room for emotional honesty.
+  - We believe art belongs alongside sleep, exercise, diet, and nature as a basic condition of human well-being. That belief shapes pricing, programming, teaching, and the tone of the space itself.
+  - The work is to make the sublime accessible: circles instead of spectators, experimentation instead of polish, and beauty without gatekeeping.
+- Section 3: The Studio Ethos
+  - The Studio Ethos
+  - The brief gave the site a much stronger internal logic. This page now states the values directly rather than hinting around them.
+  - We build circles, not audiences.
+  - The room matters. Music matters. Witnessing matters. Studio Twenty Six is designed so the making happens with other people, not next to them.
+  - Mess is part of the medicine.
+  - Perfection is not the point. Wild color, experiments, failed drafts, cut paper on the floor, and hands covered in dye are signs the studio is doing its job.
+  - Sliding scale is not an afterthought.
+  - Access for all is one of the pillars. We want families, artists, beginners, and exhausted adults to feel like the space is genuinely for them.
+- Section 4: How The Studio Works
+  - How The Studio Works
+  - The public-facing model now matches the brand brief: one space, multiple entry points, one shared philosophy.
+  - Evening Studio
+  - Adults and teens come at night for a calmer, chic, skill-forward studio rhythm.
+  - Costume, painting, drawing, and natural dyeing rotate monthly with experimental Thursday sessions.
+  - Practice
+  - Making becomes a repeatable ritual, not a once-a-year treat.
+  - The studio is designed to support recurring practice through classes, passes, seasonal themes, and communal momentum.
+  - Wake & Make
+  - Weekend morning ritual for adults.
+  - Coffee, intention circle, a slow build into flow state, then an optional share with no critique and no performance pressure.
+  - Community
+  - Salon nights, mending club, portfolio nights, gallery evenings, and partnerships.
+  - The studio is also a civic and cultural room. It can host collaboration, grief, celebration, repair, and public visibility.
+- Section 5: Private Events + Partnerships
+  - Private Events + Partnerships
+  - Studio Twenty Six can also move beyond the class schedule when a school, company, family, or neighborhood group needs a guided making experience.
+  - Groups
+  - Birthdays, community celebrations, ritual gatherings, and creative private events.
+  - A more meaningful alternative to generic event packages, with art-making at the center instead of tacked on the side.
+  - Partners
+  - Schools, libraries, community centers, and aligned organizations.
+  - The studio model is designed to collaborate locally and to document impact in a way funders and families can actually understand.
+- Section 6: Want to build with us?
+  - Want to build with us?
+  - If you are interested in partnership, sponsorship, programming, teaching, or bringing Studio Twenty Six into a wider community initiative, use the contact page and start the conversation there.
+  - Start a Conversation
+- Section 7: Footer
+  - Programs
+  - About
+  - Contact
+
+## bad-art-nights.html
+- Page title: Bad Art Nights — Studio Twenty Six
+- Meta description: Second Tuesday Bad Art Nights at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Bad Art Nights
+  - Second Tuesday
+  - Bad Art Nights
+  - $45. A playful, low-pressure making night for people who want less perfection, more permission, and a room that takes the pressure off.
+- Section 2: $45
+  - $45
+  - Single-session entry point with sliding scale available.
+  - Prompt-led playful making
+  - Looser prompts, fast materials, humor, experimentation, and less concern about outcome quality.
+  - People afraid of being bad at art
+  - This is the night designed to break perfectionism and lower the stakes quickly.
+  - Sign up for Bad Art Nights.
+  - Bad Art Nights - Second Tuesday
+  - Choose on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## bus.html
+- Page title: The Bus — Studio Twenty Six
+- Meta description: The Studio Twenty Six bus is a future mobile art studio for schools, festivals, neighborhoods, and creative public-health activations.
+- Navigation labels: Studio Twenty Six | Programs | The Bus | About | Contact | Register
+- Section 1: The bus turns the studio into a traveling public-health intervention.
+  - Future Mobile Studio
+  - Art goes where people are.
+  - The bus turns the studio into a traveling public-health intervention.
+  - The Studio Twenty Six bus is the mobile version of the same mission: bring making, color, ritual, and connection directly to schools, festivals, neighborhoods, and community partners.
+  - Ask About the Bus
+  - See the Mission
+- Section 2: What The Bus Does
+  - What The Bus Does
+  - The old version framed the bus as a premium add-on. This version treats it as a mission extension of the studio.
+  - Portable making infrastructure
+  - The bus unfolds into a flexible creative environment with tools, work surfaces, visual atmosphere, and a program structure that can adapt to the site around it.
+  - Painting and mixed-media stations
+  - Costume customization and wearable art tables
+  - Sewing, embellishment, and handwork setups
+  - Neighborhood workshops and youth programming
+  - Festival, school, and civic activations
+  - A mobile extension of Studio Twenty Six values
+- Section 3: Who It Serves
+  - Who It Serves
+  - The bus matters because not everyone can get to the studio. Sometimes the studio needs to come to them.
+  - Festivals + Public Events
+  - Participatory art that gathers people instead of just entertaining them from a distance.
+  - Schools + Youth Programs
+  - Artist-led mobile programming for campuses, libraries, and community sites.
+  - Neighborhood Partnerships
+  - Creative infrastructure for local events, public gatherings, and community healing spaces.
+  - Private Groups
+  - Birthdays, team experiences, and private making events where the activity becomes the center of the celebration.
+- Section 4: Why It Fits The Brand
+  - Why It Fits The Brand
+  - The studio is still the anchor. The bus is how that studio logic reaches farther.
+  - Studio first
+  - The physical studio builds the practice and trust.
+  - It creates programs, teaching methods, documentation, and a local cultural center of gravity.
+  - Reach second
+  - The bus carries that model into the wider city.
+  - It expands Studio Twenty Six into schools, festivals, neighborhoods, and long-term community partnerships.
+- Section 5: Want to bring the bus somewhere?
+  - Want to bring the bus somewhere?
+  - The bus is part of the next phase of Studio Twenty Six. If you want to explore a school visit, festival activation, neighborhood event, or creative partnership, get in touch now.
+  - Start a Bus Inquiry
+- Section 6: Footer
+  - Programs
+  - The Bus
+  - About
+  - Contact
+
+## camps.html
+- Page title: Summer Camp — Studio Twenty Six
+- Meta description: Five artist-inspired summer camp weeks at Studio Twenty Six in Oakland for ages 5-17, with STEAM connections, sketchbooks, murals, and Friday gallery shares.
+- Navigation labels: Studio Twenty Six | Programs | Summer Camp | About | Contact | Register
+- Section 1: Five weeks of color, texture, symbols, dreams, and big studio energy.
+  - Ages 5-17
+  - Five weeks of color, texture, symbols, dreams, and big studio energy.
+  - Summer camp at Studio Twenty Six runs Monday through Friday, 9 AM to 2 PM, with an artist-inspired theme each week, STEAM-based learning, and Friday family gallery shares.
+- Section 2: Camp is designed like a real art studio day: sketchbook warm-up, artist lesson, main project, second creative block, and a closing share.
+  - The frame
+  - Camp is designed like a real art studio day: sketchbook warm-up, artist lesson, main project, second creative block, and a closing share.
+  - The new brief made the camp more immersive and much more specific about what kids actually make.
+  - The goal
+  - Critical thinking, emotional intelligence, resilience, collaboration, and joy.
+  - Art is positioned here as intelligence in action, not a side activity once the “real” learning is over.
+- Section 3: What Camp Feels Like
+  - What Camp Feels Like
+  - The strongest camp update in the brief was the mix of rigor and magic. The page now reflects both.
+  - What is included
+  - All core supplies provided.
+  - Artist passport stamped each week.
+  - Camp sketchbook for every child.
+  - Two creative work blocks every day.
+  - Gallery-style family share every Friday.
+  - What carries all summer
+  - Collaborative mural built across all five weeks.
+  - Artist playlists matched to each theme.
+  - Popsicle critique circles and journaling.
+  - Outdoor easel sessions and glorious mess days.
+  - Parent shows that let the work be seen.
+- Section 4: Weekly Themes
+  - Weekly Themes
+  - Each week now connects to both an artist and a STEAM logic, giving families a stronger picture of the learning inside the fun.
+  - Color Lab / Color & Joy
+  - Matisse.
+  - Color theory, cut paper collage, pattern, giant mural composition, and wearable art Friday.
+  - Nature Lab / Nature & Texture
+  - O'Keeffe.
+  - Observational drawing, clay leaf impressions, scale studies, nature mobiles, and driftwood sculpture.
+  - Street Art / Self Expression
+  - Basquiat.
+  - Graffiti lettering, symbols, poetry posters, layered cityscapes, and a giant collaborative wall.
+  - Invention Lab / Dreams & Surrealism
+  - Dali.
+  - Dream journals, clay creatures, diorama rooms, transformed objects, and puppet theater storytelling.
+  - The Big Art Studio
+  - Picasso.
+  - Abstract portraits, sculpture towers, giant canvas collaboration, choice day, and exhibition design.
+- Section 5: Daily Camp Flow
+  - Daily Camp Flow
+  - This keeps the practical structure visible for parents while preserving the studio atmosphere.
+- Section 6: Why Families Say Yes
+  - Why Families Say Yes
+  - The new framing makes camp easier to trust: not babysitting, not random crafts, but a designed studio experience.
+  - Creative structure
+  - Projects have shape, but invention still has room.
+  - Kids work with color, geometry, observation, scale, composition, and storytelling through real studio projects.
+  - Atmosphere
+  - It feels like a real art world, scaled to kids.
+  - Slideshows, music, murals, sketchbooks, journals, and end-of-week exhibitions all make the experience more meaningful.
+- Section 7: Register for summer camp.
+  - Register for summer camp.
+  - Families can sign up for one week or multiple weeks. Sliding scale support, extended care conversations, and sibling coordination all start on the registration page.
+  - Register for Camp
+- Section 8: Footer
+  - Programs
+  - Summer Camp
+  - About
+  - Contact
+
+## classes.html
+- Page title: Programs — Studio Twenty Six
+- Meta description: Explore the recurring monthly studio schedule for Studio Twenty Six, including Open Studio, Bad Art Nights, Paint & Vinyl, Costume Chaos, Events, Messy Mornings, and Ride or Dye.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Banner / marquee copy: programs • monthly rhythm • costume chaos • bad art nights • paint & vinyl • messy mornings • open studio • ride or dye
+- Section 1: One month. Named nights. A studio rhythm people can actually remember.
+  - Monthly lineup
+  - One month. Named nights. A studio rhythm people can actually remember.
+  - Think flyer wall, not class catalog. These are recurring nights with distinct moods, clear price points, and enough personality that people know what they are saying yes to before they even open the details page.
+- Section 2: The standing lineup.
+  - The standing lineup.
+  - The names stay fixed. The dates shift month to month. That means the studio can post one fresh monthly flyer without re-explaining the whole identity every time.
+  - Open Studio
+  - Easy-entry studio time for independent makers, nervous first-timers, and anyone who wants a lower-pressure way into the room.
+  - Events
+  - Public events, guest nights, pop-ups, and the rotating social energy of the studio.
+  - Bad Art Nights
+  - Humor, low pressure, and permission to make something strange without overthinking it.
+  - Paint & Vinyl
+  - A guided music-forward studio night that lands in the middle of the month.
+  - Costume Chaos
+  - The highest-material, highest-drama build night for embellishment, repair, and wearable art.
+  - A second public-facing event slot for collaborations, salons, and special formats.
+  - Messy Mornings
+  - A slower landing at the end of the month with collage, watercolor, art therapy, and mixed media.
+  - Ride or Dye
+  - This only appears in longer months, so it reads as a wildcard rather than a guaranteed weekly class.
+- Section 3: September as a sample flyer.
+  - September as a sample flyer.
+  - This is only the first posted month. It exists to make the recurring structure tangible, not to trap the site in a one-month schedule.
+  - Wed, Sep 2
+  - Open Studio
+  - Thu, Sep 3
+  - Events
+  - Tue, Sep 8
+  - Bad Art Nights
+  - Tue, Sep 15
+  - Paint & Vinyl
+  - Tue, Sep 22
+  - Costume Chaos
+  - Thu, Sep 24
+  - Sun, Sep 27
+  - Messy Mornings
+  - Tue, Sep 29
+  - Ride or Dye
+  - How it works
+  - Learn the names once. Then each month becomes a simple post, flyer, or QR destination.
+  - Bonus months
+  - `Ride or Dye` only appears when the month has a fifth Tuesday. It reads like a surprise, not a scheduling mistake.
+  - Register for a Slot
+- Section 4: What each night is for.
+  - What each night is for.
+  - Every slot below is a different doorway into the same studio. The point is clarity and magnetism, not a giant list of similar offerings.
+  - Open Studio
+  - Easy-entry studio access for independent making and looser creative momentum.
+  - Bad Art Nights
+  - Art for people who want humor, freedom, and less pressure to be impressive.
+  - Paint & Vinyl
+  - Listen, paint, learn, and move through a guided session with records on.
+  - Costume Chaos
+  - Wearable art, embellishment, trims, sparkle, repair, and maximalist build energy.
+  - Events
+  - Public events, guest nights, pop-ups, collaborations, and special monthly formats.
+  - Messy Mornings
+  - Art therapy, collage, watercolor, and mixed media in a softer, reflective format.
+  - Ride or Dye
+  - A wildcard dye and experimentation night that only appears in five-Tuesday months.
+- Section 5: A ladder, not a guess.
+  - A ladder, not a guess.
+  - Open Studio stays easiest to enter. Materials-heavy or high-production nights climb. Events move depending on format.
+- Section 6: Reserve your seat.
+  - Reserve your seat.
+  - Choose a night, mention sliding scale if you need it, and get into the room.
+  - Register for Programs
+- Section 7: Footer
+  - Programs
+  - About
+  - Contact
+
+## contact.html
+- Page title: Contact — Studio Twenty Six
+- Meta description: Contact Studio Twenty Six for evening studio, Wake & Make, private events, and Oakland community partnerships.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Banner / marquee copy: contact • book a night • partnerships • private groups • sliding scale • teaching inquiries • contact
+- Section 1: Questions, bookings, partnerships, and sliding scale requests start here.
+  - Reach Out
+  - Questions, bookings, partnerships, and sliding scale requests start here.
+  - Use this page for evening studio registration help, Wake & Make interest, private groups, teaching inquiries, and local collaborations.
+- Section 2: Studio Contact
+  - Studio Contact
+  - Location
+  - Oakland, CA
+  - Email
+  - hello@theartway.studio
+  - Instagram
+  - @theartway
+  - Hours
+  - Evening studio Tuesdays and Thursdays, Wake & Make on rotating weekends, plus recurring salon nights and community events.
+  - Access note
+  - If cost is a barrier, say so plainly. Sliding scale support is part of the model, not a special exception.
+  - Send a message
+  - Your name
+  - Your email
+  - What are you interested in?
+  - Choose one
+  - Evening studio
+  - Wake & Make
+  - First Friday salon night
+  - Private event / birthday
+  - School or community partnership
+  - Teaching artist inquiry
+  - Sliding scale inquiry
+  - Other
+  - Tell us more
+  - Send Message
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## costume-chaos.html
+- Page title: Costume Chaos — Studio Twenty Six
+- Meta description: Fourth Tuesday Costume Chaos at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Costume Chaos
+  - Fourth Tuesday
+  - Costume Chaos
+  - $65. Wearable art, sparkle, trims, repairs, structure, and maximalist build energy for people who want a more materials-heavy session.
+- Section 2: $65
+  - $65
+  - Premium materials night.
+  - Costume build + embellishment
+  - Wearable art, upgrades, trims, painting, repair, and structured costume experimentation.
+  - People who want a bigger visual payoff
+  - This is the most materials-forward Tuesday night and justifies the higher price.
+  - Sign up for Costume Chaos.
+  - Costume Chaos - Fourth Tuesday
+  - Choose on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## events.html
+- Page title: Events — Studio Twenty Six
+- Meta description: First and fourth Thursday events at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Events
+  - First + Fourth Thursday
+  - Events
+  - Rotating public nights, guest-led sessions, collaborations, and pop-up formats. These are the flexible slots in the calendar, so pricing and format can change month to month.
+- Section 2: Varies
+  - Varies
+  - Depends on guest, food, materials, or event format.
+  - Monthly public event slots
+  - Use these dates for salon nights, special collaborations, launches, or gallery-style gatherings.
+  - Public-facing studio energy
+  - These dates keep the calendar flexible without making the whole month feel vague.
+  - Sign up for an event.
+  - Events - First Thursday
+  - Events - Fourth Thursday
+  - Choose or on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## index.html
+- Page title: Studio Twenty Six — Make. Circle. Repeat.
+- Meta description: Studio Twenty Six is an Oakland creative sanctuary for evening studio classes, Wake & Make weekends, salon nights, and radically accessible communal art-making.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Banner / marquee copy: Studio twenty six circle club • oakland • art nights • messy mornings • salon energy • sliding scale • studio twenty six circle club
+- Section 1: Messy hands. Hot colors. Real community.
+  - Messy hands. Hot colors. Real community.
+  - Studio Twenty Six is a women-led, community-first art studio building recurring nights for painting, costume, collage, dye, ritual mornings, and creative people who want the room to feel alive.
+  - Join a Night
+  - See the Program
+  - paint
+  - collage
+  - costume
+  - clay
+  - dye
+- Section 2: Section 2
+- Section 3: Less website. More flyer wall, group chat, poster stack, and room-tone.
+  - Hand energy
+  - Less website. More flyer wall, group chat, poster stack, and room-tone.
+- Section 4: Built to feel like a scene, not a syllabus.
+  - Studio energy
+  - Built to feel like a scene, not a syllabus.
+  - The point is recurring culture: recognizable nights, people returning, materials everywhere, and enough visual heat that the studio feels like somewhere you want to be before you even read the calendar.
+  - Material world
+  - Real paper, pigment, trims, and painted surfaces stay visible.
+  - No flat stock-photo energy. The studio should look touched, used, and specific.
+  - Sexy, not sterile
+  - The vibe should flirt a little.
+  - Warmer color, bold type, bigger imagery, and less nonprofit brochure energy.
+  - People come back
+  - Recurring nights build the circle.
+  - The monthly lineup is the social spine of the studio, not just an administrative schedule.
+- Section 5: Choose your lane.
+  - Choose your lane.
+  - View full calendar
+  - Evening Studio
+  - Bad Art Nights, Paint & Vinyl, Costume Chaos, Open Studio, and Ride or Dye.
+  - Wake & Make
+  - Soft-entry weekend making for people who want slowness without losing edge.
+  - Salon + Events
+  - Pop-ups, collaborations, figure nights, and community-facing creative events.
+  - Sliding Scale
+  - If price is the blocker, say so. The studio is meant to stay enterable.
+- Section 6: Art feels better when you can tell it actually happened.
+  - Art feels better when you can tell it actually happened.
+  - This brand works when the interface stops looking clean and starts looking inhabited. Smudges, textures, costume details, wet paint, clay, notes, and recurring people all make the studio feel credible.
+  - Named recurring nights people can remember
+  - Visual identity rooted in touch, not abstraction
+  - Community energy visible before someone reads the details
+  - Read the Story
+- Section 7: Recurring every month.
+  - Recurring every month.
+  - Open programs
+  - 1st Wednesday
+  - Open Studio
+  - 1st Thursday
+  - Events
+  - 2nd Tuesday
+  - Bad Art Nights
+  - 3rd Tuesday
+  - Paint & Vinyl
+  - 4th Tuesday
+  - Costume Chaos
+  - Last Sunday
+  - Messy Mornings
+- Section 8: Get the next drop, flyer, and monthly studio calendar.
+  - Get the next drop, flyer, and monthly studio calendar.
+  - Email address
+  - Join the List
+- Section 9: Footer
+  - Programs
+  - About
+  - Contact
+
+## messy-mornings.html
+- Page title: Messy Mornings — Studio Twenty Six
+- Meta description: Last Sunday Messy Mornings at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Messy Mornings
+  - Last Sunday
+  - Messy Mornings
+  - $45. A softer monthly Sunday morning built around art therapy-informed prompts, collage, watercolor, and mixed media.
+- Section 2: $45
+  - $45
+  - Morning drop-in with sliding scale available.
+  - Reflective morning session
+  - Arrival, prompt, slower making block, and optional witnessing close.
+  - People who want a gentler entry point
+  - Best for collage, watercolor, mixed media, and process-first art making.
+  - Sign up for Messy Mornings.
+  - Messy Mornings - Last Sunday
+  - Choose on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## open-studio.html
+- Page title: Open Studio — Studio Twenty Six
+- Meta description: First Wednesday Open Studio at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Open Studio
+  - First Wednesday
+  - Open Studio
+  - 7 PM to 11 PM. An easy-entry studio night for people who want room to work, experiment, and be in the space without a heavy teaching format.
+- Section 2: $35
+  - $35
+  - Sliding scale available if cost is a barrier.
+  - Loose studio access
+  - Bring an idea, start something new, or use the room to keep momentum with support nearby.
+  - Returning makers and curious beginners
+  - Low-pressure, social, and open enough to make the studio feel usable instead of precious.
+  - Sign up for Open Studio.
+  - Open Studio - First Wednesday
+  - If you want this slot, choose on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## paint-vinyl.html
+- Page title: Paint & Vinyl — Studio Twenty Six
+- Meta description: Third Tuesday Paint and Vinyl at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Paint & Vinyl / Listen & Learn
+  - Third Tuesday
+  - Paint & Vinyl / Listen & Learn
+  - $55. A music-forward studio night with painting, conversation, and enough guidance to keep the room moving without flattening it.
+- Section 2: $55
+  - $55
+  - Materials included.
+  - Guided painting + listening session
+  - Records on, process centered, and a little more instruction than the looser public nights.
+  - People who want atmosphere and structure
+  - Strong first-time paid class anchor for adults who want a polished but still warm entry point.
+  - Sign up for Paint & Vinyl.
+  - Paint & Vinyl - Third Tuesday
+  - Choose on the registration page.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## register.html
+- Page title: Register — Studio Twenty Six
+- Meta description: Register for Studio Twenty Six monthly studio nights in Oakland, including Open Studio, Bad Art Nights, Paint & Vinyl, Costume Chaos, Messy Mornings, Events, and Ride or Dye.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Banner / marquee copy: register • one slot at a time • sliding scale stays open • choose your night • register
+- Section 1: Choose one session and sign up fast.
+  - Registration
+  - Choose one session and sign up fast.
+  - This page now works like a standard single-slot registration flow for the September-start monthly schedule.
+- Section 2: Single Session Signup
+  - Single Session Signup
+  - Pick one class, event, or monthly session. If you want more than one slot, mention it in the notes and we can follow up from there.
+  - Name
+  - Email
+  - Phone
+  - What are you signing up for?
+  - Choose one
+  - Open Studio - First Wednesday
+  - Events - First Thursday
+  - Bad Art Nights - Second Tuesday
+  - Paint & Vinyl - Third Tuesday
+  - Costume Chaos - Fourth Tuesday
+  - Events - Fourth Thursday
+  - Messy Mornings - Last Sunday
+  - Ride or Dye - Fifth Tuesday
+  - Private group or partnership
+  - Need help deciding
+  - Starting month
+  - September 2026
+  - October 2026
+  - November 2026
+  - December 2026
+  - How many seats?
+  - 1
+  - 2
+  - 3
+  - 4+
+  - Who is this for?
+  - Select one
+  - Adult participant
+  - Teen participant
+  - Private group / multiple people
+  - Anything we should know?
+  - If you can't pay the listed price, say that here.
+  - Complete Signup
+  - At a glance
+  - One form, one selected slot.
+  - Monthly schedule starts September 2026.
+  - If you want multiple nights, say so in notes.
+  - Sliding scale stays available.
+  - Sliding Scale
+  - Access is built into the studio model. If cost is a barrier, say so in the notes field and we will follow up directly.
+  - Not sure where you fit?
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
+
+## ride-or-dye.html
+- Page title: Ride or Dye — Studio Twenty Six
+- Meta description: Fifth Tuesday Ride or Dye at Studio Twenty Six.
+- Navigation labels: Studio Twenty Six | Programs | About | Contact | Register
+- Section 1: Ride or Dye
+  - Fifth Tuesday
+  - Ride or Dye
+  - $60. A bonus wildcard night for experimentation, dye, and higher-energy making when the calendar gives the studio a fifth Tuesday.
+- Section 2: $60
+  - $60
+  - Bonus wildcard night.
+  - Dye + experimentation
+  - Use it for shibori, bold color sessions, or other material-forward experiments that deserve their own spotlight.
+  - Months with extra room
+  - This slot keeps the monthly schedule flexible without forcing it into every month.
+  - Sign up for Ride or Dye.
+  - Ride or Dye - Fifth Tuesday
+  - Choose on the registration page when that month has one.
+  - Go To Signup
+- Section 3: Footer
+  - Programs
+  - About
+  - Contact
