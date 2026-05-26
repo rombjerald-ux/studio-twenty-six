@@ -4,116 +4,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Studio Twenty Six</title>
-  <meta name="description" content="Contact Studio Twenty Six for evening studio, Wake & Make, private events, and Oakland community partnerships.">
+  <meta name="description" content="Contact Studio Twenty Six for evening studio, Wake &amp; Make, private events, and Oakland community partnerships.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Libre+Franklin:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="site-inner">
 
 <nav>
   <div class="container">
-    <a href="index.html" class="nav-logo">Studio Twenty Six</a>
+    <a href="index.html" class="nav-logo">Studio<br>Twenty Six</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
     <ul class="nav-links">
       <li><a href="classes.html">Programs</a></li>
+      <li><a href="bus.html">The Space</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" style="color:var(--primary);">Contact</a></li>
+      <li><a href="contact.html" class="is-active">Contact</a></li>
       <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.82rem;">Register</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="page-banner">contact • book a night • partnerships • private groups • sliding scale • teaching inquiries • contact</div>
-
-<section class="page-hero poster-hero">
-  <div class="container">
-    <span class="eyebrow">Reach Out</span>
-    <h1>Questions, bookings, partnerships, and sliding scale requests start here.</h1>
-    <p>Use this page for evening studio registration help, Wake &amp; Make interest, private groups, teaching inquiries, and local collaborations.</p>
-  </div>
-</section>
-
-<section class="paper-section">
-  <div class="container contact-grid">
-    <div class="sidebar-card">
-      <h3>Studio Contact</h3>
-      <div class="contact-info" style="margin-top:20px;">
-        <div class="detail">
-          <span class="detail-label">Location</span>
-          <span>Oakland, CA<br>exact address shared on registration</span>
+<section class="fm-page-hero contact-hero">
+  <div class="fm-shell">
+    <div class="fm-page-layout">
+      <div class="fm-page-copy">
+        <span class="eyebrow">Reach out</span>
+        <h1>Questions, bookings, partnerships, and sliding scale requests start here.</h1>
+        <p>Use this page for evening studio registration help, Wake &amp; Make interest, private groups, teaching inquiries, and local collaborations.</p>
+      </div>
+      <div class="fm-page-visual" aria-hidden="true">
+        <div class="fm-hero-contact-card">
+          <span>Studio contact</span>
+          <p>Oakland studio nights, private groups, and local partnerships.</p>
+          <ul>
+            <li>hello@theartway.studio</li>
+            <li>@theartway</li>
+          </ul>
         </div>
-        <div class="detail">
-          <span class="detail-label">Email</span>
-          <span>hello@theartway.studio</span>
+        <div class="fm-page-star">
+          <svg width="80" height="80" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" />
+          </svg>
         </div>
-        <div class="detail">
-          <span class="detail-label">Instagram</span>
-          <span>@theartway</span>
+        <div class="fm-page-blob">
+          <div class="inner">
+            <strong>Use this for</strong>
+            <p>Bookings, collaborations, events, and access questions.</p>
+          </div>
         </div>
-        <div class="detail">
-          <span class="detail-label">Hours</span>
-          <span>Evening studio Tuesdays and Thursdays, Wake &amp; Make on rotating weekends, plus recurring salon nights and community events.</span>
+        <div class="fm-page-arch">
+          <div class="inner">
+            <strong>Access note</strong>
+            <p>If cost is a barrier, say so plainly.</p>
+          </div>
         </div>
       </div>
-      <div class="register-note" style="margin-top:24px;background:rgba(255,255,255,0.08);color:rgba(246,238,223,0.88);">
-        <strong>Access note</strong>
-        <p style="margin:10px 0 0;color:rgba(246,238,223,0.76);">If cost is a barrier, say so plainly. Sliding scale support is part of the model, not a special exception.</p>
-      </div>
-    </div>
-    <div class="register-card">
-      <h2 style="margin-bottom:18px;">Send a message</h2>
-      <form class="contact-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
-        <input type="hidden" name="_subject" value="New contact form message - Studio Twenty Six">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <div class="form-grid">
-          <div>
-            <label for="contact-name">Your name</label>
-            <input id="contact-name" type="text" name="name" placeholder="Your name" required>
-          </div>
-          <div>
-            <label for="contact-email">Your email</label>
-            <input id="contact-email" type="email" name="email" placeholder="Your email" required>
-          </div>
-          <div class="full-width">
-            <label for="contact-interest">What are you interested in?</label>
-            <select id="contact-interest" name="interest" required>
-              <option value="">Choose one</option>
-              <option>Evening studio</option>
-              <option>Wake &amp; Make</option>
-              <option>First Friday salon night</option>
-              <option>Private event / birthday</option>
-              <option>School or community partnership</option>
-              <option>Teaching artist inquiry</option>
-              <option>Sliding scale inquiry</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="full-width">
-            <label for="contact-message">Tell us more</label>
-            <textarea id="contact-message" name="message" placeholder="Tell us more..." required></textarea>
-          </div>
-        </div>
-        <div style="margin-top:18px;">
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </div>
-      </form>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container" style="text-align:center;">
-    <div class="footer-logo">Studio Twenty Six</div>
-    <div class="footer-tagline">Make. Circle. Repeat.</div>
-    <ul class="footer-links">
-      <li><a href="classes.html">Programs</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="copyright">Oakland, California • Community questions welcome.</div>
+<div class="fm-page-band">
+  <div class="fm-page-band-track">
+    <div class="fm-page-band-group">
+      <span>Bookings</span>
+      <span class="accent">Partnerships</span>
+      <span>Private groups</span>
+      <span class="accent">Sliding scale</span>
+      <span>Teaching inquiries</span>
+    </div>
+    <div class="fm-page-band-group">
+      <span>Bookings</span>
+      <span class="accent">Partnerships</span>
+      <span>Private groups</span>
+      <span class="accent">Sliding scale</span>
+      <span>Teaching inquiries</span>
+    </div>
+  </div>
+</div>
+
+<section class="fm-slice paper">
+  <div class="fm-shell">
+    <div class="fm-form-shell">
+      <div class="fm-signup-box">
+        <div class="fm-kicker">Send a message</div>
+        <h2>Tell us what you need.</h2>
+        <p style="margin-bottom:24px;color:var(--text-muted);">Questions about the studio, group bookings, and community collaborations all route through the same form.</p>
+        <form class="contact-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
+          <input type="hidden" name="_subject" value="New contact form message - Studio Twenty Six">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-grid">
+            <div>
+              <label for="contact-name">Your name</label>
+              <input id="contact-name" type="text" name="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="contact-email">Your email</label>
+              <input id="contact-email" type="email" name="email" placeholder="Your email" required>
+            </div>
+            <div class="full-width">
+              <label for="contact-interest">What are you interested in?</label>
+              <select id="contact-interest" name="interest" required>
+                <option value="">Choose one</option>
+                <option>Evening studio</option>
+                <option>Wake &amp; Make</option>
+                <option>First Friday salon night</option>
+                <option>Private event / birthday</option>
+                <option>School or community partnership</option>
+                <option>Teaching artist inquiry</option>
+                <option>Sliding scale inquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="full-width">
+              <label for="contact-message">Tell us more</label>
+              <textarea id="contact-message" name="message" placeholder="Tell us more..." required></textarea>
+            </div>
+          </div>
+          <div style="margin-top:18px;">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+      <aside class="fm-grid-2" style="grid-template-columns:1fr;">
+        <div class="fm-panel ink">
+          <div class="fm-kicker">Studio contact</div>
+          <h3>Oakland, California</h3>
+          <ul class="fm-checklist">
+            <li>Exact address shared on registration</li>
+            <li>hello@theartway.studio</li>
+            <li>@theartway on Instagram</li>
+            <li>Evening studio Tuesdays and Thursdays, Wake &amp; Make on rotating weekends, plus recurring salon nights and community events</li>
+          </ul>
+        </div>
+        <div class="fm-panel alt">
+          <div class="fm-kicker">Access note</div>
+          <h3>Sliding scale is part of the model.</h3>
+          <p>If cost is a barrier, say so plainly. Sliding scale support is part of the studio, not a special exception.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="fm-footer">
+  <div class="fm-shell">
+    <div class="fm-footer-grid">
+      <div class="fm-footer-brand">
+        <div class="footer-logo">Studio Twenty Six</div>
+        <p>Questions about studio nights, partnerships, and community programming all start in one place.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul class="footer-links">
+          <li><a href="classes.html">Programs</a></li>
+          <li><a href="bus.html">The Space</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/theartway/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="contact.html">TikTok</a></li>
+          <li><a href="contact.html">Spotify</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fm-footer-bottom">
+      <p>© 2026 Studio Twenty Six</p>
+      <p>Oakland, California</p>
+    </div>
   </div>
 </footer>
 

@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register — Studio Twenty Six</title>
-  <meta name="description" content="Register for Studio Twenty Six monthly studio nights in Oakland, including Open Studio, Bad Art Nights, Paint & Vinyl, Costume Chaos, Messy Mornings, Events, and Ride or Dye.">
+  <meta name="description" content="Register for Studio Twenty Six monthly studio nights in Oakland, including Open Studio, Bad Art Nights, Paint &amp; Vinyl, Costume Chaos, Messy Mornings, Events, and Ride or Dye.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Libre+Franklin:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="site-inner">
 
 <nav>
   <div class="container">
-    <a href="index.html" class="nav-logo">Studio Twenty Six</a>
+    <a href="index.html" class="nav-logo">Studio<br>Twenty Six</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
     <ul class="nav-links">
       <li><a href="classes.html">Programs</a></li>
+      <li><a href="bus.html">The Space</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.82rem;">Register</a></li>
@@ -25,134 +26,195 @@
   </div>
 </nav>
 
-<div class="page-banner">register • one slot at a time • sliding scale stays open • choose your night • register</div>
-
-<section class="page-hero poster-hero">
-  <div class="container">
-    <span class="eyebrow">Registration</span>
-    <h1>Choose one session and sign up fast.</h1>
-    <p>This page now works like a standard single-slot registration flow for the September-start monthly schedule.</p>
+<section class="fm-page-hero register-hero">
+  <div class="fm-shell">
+    <div class="fm-page-layout">
+      <div class="fm-page-copy">
+        <span class="eyebrow">Registration</span>
+        <h1>Choose one session and sign up fast.</h1>
+        <p>This page works like a single-slot registration flow for the September-start monthly schedule. If you want more than one night, say so in the notes and the studio can follow up from there.</p>
+      </div>
+      <div class="fm-page-visual" aria-hidden="true">
+        <div class="fm-hero-register-card">
+          <span>How it works</span>
+          <p>One fast form. One chosen slot. Follow-up if you need more.</p>
+          <ul>
+            <li>September 2026 launch</li>
+            <li>Sliding scale stays open</li>
+          </ul>
+        </div>
+        <div class="fm-page-star">
+          <svg width="80" height="80" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" />
+          </svg>
+        </div>
+        <div class="fm-page-blob">
+          <div class="inner">
+            <strong>Single session signup</strong>
+            <p>Pick one class, event, or monthly slot.</p>
+          </div>
+        </div>
+        <div class="fm-page-arch">
+          <div class="inner">
+            <strong>Sliding scale</strong>
+            <p>Say it plainly in the notes field.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="paper-section">
-  <div class="container register-layout">
-    <div class="register-card">
-      <div class="register-note">
-        <h2>Single Session Signup</h2>
-        <p>Pick one class, event, or monthly session. If you want more than one slot, mention it in the notes and we can follow up from there.</p>
+<div class="fm-page-band">
+  <div class="fm-page-band-track">
+    <div class="fm-page-band-group">
+      <span>One form</span>
+      <span class="accent">One selected slot</span>
+      <span>Sliding scale stays open</span>
+      <span class="accent">September 2026 start</span>
+    </div>
+    <div class="fm-page-band-group">
+      <span>One form</span>
+      <span class="accent">One selected slot</span>
+      <span>Sliding scale stays open</span>
+      <span class="accent">September 2026 start</span>
+    </div>
+  </div>
+</div>
+
+<section class="fm-slice paper">
+  <div class="fm-shell">
+    <div class="fm-form-shell">
+      <div class="fm-signup-box">
+        <div class="fm-kicker">Single session signup</div>
+        <h2>Claim a seat.</h2>
+        <p style="margin-bottom:24px;color:var(--text-muted);">Pick one class, event, or monthly session. If you want more than one slot, mention it in the notes and the studio can follow up from there.</p>
+
+        <form class="lead-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
+          <input type="hidden" name="_subject" value="New registration lead - Studio Twenty Six">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-grid">
+            <div>
+              <label for="adult-name">Name</label>
+              <input id="adult-name" type="text" name="adult_name" placeholder="Full name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" name="phone" placeholder="Best phone number">
+            </div>
+            <div>
+              <label for="signup-for">What are you signing up for?</label>
+              <select id="signup-for" name="signup_for" required>
+                <option value="">Choose one</option>
+                <option>Open Studio - First Wednesday</option>
+                <option>Events - First Thursday</option>
+                <option>Bad Art Nights - Second Tuesday</option>
+                <option>Paint &amp; Vinyl - Third Tuesday</option>
+                <option>Costume Chaos - Fourth Tuesday</option>
+                <option>Events - Fourth Thursday</option>
+                <option>Messy Mornings - Last Sunday</option>
+                <option>Ride or Dye - Fifth Tuesday</option>
+                <option>Private group or partnership</option>
+                <option>Need help deciding</option>
+              </select>
+            </div>
+            <div>
+              <label for="signup-month">Starting month</label>
+              <select id="signup-month" name="signup_month" required>
+                <option value="">Choose one</option>
+                <option>September 2026</option>
+                <option>October 2026</option>
+                <option>November 2026</option>
+                <option>December 2026</option>
+              </select>
+            </div>
+            <div>
+              <label for="seat-count">How many seats?</label>
+              <select id="seat-count" name="seat_count">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4+</option>
+              </select>
+            </div>
+            <div>
+              <label for="participant-type">Who is this for?</label>
+              <select id="participant-type" name="participant_type" required>
+                <option value="">Select one</option>
+                <option>Adult participant</option>
+                <option>Teen participant</option>
+                <option>Private group / multiple people</option>
+              </select>
+            </div>
+            <div class="full-width">
+              <label for="notes">Anything we should know?</label>
+              <textarea id="notes" name="notes" placeholder="Specific date, second participant name, accessibility needs, sliding scale request, or anything else we should know."></textarea>
+            </div>
+          </div>
+
+          <div class="sliding-scale" style="margin:22px 0;">
+            <strong>If you can&apos;t pay the listed price, say that here.</strong> Use the notes field and keep it simple. We will follow up with a sliding scale option.
+          </div>
+
+          <button type="submit" class="btn btn-primary">Complete Signup</button>
+        </form>
       </div>
 
-      <form class="lead-form" action="https://formsubmit.co/hello@theartway.studio" method="POST">
-        <input type="hidden" name="_subject" value="New registration lead - Studio Twenty Six">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-
-        <div class="form-grid">
-          <div>
-            <label for="adult-name">Name</label>
-            <input id="adult-name" type="text" name="adult_name" placeholder="Full name" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="you@email.com" required>
-          </div>
-          <div>
-            <label for="phone">Phone</label>
-            <input id="phone" type="tel" name="phone" placeholder="Best phone number">
-          </div>
-          <div>
-            <label for="signup-for">What are you signing up for?</label>
-            <select id="signup-for" name="signup_for" required>
-              <option value="">Choose one</option>
-              <option>Open Studio - First Wednesday</option>
-              <option>Events - First Thursday</option>
-              <option>Bad Art Nights - Second Tuesday</option>
-              <option>Paint & Vinyl - Third Tuesday</option>
-              <option>Costume Chaos - Fourth Tuesday</option>
-              <option>Events - Fourth Thursday</option>
-              <option>Messy Mornings - Last Sunday</option>
-              <option>Ride or Dye - Fifth Tuesday</option>
-              <option>Private group or partnership</option>
-              <option>Need help deciding</option>
-            </select>
-          </div>
-          <div>
-            <label for="signup-month">Starting month</label>
-            <select id="signup-month" name="signup_month" required>
-              <option value="">Choose one</option>
-              <option>September 2026</option>
-              <option>October 2026</option>
-              <option>November 2026</option>
-              <option>December 2026</option>
-            </select>
-          </div>
-          <div>
-            <label for="seat-count">How many seats?</label>
-            <select id="seat-count" name="seat_count">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4+</option>
-            </select>
-          </div>
-          <div>
-            <label for="participant-type">Who is this for?</label>
-            <select id="participant-type" name="participant_type" required>
-              <option value="">Select one</option>
-              <option>Adult participant</option>
-              <option>Teen participant</option>
-              <option>Private group / multiple people</option>
-            </select>
-          </div>
+      <aside class="fm-grid-2" style="grid-template-columns:1fr;">
+        <div class="fm-panel ink">
+          <div class="fm-kicker">At a glance</div>
+          <ul class="fm-checklist">
+            <li>One form, one selected slot</li>
+            <li>Monthly schedule starts September 2026</li>
+            <li>If you want multiple nights, say so in notes</li>
+            <li>Sliding scale stays available</li>
+          </ul>
         </div>
-
-        <div class="form-grid">
-          <div class="full-width">
-            <label for="notes">Anything we should know?</label>
-            <textarea id="notes" name="notes" placeholder="Specific date, second participant name, accessibility needs, sliding scale request, or anything else we should know."></textarea>
-          </div>
+        <div class="fm-panel alt">
+          <div class="fm-kicker">Not sure where you fit?</div>
+          <h3>Describe the rhythm you want.</h3>
+          <p>Use the notes field and describe the age group, project style, or atmosphere you are looking for. The studio can help match you to the right night.</p>
         </div>
-
-        <div class="sliding-scale" style="margin:0 0 22px;">
-          <strong>If you can&apos;t pay the listed price, say that here.</strong> Use the notes field and keep it simple. We will follow up with a sliding scale option.
-        </div>
-
-        <button type="submit" class="btn btn-primary">Complete Signup</button>
-      </form>
+      </aside>
     </div>
+  </div>
+</section>
 
-    <aside>
-      <div class="sidebar-card">
-        <h3>At a glance</h3>
-        <ul>
-          <li>One form, one selected slot.</li>
-          <li>Monthly schedule starts September 2026.</li>
-          <li>If you want multiple nights, say so in notes.</li>
-          <li>Sliding scale stays available.</li>
+<footer class="fm-footer">
+  <div class="fm-shell">
+    <div class="fm-footer-grid">
+      <div class="fm-footer-brand">
+        <div class="footer-logo">Studio Twenty Six</div>
+        <p>Register first, refine the fit together. One fast form for studio nights, events, and partnership inquiries.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul class="footer-links">
+          <li><a href="classes.html">Programs</a></li>
+          <li><a href="bus.html">The Space</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="sidebar-card" style="margin-top:24px;">
-        <h3>Sliding Scale</h3>
-        <p>Access is built into the studio model. If cost is a barrier, say so in the notes field and we will follow up directly.</p>
+      <div>
+        <h4>Social</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/theartway/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="contact.html">TikTok</a></li>
+          <li><a href="contact.html">Spotify</a></li>
+        </ul>
       </div>
-      <div class="sliding-scale" style="margin-top:24px;">
-        <strong>Not sure where you fit?</strong> Use the notes field and describe the kind of rhythm, age group, or project style you are looking for.
-      </div>
-    </aside>
-  </div>
-</section>
-
-<footer>
-  <div class="container" style="text-align:center;">
-    <div class="footer-logo">Studio Twenty Six</div>
-    <div class="footer-tagline">Make. Circle. Repeat.</div>
-    <ul class="footer-links">
-      <li><a href="classes.html">Programs</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="copyright">Oakland, California • Register first, refine the fit together.</div>
+    </div>
+    <div class="fm-footer-bottom">
+      <p>© 2026 Studio Twenty Six</p>
+      <p>Oakland, California</p>
+    </div>
   </div>
 </footer>
 

@@ -7,18 +7,18 @@
   <meta name="description" content="The Studio Twenty Six bus is a future mobile art studio for schools, festivals, neighborhoods, and creative public-health activations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Libre+Franklin:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="site-inner">
 
 <nav>
   <div class="container">
-    <a href="index.html" class="nav-logo">Studio Twenty Six</a>
+    <a href="index.html" class="nav-logo">Studio<br>Twenty Six</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
     <ul class="nav-links">
       <li><a href="classes.html">Programs</a></li>
-      <li><a href="bus.html" style="color:var(--primary);">The Bus</a></li>
+      <li><a href="bus.html" class="is-active">The Space</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="register.html" class="btn btn-primary" style="padding:8px 20px;font-size:0.82rem;">Register</a></li>
@@ -26,44 +26,76 @@
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container hero-split">
-    <div class="hero-copy">
-      <span class="eyebrow">Future Mobile Studio</span>
-      <p class="tagline">Art goes where people are.</p>
-      <h1>The bus turns the studio into a traveling public-health intervention.</h1>
-      <p>The Studio Twenty Six bus is the mobile version of the same mission: bring making, color, ritual, and connection directly to schools, festivals, neighborhoods, and community partners.</p>
-      <div class="cta-group">
-        <a href="contact.html" class="btn btn-primary">Ask About the Bus</a>
-        <a href="about.html" class="btn btn-secondary">See the Mission</a>
+<section class="fm-page-hero bus-hero">
+  <div class="fm-shell">
+    <div class="fm-page-layout">
+      <div class="fm-page-copy">
+        <span class="eyebrow">Future mobile studio</span>
+        <h1>The bus turns the studio into a traveling public-health intervention.</h1>
+        <p>The Studio Twenty Six bus is the mobile version of the same mission: bring making, color, ritual, and connection directly to schools, festivals, neighborhoods, and community partners.</p>
+        <div class="fm-page-actions">
+          <a href="contact.html" class="btn btn-primary">Ask about the bus</a>
+          <a href="about.html" class="btn btn-outline">See the mission</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-collage">
-      <div class="collage-grid">
-        <div class="img-placeholder clip-a tall">Mobile studio render</div>
-        <div class="img-placeholder clip-b">Festival activation</div>
-        <div class="img-placeholder clip-b">Schoolyard making circle</div>
-        <div class="img-placeholder clip-a tall">Interior tools and supply wall</div>
+      <div class="fm-page-visual" aria-hidden="true">
+        <div class="fm-page-star">
+          <svg width="80" height="80" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 0C50 27.6142 27.6142 50 0 50C27.6142 50 50 72.3858 50 100C50 72.3858 72.3858 50 100 50C72.3858 50 50 27.6142 50 0Z" />
+          </svg>
+        </div>
+        <div class="fm-page-blob">
+          <div class="inner">
+            <strong>Art goes where people are</strong>
+            <p>Schools, festivals, neighborhoods, and public activations.</p>
+          </div>
+        </div>
+        <div class="fm-page-arch">
+          <div class="inner">
+            <strong>Studio on wheels</strong>
+            <p>A mobile extension of the same values.</p>
+          </div>
+        </div>
+        <div class="fm-hero-route">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <div class="float-note">Studio on wheels</div>
     </div>
   </div>
 </section>
 
-<section class="classes-section">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2>What The Bus Does</h2>
-        <div class="section-rule"></div>
-      </div>
-      <p>The old version framed the bus as a premium add-on. This version treats it as a mission extension of the studio.</p>
+<div class="fm-page-band">
+  <div class="fm-page-band-track">
+    <div class="fm-page-band-group">
+      <span>Portable making infrastructure</span>
+      <span class="accent">Neighborhood partnerships</span>
+      <span>Festivals</span>
+      <span class="accent">Schools</span>
+      <span>Community healing spaces</span>
     </div>
-    <div class="bus-content">
-      <div class="announcement-card">
+    <div class="fm-page-band-group">
+      <span>Portable making infrastructure</span>
+      <span class="accent">Neighborhood partnerships</span>
+      <span>Festivals</span>
+      <span class="accent">Schools</span>
+      <span>Community healing spaces</span>
+    </div>
+  </div>
+</div>
+
+<section class="fm-slice cream">
+  <div class="fm-shell">
+    <div class="fm-grid-2">
+      <div class="fm-panel">
+        <div class="fm-kicker">What the bus does</div>
         <h3>Portable making infrastructure</h3>
         <p>The bus unfolds into a flexible creative environment with tools, work surfaces, visual atmosphere, and a program structure that can adapt to the site around it.</p>
-        <ul class="bus-features">
+      </div>
+      <div class="fm-panel alt">
+        <div class="fm-kicker">What travels with it</div>
+        <ul class="fm-checklist">
           <li>Painting and mixed-media stations</li>
           <li>Costume customization and wearable art tables</li>
           <li>Sewing, embellishment, and handwork setups</li>
@@ -72,98 +104,107 @@
           <li>A mobile extension of Studio Twenty Six values</li>
         </ul>
       </div>
-      <div class="img-placeholder clip-b tall">Open bus in a school or festival setting</div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="section-header">
+<section class="fm-slice paper">
+  <div class="fm-shell">
+    <div class="fm-section-head">
       <div>
-        <h2>Who It Serves</h2>
-        <div class="section-rule"></div>
+        <div class="fm-kicker">Who it serves</div>
+        <h2>The studio reaches farther.</h2>
       </div>
       <p>The bus matters because not everyone can get to the studio. Sometimes the studio needs to come to them.</p>
     </div>
-    <div class="art-grid">
-      <div class="art-card">
-        <div class="img-placeholder">Festival crowd activation</div>
-        <div class="art-card-body">
-          <h3>Festivals + Public Events</h3>
-          <p>Participatory art that gathers people instead of just entertaining them from a distance.</p>
-        </div>
+    <div class="fm-grid-4">
+      <div class="fm-panel">
+        <span class="fm-tag">Public</span>
+        <h3>Festivals + Public Events</h3>
+        <p>Participatory art that gathers people instead of just entertaining them from a distance.</p>
       </div>
-      <div class="art-card">
-        <div class="img-placeholder">Schoolyard workshop</div>
-        <div class="art-card-body">
-          <h3>Schools + Youth Programs</h3>
-          <p>Artist-led mobile programming for campuses, libraries, and community sites.</p>
-        </div>
+      <div class="fm-panel">
+        <span class="fm-tag">Youth</span>
+        <h3>Schools + Youth Programs</h3>
+        <p>Artist-led mobile programming for campuses, libraries, and community sites.</p>
       </div>
-      <div class="art-card">
-        <div class="img-placeholder">Neighborhood block activation</div>
-        <div class="art-card-body">
-          <h3>Neighborhood Partnerships</h3>
-          <p>Creative infrastructure for local events, public gatherings, and community healing spaces.</p>
-        </div>
+      <div class="fm-panel">
+        <span class="fm-tag">Local</span>
+        <h3>Neighborhood Partnerships</h3>
+        <p>Creative infrastructure for local events, public gatherings, and community healing spaces.</p>
       </div>
-      <div class="art-card">
-        <div class="img-placeholder">Private celebration</div>
-        <div class="art-card-body">
-          <h3>Private Groups</h3>
-          <p>Birthdays, team experiences, and private making events where the activity becomes the center of the celebration.</p>
-        </div>
+      <div class="fm-panel">
+        <span class="fm-tag">Private</span>
+        <h3>Private Groups</h3>
+        <p>Birthdays, team experiences, and private making events where the activity becomes the center of the celebration.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="dark-band">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2>Why It Fits The Brand</h2>
-        <div class="section-rule"></div>
-      </div>
-      <p>The studio is still the anchor. The bus is how that studio logic reaches farther.</p>
-    </div>
-    <div class="card-grid">
-      <article class="feature-card half dark clip-a">
-        <span class="badge">Studio first</span>
+<section class="fm-slice ink">
+  <div class="fm-shell">
+    <div class="fm-grid-2">
+      <div class="fm-panel ink">
+        <div class="fm-kicker">Studio first</div>
         <h3>The physical studio builds the practice and trust.</h3>
         <p>It creates programs, teaching methods, documentation, and a local cultural center of gravity.</p>
-      </article>
-      <article class="feature-card half dark clip-b">
-        <span class="badge">Reach second</span>
+      </div>
+      <div class="fm-panel ink">
+        <div class="fm-kicker">Reach second</div>
         <h3>The bus carries that model into the wider city.</h3>
         <p>It expands Studio Twenty Six into schools, festivals, neighborhoods, and long-term community partnerships.</p>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="announcement-card">
-      <h2>Want to bring the bus somewhere?</h2>
-      <p>The bus is part of the next phase of Studio Twenty Six. If you want to explore a school visit, festival activation, neighborhood event, or creative partnership, get in touch now.</p>
-      <a href="contact.html" class="btn btn-primary">Start a Bus Inquiry</a>
-    </div>
+<section class="fm-signup">
+  <div class="fm-signup-blob top"></div>
+  <div class="fm-signup-blob bottom"></div>
+  <div class="fm-shell fm-signup-inner">
+    <div class="fm-signup-kicker">Bring the bus</div>
+    <h2>Want to bring<br><span>the bus somewhere?</span></h2>
+    <form action="https://formsubmit.co/hello@theartway.studio" method="POST" class="fm-signup-form">
+      <input type="hidden" name="_subject" value="Bus inquiry - Studio Twenty Six">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <label for="bus-email" class="sr-only">Email address</label>
+      <input id="bus-email" type="email" name="email" placeholder="Enter your email" required>
+      <button type="submit">Start a bus inquiry</button>
+    </form>
   </div>
 </section>
 
-<footer>
-  <div class="container" style="text-align:center;">
-    <div class="footer-logo">Studio Twenty Six</div>
-    <div class="footer-tagline">Make. Circle. Repeat.</div>
-    <ul class="footer-links">
-      <li><a href="classes.html">Programs</a></li>
-      <li><a href="bus.html">The Bus</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="copyright">Oakland, California • A mobile extension of communal making.</div>
+<footer class="fm-footer">
+  <div class="fm-shell">
+    <div class="fm-footer-grid">
+      <div class="fm-footer-brand">
+        <div class="footer-logo">Studio Twenty Six</div>
+        <p>A mobile extension of the studio’s communal making model for schools, neighborhoods, festivals, and civic partnerships.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul class="footer-links">
+          <li><a href="classes.html">Programs</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/theartway/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="contact.html">TikTok</a></li>
+          <li><a href="contact.html">Spotify</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fm-footer-bottom">
+      <p>© 2026 Studio Twenty Six</p>
+      <p>Oakland, California</p>
+    </div>
   </div>
 </footer>
 
