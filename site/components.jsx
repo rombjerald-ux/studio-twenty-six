@@ -238,7 +238,7 @@ function NativeCheckoutPanel({ event }) {
       if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
       window.location.href = data.url;
     } catch (error) {
-      setStatus("Payment connection is not ready yet. Use the current secure checkout link for now.");
+      setStatus("Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
     }
   };
 
@@ -260,6 +260,16 @@ function NativeCheckoutPanel({ event }) {
             <div><dt>Price</dt><dd>{event.price}</dd></div>
           </dl>
         </aside>
+        {!checkout.enabled ? (
+          <div className="checkout-form checkout-ready">
+            <div className="checkout-total">
+              <span>Total today</span>
+              <strong>{priceText}</strong>
+            </div>
+            <p>{checkout.disabledNotice}</p>
+            {event.bookingUrl && <a className="btn btn-fill" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
+          </div>
+        ) : (
         <form className="checkout-form" onSubmit={submitCheckout}>
           <div className="checkout-row">
             <label>
@@ -295,6 +305,7 @@ function NativeCheckoutPanel({ event }) {
           <button className="btn btn-fill" type="submit">{checkout.submitLabel}</button>
           {event.bookingUrl && <a className="btn btn-outline checkout-fallback" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
         </form>
+        )}
       </div>
       <div className="checkout-scale">
         <div>
