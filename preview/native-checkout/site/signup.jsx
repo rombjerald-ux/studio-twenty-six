@@ -13,18 +13,25 @@ function SignupPage(){
 
   const details = window.S26.CLASS_DETAILS;
   const copy = window.S26.SIGNUP;
-  const site = window.S26.SITE;
   const classNames = Object.values(details).map((c) => c.title);
-  const requested = new URLSearchParams(window.location.search).get("class") || "";
-  const selectedClass = classNames.includes(requested) ? requested : "";
-  const [paymentMode, setPaymentMode] = React.useState("");
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get("class") || "";
+  const requestedEvent = params.get("event") || "";
   const events = window.S26.EVENTS;
+  const eventKey = (ev) => `${ev.date}|${ev.title}`;
+  const requestedEventMatch = events.find((ev) => eventKey(ev) === requestedEvent);
+  const selectedClass = requestedEventMatch ? requestedEventMatch.title : classNames.includes(requested) ? requested : "";
   const sessions = events
     .filter((ev) => !selectedClass || ev.title === selectedClass)
     .slice(0, selectedClass ? 6 : 9);
   const firstBookable = sessions.find((ev) => ev.bookingUrl) || null;
-  const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
+  const [bookingEvent, setBookingEvent] = React.useState(requestedEventMatch || firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  React.useEffect(() => {
+    if (requestedEventMatch) {
+      requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    }
+  }, []);
 
   return (
     <React.Fragment>
@@ -40,69 +47,17 @@ function SignupPage(){
       </header>
 
       <main>
-        <section className="section register-section">
-          <div className="wrap register-grid reveal">
-            <div className="register-card">
-              <div className="eyebrow-m">{copy.form.eyebrow}</div>
-              <h2>{copy.form.headline}</h2>
-              <form action={site.formEndpoint} method="POST">
-                <input type="hidden" name="_subject" value={copy.form.subject} />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value={`${site.liveUrl}${copy.form.successPath}`} />
-                <input type="text" name="name" required placeholder="Name" aria-label="Name" />
-                <input type="email" name="email" required placeholder="Email" aria-label="Email" />
-                <input type="tel" name="phone" placeholder="Phone, optional" aria-label="Phone" />
-                <select name="class_interest" required aria-label="Class interest" defaultValue={selectedClass}>
-                  <option value="" disabled>Choose a class or event</option>
-                  {classNames.map((c) => <option key={c} value={c}>{c}</option>)}
-                  {copy.form.classOptions.map((option) => <option key={option}>{option}</option>)}
-                </select>
-                <input type="text" name="preferred_date" placeholder="Preferred date or session" aria-label="Preferred date or session" />
-                <select
-                  name="payment_preference"
-                  required
-                  aria-label="Payment preference"
-                  value={paymentMode}
-                  onChange={(event) => setPaymentMode(event.target.value)}
-                >
-                  <option value="" disabled>Payment preference</option>
-                  {copy.form.paymentOptions.map((option) => <option key={option}>{option}</option>)}
-                </select>
-                <p className="field-help">
-                  {paymentMode === "Ask about sliding scale" ? copy.form.slidingScaleHint : copy.form.payNowHint}
-                </p>
-                <textarea name="notes" placeholder={copy.form.notesPlaceholder} aria-label="Notes"></textarea>
-                <button
-                  className="btn btn-fill"
-                  type={paymentMode === "Pay now" ? "button" : "submit"}
-                  onClick={() => {
-                    if (paymentMode === "Pay now") document.getElementById("sessions")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  {paymentMode === "Pay now" ? copy.form.payNowButton : paymentMode === "Ask about sliding scale" ? copy.form.slidingScaleButton : copy.form.button}
-                </button>
-              </form>
-            </div>
-
-            <aside className="register-side">
-              {copy.steps.map((step, index) => (
-                <div className={`register-note${index ? " soft" : ""}`} key={step.label}>
-                  <span>{step.label}</span>
-                  <strong>{step.headline}</strong>
-                  <p>{step.body}</p>
-                </div>
-              ))}
-            </aside>
-          </div>
-        </section>
-
         <section className="class-detail-band" id="sessions">
           <div className="wrap reveal">
-            <div className="sec-head pay-head"><h2>{copy.sessionsHeadline} <em>{copy.sessionsAccent}</em></h2></div>
+            <div className="sec-head pay-head">
+              <div className="eyebrow-m">{selectedClass ? "Selected class" : "Choose a date"}</div>
+              <h2>{selectedClass || copy.sessionsHeadline} <em>{copy.sessionsAccent}</em></h2>
+              <p className="section-note">{copy.sessionsBody}</p>
+            </div>
             <div className="payment-grid">
               {sessions.map((ev) => {
                 return (
-                <div className="payment-card session-card" key={ev.date + ev.title}>
+                <div className={`payment-card session-card${bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? " selected" : ""}`} key={ev.date + ev.title}>
                   <span>{fmtDate(ev.date)} · {ev.time}</span>
                   <strong>{ev.title}</strong>
                   <em>{ev.sub || ev.blurb || copy.emptyLinkText}</em>
@@ -111,7 +66,7 @@ function SignupPage(){
                     <button className="btn btn-fill" type="button" onClick={() => {
                       setBookingEvent(ev);
                       requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                    }}>{copy.liveButton}</button>
+                    }}>{bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? copy.selectedButton : copy.liveButton}</button>
                   ) : (
                     <button className="btn btn-outline" type="button" disabled>{copy.missingButton}</button>
                   )}

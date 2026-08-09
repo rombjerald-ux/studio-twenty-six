@@ -160,12 +160,12 @@ window.S26 = (function () {
   };
 
   const SIGNUP = {
-    hero: {
-      image: "../assets/hero-pink-teal-5.jpg",
-      eyebrow: "Sign up",
-      meta: "Classes · Workshops · Private events",
-      headline: "Choose your date.",
-      body: "Pick the class or event you want, then book your spot. Payment, class capacity, confirmations, and reminders are handled in one simple checkout.",
+      hero: {
+        image: "../assets/hero-pink-teal-5.jpg",
+        eyebrow: "Sign up",
+        meta: "Classes · Workshops · Private events",
+        headline: "Book your spot.",
+        body: "Pick a date once. Your class carries straight into checkout with the details already filled in.",
     },
     form: {
       eyebrow: "Sign up",
@@ -187,8 +187,10 @@ window.S26 = (function () {
     ],
     sessionsHeadline: "Class",
     sessionsAccent: "dates.",
+    sessionsBody: "Choose a session below. The checkout will use the class and date you select.",
     emptyLinkText: "Booking link coming soon",
-    liveButton: "Book this date →",
+    liveButton: "Choose this date →",
+    selectedButton: "Selected date",
     missingButton: "Booking link needed",
   };
 
