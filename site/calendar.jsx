@@ -12,7 +12,7 @@ const DRAWER_IMG = { Atelier:"photo-c6.jpg", Open:"photo-c1.jpg", Salon:"photo-b
 const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MOFULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const TODAY = "2026-06-03";
+const TODAY = "2026-08-09";
 const RECUR = { Atelier:true, Open:true, Salon:true, Restore:true };
 
 function fmtDate(iso){
@@ -64,7 +64,7 @@ function EventDrawer({ ev, onClose }){
             </div>
             <div className="dreg split">
               <a className="btn btn-outline" href={cal.eventDetailUrls[ev.title] || "classes.html"}>Details</a>
-              <a className="btn btn-fill" href="book.html" onClick={onClose}>Sign up now →</a>
+              <a className="btn btn-fill" href={(cal.eventDetailUrls[ev.title] || "book.html") + "#sessions"} onClick={onClose}>Sign up now →</a>
             </div>
           </React.Fragment>
         )}
@@ -93,6 +93,13 @@ function Calendar(){
   const monthEvents = EVENTS.filter((ev) => ev.date.startsWith(monthKey) && matches(ev));
   const allMonthEvents = EVENTS.filter((ev) => ev.date.startsWith(monthKey));
   const activeMonth = MONTHS.find((mo) => mo.key === monthKey);
+  const nextFor = (r) => EVENTS.find((ev) => ev.title === r.t || (r.t === "Rotating workshops" && ev.type === "Workshop"));
+  const rhythmDate = (r) => {
+    const ev = nextFor(r);
+    if (!ev) return r.d;
+    const [, mm, dd] = ev.date.split("-").map(Number);
+    return `${MO[mm - 1]} ${dd}`;
+  };
   const byDate = {};
   monthEvents.forEach((ev) => { (byDate[ev.date] = byDate[ev.date] || []).push(ev); });
 
@@ -132,7 +139,7 @@ function Calendar(){
         <div className="rhythm-strip" aria-label="Studio rhythm">
           {RHYTHM.map((r) => (
             <div className="rhythm-card" key={r.t}>
-              <span>{r.d}</span>
+              <span>{rhythmDate(r)}</span>
               <strong>{r.t}</strong>
               <em>{r.time}</em>
               <small>{r.note}</small>
@@ -177,7 +184,7 @@ function Calendar(){
                 <span className="event-art-img"><img src={art.src} alt="" /></span>
                 <span className="event-art-copy">
                   <strong>{art.label}</strong>
-                  <em>{art.pending ? "Details + artwork slot" : "Details + artwork"}</em>
+                  <em>Details + sign up</em>
                 </span>
               </a>
             );

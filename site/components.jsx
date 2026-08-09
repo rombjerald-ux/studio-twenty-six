@@ -175,7 +175,7 @@ function Signup() {
 function Footer() {
   const site = window.S26.SITE;
   const col = (h, links) => (
-    <div className="col"><h4>{h}</h4>{links.map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}</div>
+    <div className="col" key={h}><h4>{h}</h4>{links.map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}</div>
   );
   return (
     <footer className="foot">
@@ -196,4 +196,134 @@ function Footer() {
   );
 }
 
-Object.assign(window, { Btn, Nav, Marquee, Hero, Mission, TessTeaser, Make, Signup, Footer });
+function formatEventDate(iso, options = { weekday: "long", month: "long", day: "numeric", year: "numeric" }) {
+  return new Date(`${iso}T12:00:00`).toLocaleDateString(undefined, options);
+}
+
+function parsePrice(price) {
+  const match = String(price || "").match(/\$([0-9]+)/);
+  return match ? Number(match[1]) : 0;
+}
+
+function slidingScaleMailto(ev) {
+  const subject = `Sliding scale request: ${ev.title}`;
+  const body = [
+    "Hi Studio Twenty Six,",
+    "",
+    `I am interested in a sliding scale spot for ${ev.title}.`,
+    `Preferred date: ${formatEventDate(ev.date)} at ${ev.time}`,
+    "",
+    "Name:",
+    "Email:",
+    "Seats:",
+    "Anything you want us to know:",
+  ].join("\n");
+  return `mailto:${window.S26.SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function NativeCheckoutPanel({ event }) {
+  const checkout = window.S26.CHECKOUT;
+  const [seats, setSeats] = useState(1);
+  const [status, setStatus] = useState("");
+  const unitPrice = parsePrice(event.price);
+  const total = unitPrice * seats;
+  const priceText = unitPrice ? `$${total}` : event.price;
+
+  const submitCheckout = async (submitEvent) => {
+    submitEvent.preventDefault();
+    const form = new FormData(submitEvent.currentTarget);
+    if (!checkout.enabled) {
+      setStatus(checkout.disabledNotice);
+      return;
+    }
+    setStatus("Connecting to secure payment...");
+    try {
+      const response = await fetch(checkout.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: event.title,
+          date: event.date,
+          time: event.time,
+          price: event.price,
+          seats,
+          name: form.get("name"),
+          email: form.get("email"),
+          phone: form.get("phone"),
+          notes: form.get("notes"),
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
+      window.location.href = data.url;
+    } catch (error) {
+      setStatus("Payment connection is not ready yet. Use the current secure checkout link for now.");
+    }
+  };
+
+  return (
+    <section className="native-checkout" id="book" aria-label={`Book ${event.title}`}>
+      <div className="checkout-copy">
+        <span>Checkout</span>
+        <h3>{checkout.headline}</h3>
+        <p>{checkout.body}</p>
+      </div>
+      <div className="checkout-shell">
+        <aside className="checkout-summary">
+          <span>Your class</span>
+          <strong>{event.title}</strong>
+          <dl>
+            <div><dt>Date</dt><dd>{formatEventDate(event.date)}</dd></div>
+            <div><dt>Time</dt><dd>{event.time}</dd></div>
+            <div><dt>Place</dt><dd>{event.where}</dd></div>
+            <div><dt>Price</dt><dd>{event.price}</dd></div>
+          </dl>
+        </aside>
+        <form className="checkout-form" onSubmit={submitCheckout}>
+          <div className="checkout-row">
+            <label>
+              <span>Name</span>
+              <input name="name" required placeholder="Your name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" required placeholder="you@email.com" />
+            </label>
+          </div>
+          <div className="checkout-row">
+            <label>
+              <span>Phone</span>
+              <input name="phone" type="tel" placeholder="Optional" />
+            </label>
+            <label>
+              <span>Seats</span>
+              <select name="seats" value={seats} onChange={(e) => setSeats(Number(e.target.value))}>
+                {[1, 2, 3, 4].map((n) => <option key={n} value={n}>{n}</option>)}
+              </select>
+            </label>
+          </div>
+          <label>
+            <span>Notes for Tess</span>
+            <textarea name="notes" placeholder="Access needs, friend names, or anything useful to know."></textarea>
+          </label>
+          <div className="checkout-total">
+            <span>Total today</span>
+            <strong>{priceText}</strong>
+          </div>
+          {status && <p className="checkout-status">{status}</p>}
+          <button className="btn btn-fill" type="submit">{checkout.submitLabel}</button>
+          {event.bookingUrl && <a className="btn btn-outline checkout-fallback" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
+        </form>
+      </div>
+      <div className="checkout-scale">
+        <div>
+          <span>{checkout.slidingScaleLabel}</span>
+          <p>{checkout.slidingScaleBody}</p>
+        </div>
+        <a className="btn btn-outline" href={slidingScaleMailto(event)}>{checkout.slidingScaleButton}</a>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Btn, Nav, Marquee, Hero, Mission, TessTeaser, Make, Signup, Footer, NativeCheckoutPanel, formatEventDate, slidingScaleMailto });

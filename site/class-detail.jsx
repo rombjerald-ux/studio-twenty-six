@@ -20,21 +20,6 @@ function ClassDetailPage(){
   const related = (exactSessions.length ? exactSessions : window.S26.EVENTS.filter((ev) => ev.type === c.type)).slice(0, 5);
   const firstBookable = related.find((ev) => ev.bookingUrl) || null;
   const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
-  const mailtoFor = (ev) => {
-    const subject = `Sliding scale request: ${ev.title}`;
-    const body = [
-      `Hi Studio Twenty Six,`,
-      ``,
-      `I am interested in a sliding scale spot for ${ev.title}.`,
-      `Preferred date: ${ev.date} at ${ev.time}`,
-      ``,
-      `Name:`,
-      `Email:`,
-      `Seats:`,
-      `Anything you want us to know:`,
-    ].join("\n");
-    return `mailto:${window.S26.SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
   return (
     <React.Fragment>
       <window.Nav />
@@ -115,24 +100,13 @@ function ClassDetailPage(){
                     ) : (
                       <button className="btn btn-outline" type="button" disabled>Payment link coming</button>
                     )}
-                    <a className="btn btn-outline" href={mailtoFor(ev)}>Ask about sliding scale</a>
+                    <a className="btn btn-outline" href={window.slidingScaleMailto(ev)}>Ask about sliding scale</a>
                   </div>
                 </div>
               ))}
             </div>
             {bookingEvent && (
-              <div className="booking-embed" id="book">
-                <div className="booking-embed-head">
-                  <span>Booking</span>
-                  <strong>{bookingEvent.title}</strong>
-                  <em>{bookingEvent.date} · {bookingEvent.time} · {bookingEvent.price}</em>
-                </div>
-                <iframe
-                  src={bookingEvent.bookingUrl}
-                  title={`Book ${bookingEvent.title}`}
-                  loading="lazy"
-                ></iframe>
-              </div>
+              <window.NativeCheckoutPanel event={bookingEvent} />
             )}
           </div>
         </section>

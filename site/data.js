@@ -192,6 +192,19 @@ window.S26 = (function () {
     missingButton: "Booking link needed",
   };
 
+  const CHECKOUT = {
+    enabled: false,
+    endpoint: "/api/checkout",
+    headline: "Reserve your spot.",
+    body: "Enter your details here, then continue to secure payment. The fully in-site checkout connection is being finished on this branch.",
+    fallbackLabel: "Continue to current secure checkout",
+    submitLabel: "Continue to secure payment",
+    disabledNotice: "Native checkout preview is ready. Payment connection is next, so use the secure checkout button below for any real booking today.",
+    slidingScaleLabel: "Need sliding scale?",
+    slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
+    slidingScaleButton: "Message the team",
+  };
+
   const CLASSES_PAGE = {
     hero: {
       image: "../assets/hero-pink-teal-4.jpg",
@@ -226,6 +239,7 @@ window.S26 = (function () {
       "Wake and Make": "wake-and-make.html",
       "Paint the Town": "paint-the-town.html",
       "Art Church": "art-church.html",
+      "Opening Class / Mini Event": "happenings.html",
       "Opening Block Party": "happenings.html",
       "Surrealist Dinner Party": "happenings.html",
       "Friendsgiving Party": "happenings.html",
@@ -339,16 +353,13 @@ window.S26 = (function () {
     "Ride or Dye": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271326",
     "Paint the Town": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271328",
     "Studio Preview Night": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271428",
+    "Opening Class / Mini Event": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271428",
   };
   const e = (date, type, title, sub, time, price, where, blurb, special) =>
     ({ date, type, title, sub: sub || "", time, price, where: where || S, blurb: blurb || "", special: !!special, bookingUrl: BOOKING_URLS[title] || "" });
 
   const EVENTS = [
-    e("2026-08-06", "Special", "Studio Preview Night", "Come find your creative eye", "7:00-9:00 PM", COSTS.free.price, S, "A first look at Studio Twenty Six: a creative salon for art, costumes, classes, events, happenings, and more.", true),
-    e("2026-08-09", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Come early before the day starts to get creative. Coffee, tea, a simple prompt, and studio time."),
-    e("2026-08-11", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
-    e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
-    e("2026-08-20", "Salon", "The Craft Show", "Monthly costume embellishment", "6:30-8:30 PM", COSTS.craft.price, S, "Bring something to transform. If not, you can shop studio blanks."),
+    e("2026-08-20", "Special", "Opening Class / Mini Event", "Come find your creative eye", "6:30-8:30 PM", COSTS.free.price, S, "A first open studio class and mini event for Studio Twenty Six. Come see the space, make something, and help kick off the season.", true),
     e("2026-08-23", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "A live choir sings. We make. Something happens that is hard to name."),
     e("2026-08-25", "Workshop", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "A rotating paint night built around color, music, and a medium that changes month to month."),
 
@@ -507,5 +518,5 @@ window.S26 = (function () {
     intro: "Opening parties, dinner parties, seasonal gatherings, and studio events live here.",
   };
 
-  return { SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CLASSES_PAGE, CALENDAR, HAPPENINGS, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE, BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS };
+  return { SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, CLASSES_PAGE, CALENDAR, HAPPENINGS, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE, BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS };
 })();

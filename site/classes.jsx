@@ -41,6 +41,7 @@ function ClassesPage(){
                   <strong>{c.title}</strong>
                   <span>{c.tagline}</span>
                   <small>{c.price} · {c.duration}</small>
+                  <b>View details + sign up</b>
                 </span>
               </a>
             );

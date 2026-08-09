@@ -119,18 +119,7 @@ function SignupPage(){
               )})}
             </div>
             {bookingEvent && (
-              <div className="booking-embed" id="book">
-                <div className="booking-embed-head">
-                  <span>Booking</span>
-                  <strong>{bookingEvent.title}</strong>
-                  <em>{fmtDate(bookingEvent.date)} · {bookingEvent.time} · {bookingEvent.price}</em>
-                </div>
-                <iframe
-                  src={bookingEvent.bookingUrl}
-                  title={`Book ${bookingEvent.title}`}
-                  loading="lazy"
-                ></iframe>
-              </div>
+              <window.NativeCheckoutPanel event={bookingEvent} />
             )}
           </div>
         </section>

@@ -37,12 +37,13 @@ function HappeningsPage(){
             </div>
             <div className="happening-grid">
               {happenings.map((ev) => (
-                <article className="happening-card" key={ev.date + ev.title}>
+                <a className="happening-card" href="book.html#sessions" key={ev.date + ev.title}>
                   <span>{fmtDate(ev.date)} · {ev.time}</span>
                   <strong>{ev.title}</strong>
                   <em>{ev.sub}</em>
                   <p>{ev.blurb}</p>
-                </article>
+                  <b>Details + sign up</b>
+                </a>
               ))}
             </div>
           </div>
