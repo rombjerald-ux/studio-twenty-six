@@ -270,6 +270,9 @@ html{scroll-behavior:smooth;}
 .signup button{grid-column:1/-1;justify-self:center;margin-top:4px;}
 .signup .btn-fill{background:var(--void);color:var(--pearl);}
 .signup .btn-fill:hover{background:var(--lime);color:var(--void);}
+.signup-actions{position:relative;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.signup-actions .btn-outline{border-color:rgba(11,7,16,.45);color:var(--void);background:rgba(246,238,242,.18);}
+.signup-actions .btn-outline:hover{background:var(--pearl);border-color:var(--pearl);}
 .signup .note{position:relative;font-size:13.5px;color:rgba(11,7,16,.72);margin:20px auto 0;max-width:48ch;line-height:1.5;}
 .signup .ok{position:relative;color:var(--void);font-weight:600;margin-top:18px;font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;}
 
@@ -458,6 +461,8 @@ html{scroll-behavior:smooth;}
 .payment-card small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;color:#817781;margin:0 0 18px;}
 .payment-card .btn{margin-top:auto;width:100%;justify-content:center;}
 .payment-card button[disabled]{opacity:.55;cursor:not-allowed;}
+.payment-card.selected{border-color:#1C1B22;box-shadow:0 0 0 2px #1C1B22 inset;}
+.payment-card.selected .btn-fill{background:var(--lime);color:#1C1B22;}
 
 /* ---------------- COPY REVIEW ---------------- */
 .review-hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--void);}

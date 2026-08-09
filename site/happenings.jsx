@@ -14,6 +14,7 @@ function HappeningsPage(){
   const copy = window.S26.HAPPENINGS;
   const happenings = window.S26.EVENTS.filter((ev) => ev.type === "Special");
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+  const bookingHref = (ev) => `book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`;
 
   return (
     <React.Fragment>
@@ -37,7 +38,7 @@ function HappeningsPage(){
             </div>
             <div className="happening-grid">
               {happenings.map((ev) => (
-                <a className="happening-card" href="book.html#sessions" key={ev.date + ev.title}>
+                <a className="happening-card" href={bookingHref(ev)} key={ev.date + ev.title}>
                   <span>{fmtDate(ev.date)} · {ev.time}</span>
                   <strong>{ev.title}</strong>
                   <em>{ev.sub}</em>

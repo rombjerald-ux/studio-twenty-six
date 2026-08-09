@@ -21,6 +21,10 @@ function fmtDate(iso){
   return `${["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][wd]}, ${MOFULL[m-1]} ${d}, ${y}`;
 }
 
+function bookingHref(ev){
+  return `book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`;
+}
+
 function EventDrawer({ ev, onClose }){
   useCE(() => {
     const k = (e) => { if(e.key === "Escape") onClose(); };
@@ -64,7 +68,7 @@ function EventDrawer({ ev, onClose }){
             </div>
             <div className="dreg split">
               <a className="btn btn-outline" href={cal.eventDetailUrls[ev.title] || "classes.html"}>Details</a>
-              <a className="btn btn-fill" href={(cal.eventDetailUrls[ev.title] || "book.html") + "#sessions"} onClick={onClose}>Sign up now →</a>
+              <a className="btn btn-fill" href={bookingHref(ev)} onClick={onClose}>Sign up now →</a>
             </div>
           </React.Fragment>
         )}

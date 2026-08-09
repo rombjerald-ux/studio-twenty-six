@@ -136,36 +136,17 @@ function Make() {
 }
 
 function Signup() {
-  const [sent, setSent] = useState(false);
   const teaser = window.S26.HOME.signupTeaser;
-  const site = window.S26.SITE;
-  const classes = Object.values(window.S26.CLASS_DETAILS).map((c) => c.title).concat(window.S26.SIGNUP.form.classOptions);
   return (
     <section id="signup" style={{ paddingBottom: "var(--s-2)" }}>
       <div className="signup reveal">
         <div className="gr"></div>
         <div className="eyebrow-m">{teaser.eyebrow}</div>
         <h2>{teaser.headline}</h2>
-        {sent ? (
-          <div className="ok">{teaser.success}</div>
-        ) : (
-          <form action={site.formEndpoint} method="POST">
-            <input type="hidden" name="_subject" value="Studio Twenty Six signup" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="name" required placeholder="Name" aria-label="Name" />
-            <input type="email" name="email" required placeholder="Email" aria-label="Email" />
-            <select name="class_interest" required aria-label="Class interest" defaultValue="">
-              <option value="" disabled>Choose a class</option>
-              {classes.map((c) => <option key={c}>{c}</option>)}
-            </select>
-            <select name="payment_preference" required aria-label="Payment preference" defaultValue="">
-              <option value="" disabled>Payment preference</option>
-              {window.S26.SIGNUP.form.paymentOptions.map((option) => <option key={option}>{option}</option>)}
-            </select>
-            <textarea name="notes" placeholder={window.S26.SIGNUP.form.notesPlaceholder} aria-label="Notes"></textarea>
-            <button className="btn btn-fill" type="submit">{window.S26.SIGNUP.form.button}</button>
-          </form>
-        )}
+        <div className="signup-actions">
+          <a className="btn btn-fill" href="book.html">Choose a class date</a>
+          <a className="btn btn-outline" href="classes.html">See class details</a>
+        </div>
         <p className="note">{teaser.note}</p>
       </div>
     </section>
