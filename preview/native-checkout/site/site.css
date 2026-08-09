@@ -405,6 +405,8 @@ html{scroll-behavior:smooth;}
 .checkout-status{margin:0;background:rgba(255,46,158,.11);border:1px solid rgba(255,46,158,.3);border-radius:var(--r-card);padding:12px 14px;color:#f5ddeb;font-size:14px;line-height:1.45;}
 .checkout-form .btn{width:100%;justify-content:center;}
 .checkout-fallback{margin-top:-2px;}
+.checkout-ready{align-self:stretch;justify-content:center;}
+.checkout-ready p{margin:0;color:var(--lilac-mute);font-size:15px;line-height:1.5;}
 .checkout-scale{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#EEE8F1;color:#1C1B22;border-color:rgba(28,27,34,.12);}
 .checkout-scale span{color:#7A5E9E;}
 .checkout-scale p{margin:6px 0 0;color:#5e5662;line-height:1.45;}
