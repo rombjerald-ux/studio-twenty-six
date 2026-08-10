@@ -40,7 +40,7 @@ module.exports = async function checkout(req, res) {
   }
 
   if (!process.env.STRIPE_SECRET_KEY) {
-    return res.status(500).json({ error: "Stripe is not configured yet." });
+    return res.status(500).json({ error: "Checkout is not configured yet." });
   }
 
   const seats = Math.max(1, Math.min(Number(req.body && req.body.seats) || 1, 4));
