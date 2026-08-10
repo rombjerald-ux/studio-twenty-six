@@ -143,7 +143,7 @@ function ReviewPage(){
                 <strong>{ev.title}</strong>
                 <p>{ev.sub || ev.blurb}</p>
                 <em>{ev.price}</em>
-                {ev.bookingUrl ? <a href={ev.bookingUrl}>Booking link connected</a> : <small>Needs booking link</small>}
+                {ev.price ? <a href={`book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`}>Studio checkout ready</a> : <small>Needs checkout</small>}
               </div>
             ))}
           </ReviewBlock>

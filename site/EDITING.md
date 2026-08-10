@@ -12,7 +12,7 @@ Edit these sections first:
 - `CALENDAR`: calendar intro, filter chips, artwork cards, drawer notes, class detail links.
 - `MONTHS`: visible calendar month tabs.
 - `COSTS`: suggested prices and sliding-scale ranges.
-- `EVENTS`: dated calendar sessions and booking links.
+- `EVENTS`: dated calendar sessions used by the Studio checkout.
 - `CLASS_DETAILS`: individual class detail pages, images, included lists, and notes.
 - `MEDIUMS`: the pill-shaped “Things you can make” list.
 
@@ -22,4 +22,4 @@ For images, keep the same relative style already used in `data.js`, for example:
 image: "../assets/photo-c1.jpg"
 ```
 
-For Acuity links, update `BOOKING_URLS` in `data.js`. Each event automatically picks up the booking link whose key matches its title.
+For Stripe checkout, update the matching event list in `api/checkout.js` when adding, removing, or repricing dated sessions.

@@ -18,7 +18,8 @@ function ClassDetailPage(){
   const c = window.S26.CLASS_DETAILS[slug];
   const exactSessions = window.S26.EVENTS.filter((ev) => ev.title === c.title);
   const related = (exactSessions.length ? exactSessions : window.S26.EVENTS.filter((ev) => ev.type === c.type)).slice(0, 5);
-  const firstBookable = related.find((ev) => ev.bookingUrl) || null;
+  const isBookable = (ev) => Boolean(ev.price);
+  const firstBookable = related.find(isBookable) || null;
   const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
   return (
     <React.Fragment>
@@ -92,7 +93,7 @@ function ClassDetailPage(){
                   <strong>{ev.title}</strong>
                   <em>{ev.sub} · {ev.time} · {ev.price}</em>
                   <div className="detail-event-actions">
-                    {ev.bookingUrl ? (
+                    {isBookable(ev) ? (
                       <button className="btn btn-fill" type="button" onClick={() => {
                         setBookingEvent(ev);
                         requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));

@@ -209,12 +209,16 @@ function NativeCheckoutPanel({ event }) {
   const unitPrice = parsePrice(event.price);
   const total = unitPrice * seats;
   const priceText = unitPrice ? `$${total}` : "$0";
+  const canUseStripe = unitPrice > 0;
 
   const submitCheckout = async (submitEvent) => {
     submitEvent.preventDefault();
-    const form = new FormData(submitEvent.currentTarget);
     if (!checkout.enabled) {
       setStatus(checkout.disabledNotice);
+      return;
+    }
+    if (!canUseStripe) {
+      window.location.href = slidingScaleMailto(event);
       return;
     }
     setStatus("Connecting to secure payment...");
@@ -228,10 +232,6 @@ function NativeCheckoutPanel({ event }) {
           time: event.time,
           price: event.price,
           seats,
-          name: form.get("name"),
-          email: form.get("email"),
-          phone: form.get("phone"),
-          notes: form.get("notes"),
         }),
       });
       const data = await response.json();
@@ -260,32 +260,8 @@ function NativeCheckoutPanel({ event }) {
             <div><dt>Price</dt><dd>{event.price}</dd></div>
           </dl>
         </aside>
-        {!checkout.enabled ? (
-          <div className="checkout-form checkout-ready">
-            <div className="checkout-total">
-              <span>Total today</span>
-              <strong>{priceText}</strong>
-            </div>
-            {checkout.disabledNotice && <p>{checkout.disabledNotice}</p>}
-            {event.bookingUrl && <a className="btn btn-fill" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
-          </div>
-        ) : (
         <form className="checkout-form" onSubmit={submitCheckout}>
           <div className="checkout-row">
-            <label>
-              <span>Name</span>
-              <input name="name" required placeholder="Your name" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input name="email" type="email" required placeholder="you@email.com" />
-            </label>
-          </div>
-          <div className="checkout-row">
-            <label>
-              <span>Phone</span>
-              <input name="phone" type="tel" placeholder="Optional" />
-            </label>
             <label>
               <span>Seats</span>
               <select name="seats" value={seats} onChange={(e) => setSeats(Number(e.target.value))}>
@@ -293,19 +269,10 @@ function NativeCheckoutPanel({ event }) {
               </select>
             </label>
           </div>
-          <label>
-            <span>Notes for Tess</span>
-            <textarea name="notes" placeholder="Access needs, friend names, or anything useful to know."></textarea>
-          </label>
-          <div className="checkout-total">
-            <span>Total today</span>
-            <strong>{priceText}</strong>
-          </div>
+          <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}
-          <button className="btn btn-fill" type="submit">{checkout.submitLabel}</button>
-          {event.bookingUrl && <a className="btn btn-outline checkout-fallback" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
+          <button className="btn btn-fill" type="submit">{canUseStripe ? checkout.submitLabel : checkout.freeLabel}</button>
         </form>
-        )}
       </div>
       <div className="checkout-scale">
         <div>
