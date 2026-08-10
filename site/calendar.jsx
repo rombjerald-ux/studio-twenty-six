@@ -141,14 +141,17 @@ function Calendar(){
         </div>
 
         <div className="rhythm-strip" aria-label="Studio rhythm">
-          {RHYTHM.map((r) => (
-            <a className="rhythm-card" key={r.t} href={r.href} aria-label={`View ${r.t} details and sign up`}>
-              <span>{rhythmDate(r)}</span>
-              <strong>{r.t}</strong>
-              <em>{r.time}</em>
-              <small>{r.note}</small>
-            </a>
-          ))}
+          {RHYTHM.map((r) => {
+            const ev = nextFor(r);
+            return (
+              <a className="rhythm-card" key={r.t} href={ev ? bookingHref(ev) : r.href} aria-label={`Book ${r.t}`}>
+                <span>{rhythmDate(r)}</span>
+                <strong>{r.t}</strong>
+                <em>{r.time}</em>
+                <small>{r.note}</small>
+              </a>
+            );
+          })}
         </div>
 
         <div className="cal-top">
