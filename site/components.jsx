@@ -208,7 +208,7 @@ function NativeCheckoutPanel({ event }) {
   const [status, setStatus] = useState("");
   const unitPrice = parsePrice(event.price);
   const total = unitPrice * seats;
-  const priceText = unitPrice ? `$${total}` : event.price;
+  const priceText = unitPrice ? `$${total}` : "$0";
 
   const submitCheckout = async (submitEvent) => {
     submitEvent.preventDefault();
@@ -266,7 +266,7 @@ function NativeCheckoutPanel({ event }) {
               <span>Total today</span>
               <strong>{priceText}</strong>
             </div>
-            <p>{checkout.disabledNotice}</p>
+            {checkout.disabledNotice && <p>{checkout.disabledNotice}</p>}
             {event.bookingUrl && <a className="btn btn-fill" href={event.bookingUrl}>{checkout.fallbackLabel}</a>}
           </div>
         ) : (

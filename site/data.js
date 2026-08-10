@@ -199,9 +199,9 @@ window.S26 = (function () {
     endpoint: "/api/checkout",
     headline: "Reserve your spot.",
     body: "Review the class details, then book your spot. Payment, confirmation, and reminders happen on the secure checkout screen.",
-    fallbackLabel: "Book this class",
+    fallbackLabel: "Continue to checkout",
     submitLabel: "Continue to secure payment",
-    disabledNotice: "You'll finish on the next screen.",
+    disabledNotice: "",
     slidingScaleLabel: "Need sliding scale?",
     slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
     slidingScaleButton: "Message the team",
@@ -334,7 +334,7 @@ window.S26 = (function () {
     craft: { price: "$55", short: "$55", sliding: "$35-$75 sliding scale" },
     workshop: { price: "$65", short: "$65", sliding: "$45-$85 sliding scale" },
     special: { price: "$65", short: "$65", sliding: "$45-$85 sliding scale" },
-    free: { price: "Free RSVP", short: "Free", sliding: "" },
+    free: { price: "$0", short: "$0", sliding: "" },
   };
 
   const PRICE_GUIDE = [
