@@ -19,12 +19,13 @@ function SignupPage(){
   const requestedEvent = params.get("event") || "";
   const events = window.S26.EVENTS;
   const eventKey = (ev) => `${ev.date}|${ev.title}`;
+  const isBookable = (ev) => Boolean(ev.price);
   const requestedEventMatch = events.find((ev) => eventKey(ev) === requestedEvent);
   const selectedClass = requestedEventMatch ? requestedEventMatch.title : classNames.includes(requested) ? requested : "";
   const sessions = events
     .filter((ev) => !selectedClass || ev.title === selectedClass)
     .slice(0, selectedClass ? 6 : 9);
-  const firstBookable = sessions.find((ev) => ev.bookingUrl) || null;
+  const firstBookable = sessions.find(isBookable) || null;
   const [bookingEvent, setBookingEvent] = React.useState(requestedEventMatch || firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
   React.useEffect(() => {
@@ -62,7 +63,7 @@ function SignupPage(){
                   <strong>{ev.title}</strong>
                   <em>{ev.sub || ev.blurb || copy.emptyLinkText}</em>
                   <small>{ev.price} · {ev.where}</small>
-                  {ev.bookingUrl ? (
+                  {isBookable(ev) ? (
                     <button className="btn btn-fill" type="button" onClick={() => {
                       setBookingEvent(ev);
                       requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));

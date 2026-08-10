@@ -195,13 +195,14 @@ window.S26 = (function () {
   };
 
   const CHECKOUT = {
-    enabled: false,
+    enabled: true,
     endpoint: "/api/checkout",
     headline: "Reserve your spot.",
-    body: "Review the class details, then book your spot. Payment, confirmation, and reminders happen on the secure checkout screen.",
+    body: "Review the class details, then continue to Studio 26's secure Stripe checkout.",
     fallbackLabel: "Continue to checkout",
-    submitLabel: "Continue to secure payment",
+    submitLabel: "Continue to Stripe checkout",
     disabledNotice: "",
+    freeLabel: "Reserve this spot",
     slidingScaleLabel: "Need sliding scale?",
     slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
     slidingScaleButton: "Message the team",
@@ -347,16 +348,7 @@ window.S26 = (function () {
   ];
 
   const S = "Studio Twenty Six, Oakland";
-  const BOOKING_URLS = {
-    "Peace Love Draw": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271277",
-    "Wake and Make": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271322",
-    "Art Church": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271323",
-    "The Craft Show": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271325",
-    "Ride or Dye": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271326",
-    "Paint the Town": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271328",
-    "Studio Preview Night": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271428",
-    "Opening Class / Mini Event": "https://app.acuityscheduling.com/schedule/a616b862/?appointmentTypeIds[]=96271428",
-  };
+  const BOOKING_URLS = {};
   const e = (date, type, title, sub, time, price, where, blurb, special) =>
     ({ date, type, title, sub: sub || "", time, price, where: where || S, blurb: blurb || "", special: !!special, bookingUrl: BOOKING_URLS[title] || "" });
 
