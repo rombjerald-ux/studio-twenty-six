@@ -142,12 +142,12 @@ function Calendar(){
 
         <div className="rhythm-strip" aria-label="Studio rhythm">
           {RHYTHM.map((r) => (
-            <div className="rhythm-card" key={r.t}>
+            <a className="rhythm-card" key={r.t} href={r.href} aria-label={`View ${r.t} details and sign up`}>
               <span>{rhythmDate(r)}</span>
               <strong>{r.t}</strong>
               <em>{r.time}</em>
               <small>{r.note}</small>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -172,11 +172,11 @@ function Calendar(){
 
         <div className="price-strip" aria-label="Pricing guide">
           {PRICE_GUIDE.map((p) => (
-            <div className="price-pill" key={p.label}>
+            <a className="price-pill" key={p.label} href={p.href} aria-label={`View ${p.label} class details`}>
               <span>{p.label}</span>
               <strong>{p.price}</strong>
               <em>{p.note}</em>
-            </div>
+            </a>
           ))}
         </div>
 
