@@ -221,7 +221,7 @@ function NativeCheckoutPanel({ event }) {
       window.location.href = slidingScaleMailto(event);
       return;
     }
-    setStatus("Connecting to secure payment...");
+    setStatus("Opening secure checkout...");
     try {
       const response = await fetch(checkout.endpoint, {
         method: "POST",
