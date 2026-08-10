@@ -320,11 +320,11 @@ window.S26 = (function () {
   };
 
   const RHYTHM = [
-    { d: "WED", t: "Peace Love Draw", time: "6:00-9:00 PM", note: "Live model, flowers, music" },
-    { d: "THU", t: "The Craft Show", time: "6:30-8:30 PM", note: "Monthly costume embellishment" },
-    { d: "SUN", t: "Wake and Make", time: "8:00-10:00 AM", note: "Coffee, tea, making" },
-    { d: "SUN", t: "Art Church", time: "1:00-3:00 PM", note: "Live choir + making" },
-    { d: "TUE", t: "Rotating workshops", time: "6:30-8:30 PM", note: "Dye, paint, costumes, materials" },
+    { d: "WED", t: "Peace Love Draw", time: "6:00-9:00 PM", note: "Live model, flowers, music", href: "peace-love-draw.html" },
+    { d: "THU", t: "The Craft Show", time: "6:30-8:30 PM", note: "Monthly costume embellishment", href: "the-craft-show.html" },
+    { d: "SUN", t: "Wake and Make", time: "8:00-10:00 AM", note: "Coffee, tea, making", href: "wake-and-make.html" },
+    { d: "SUN", t: "Art Church", time: "1:00-3:00 PM", note: "Live choir + making", href: "art-church.html" },
+    { d: "TUE", t: "Rotating workshops", time: "6:30-8:30 PM", note: "Dye, paint, costumes, materials", href: "ride-or-dye.html" },
   ];
 
   const COSTS = {
@@ -338,12 +338,12 @@ window.S26 = (function () {
   };
 
   const PRICE_GUIDE = [
-    { label: "Drawing", price: COSTS.drawing.short, note: "Live drawing drop-in" },
-    { label: "Morning", price: COSTS.morning.short, note: "Coffee + making" },
-    { label: "Ritual", price: COSTS.artChurch.short, note: "Art Church" },
-    { label: "Craft", price: COSTS.craft.short, note: "Embellishment nights" },
-    { label: "Workshop", price: COSTS.workshop.short, note: "Materials included" },
-    { label: "Happenings", price: "Varies", note: "Events + parties" },
+    { label: "Drawing", price: COSTS.drawing.short, note: "Live drawing drop-in", href: "peace-love-draw.html" },
+    { label: "Morning", price: COSTS.morning.short, note: "Coffee + making", href: "wake-and-make.html" },
+    { label: "Ritual", price: COSTS.artChurch.short, note: "Art Church", href: "art-church.html" },
+    { label: "Craft", price: COSTS.craft.short, note: "Embellishment nights", href: "the-craft-show.html" },
+    { label: "Workshop", price: COSTS.workshop.short, note: "Materials included", href: "ride-or-dye.html" },
+    { label: "Happenings", price: "Varies", note: "Events + parties", href: "happenings.html" },
   ];
 
   const S = "Studio Twenty Six, Oakland";
