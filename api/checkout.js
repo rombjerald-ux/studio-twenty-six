@@ -1,6 +1,5 @@
 const Stripe = require("stripe");
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const EVENTS = {
   "2026-08-23|Art Church": { amount: 5000, title: "Art Church", date: "2026-08-23", time: "1:00-3:00 PM" },
@@ -43,6 +42,7 @@ module.exports = async function checkout(req, res) {
     return res.status(500).json({ error: "Checkout is not configured yet." });
   }
 
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const seats = Math.max(1, Math.min(Number(req.body && req.body.seats) || 1, 4));
   const key = `${req.body && req.body.date}|${req.body && req.body.title}`;
   const event = EVENTS[key];
