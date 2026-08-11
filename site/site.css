@@ -364,6 +364,7 @@ html{scroll-behavior:smooth;}
 .class-art-panel figcaption{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:14px 4px 2px;}
 .class-art-panel figcaption span{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);}
 .class-art-panel figcaption strong{font-family:var(--font-display);font-size:24px;line-height:1;color:var(--pearl);text-align:right;}
+.class-art-panel figcaption a{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);white-space:nowrap;}
 .class-facts{display:grid;gap:10px;}
 .class-facts div{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--r-card);padding:18px;display:flex;flex-direction:column;gap:5px;}
 .class-facts span{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);}

@@ -53,6 +53,7 @@ function ClassDetailPage(){
                 <figcaption>
                   <span>Class image</span>
                   <strong>{c.title}</strong>
+                  {c.poster && <a href={c.poster} target="_blank" rel="noreferrer">View poster →</a>}
                 </figcaption>
               </figure>
               <div className="class-facts">
