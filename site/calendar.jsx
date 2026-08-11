@@ -12,7 +12,7 @@ const DRAWER_IMG = { Atelier:"photo-c6.jpg", Open:"photo-c1.jpg", Salon:"photo-b
 const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MOFULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const TODAY = "2026-08-09";
+const TODAY = "2026-08-11";
 const RECUR = { Atelier:true, Open:true, Salon:true, Restore:true };
 
 function fmtDate(iso){
