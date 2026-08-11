@@ -353,7 +353,8 @@ window.S26 = (function () {
     ({ date, type, title, sub: sub || "", time, price, where: where || S, blurb: blurb || "", special: !!special, bookingUrl: BOOKING_URLS[title] || "" });
 
   const EVENTS = [
-    e("2026-08-20", "Special", "Opening Class / Mini Event", "Come find your creative eye", "6:30-8:30 PM", COSTS.free.price, S, "A first open studio class and mini event for Studio Twenty Six. Come see the space, make something, and help kick off the season.", true),
+    e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
+    e("2026-08-20", "Salon", "The Craft Show", "Monthly costume embellishment", "6:30-8:30 PM", COSTS.craft.price, S, "Bring something to transform. If not, you can shop studio blanks."),
     e("2026-08-23", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "A live choir sings. We make. Something happens that is hard to name."),
     e("2026-08-25", "Workshop", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "A rotating paint night built around color, music, and a medium that changes month to month."),
 
