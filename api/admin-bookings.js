@@ -20,8 +20,17 @@ module.exports = async function adminBookings(req, res) {
 
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const sessions = await stripe.checkout.sessions.list({ limit: 100 });
-    const bookings = sessions.data
+    const sessions = [];
+    let startingAfter;
+    do {
+      const page = await stripe.checkout.sessions.list({
+        limit: 100,
+        ...(startingAfter ? { starting_after: startingAfter } : {})
+      });
+      sessions.push(...page.data);
+      startingAfter = page.has_more && page.data.length ? page.data[page.data.length - 1].id : undefined;
+    } while (startingAfter);
+    const bookings = sessions
       .filter((session) => session.status === "complete" && session.payment_status === "paid")
       .map((session) => ({
         id: session.id,
