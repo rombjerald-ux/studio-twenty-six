@@ -44,7 +44,29 @@ module.exports = async function adminBookings(req, res) {
         amount: session.amount_total,
         currency: session.currency
       }));
-    return res.status(200).json({ bookings });
+    const signupRequests = [];
+    let nextPage;
+    do {
+      const page = await stripe.customers.search({
+        query: "metadata['source']:'studio26_signup_request'",
+        limit: 100,
+        ...(nextPage ? { page: nextPage } : {})
+      });
+      signupRequests.push(...page.data.map((customer) => ({
+        id: customer.id,
+        created: customer.created,
+        name: customer.name || "",
+        email: customer.email || "",
+        type: customer.metadata && customer.metadata.request_type || "signup_request",
+        title: customer.metadata && customer.metadata.class_title || "",
+        date: customer.metadata && customer.metadata.class_date || "",
+        time: customer.metadata && customer.metadata.class_time || "",
+        price: customer.metadata && customer.metadata.class_price || "",
+        seats: Number(customer.metadata && customer.metadata.seats) || 1
+      })));
+      nextPage = page.has_more ? page.next_page : undefined;
+    } while (nextPage);
+    return res.status(200).json({ bookings, signupRequests });
   } catch (error) {
     console.error("Admin bookings failed", error);
     return res.status(500).json({ error: "Could not load bookings right now." });

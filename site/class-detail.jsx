@@ -102,7 +102,10 @@ function ClassDetailPage(){
                     ) : (
                       <button className="btn btn-outline" type="button" disabled>Payment link coming</button>
                     )}
-                    <a className="btn btn-outline" href={window.slidingScaleMailto(ev)}>Ask about sliding scale</a>
+                    <button className="btn btn-outline" type="button" onClick={() => {
+                      setBookingEvent(ev);
+                      requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+                    }}>Ask about sliding scale</button>
                   </div>
                 </div>
               ))}

@@ -208,10 +208,45 @@ function NativeCheckoutPanel({ event }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
+  const [savingRequest, setSavingRequest] = useState(false);
   const unitPrice = parsePrice(event.price);
   const total = unitPrice * seats;
   const priceText = unitPrice ? `$${total}` : "$0";
   const canUseStripe = unitPrice > 0;
+
+  const saveSignupRequest = async (requestType) => {
+    if (!name.trim() || !email.trim()) {
+      setStatus("Add your name and email first, then save the request.");
+      return false;
+    }
+    setSavingRequest(true);
+    setStatus(requestType === "sliding_scale" ? "Saving your sliding scale request..." : "Saving your spot...");
+    try {
+      const response = await fetch("/api/signup-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          requestType,
+          title: event.title,
+          date: event.date,
+          time: event.time,
+          price: event.price,
+          name,
+          email,
+          seats,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Could not save that request.");
+      setStatus(requestType === "sliding_scale" ? "Request saved. Tess can see it in the signup list." : "You are on the signup list. Tess can see it in admin.");
+      return true;
+    } catch (error) {
+      setStatus(error.message || "Could not save that request right now.");
+      return false;
+    } finally {
+      setSavingRequest(false);
+    }
+  };
 
   const submitCheckout = async (submitEvent) => {
     submitEvent.preventDefault();
@@ -220,7 +255,7 @@ function NativeCheckoutPanel({ event }) {
       return;
     }
     if (!canUseStripe) {
-      window.location.href = slidingScaleMailto(event);
+      await saveSignupRequest("free_signup");
       return;
     }
     setStatus("Opening secure checkout...");
@@ -293,7 +328,7 @@ function NativeCheckoutPanel({ event }) {
           <span>{checkout.slidingScaleLabel}</span>
           <p>{checkout.slidingScaleBody}</p>
         </div>
-        <a className="btn btn-outline" href={slidingScaleMailto(event)}>{checkout.slidingScaleButton}</a>
+        <button className="btn btn-outline" type="button" disabled={savingRequest} onClick={() => saveSignupRequest("sliding_scale")}>{savingRequest ? "Saving..." : checkout.slidingScaleButton}</button>
       </div>
     </section>
   );
