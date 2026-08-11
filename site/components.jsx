@@ -205,6 +205,8 @@ function slidingScaleMailto(ev) {
 function NativeCheckoutPanel({ event }) {
   const checkout = window.S26.CHECKOUT;
   const [seats, setSeats] = useState(1);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
   const unitPrice = parsePrice(event.price);
   const total = unitPrice * seats;
@@ -231,6 +233,8 @@ function NativeCheckoutPanel({ event }) {
           date: event.date,
           time: event.time,
           price: event.price,
+          name,
+          email,
           seats,
         }),
       });
@@ -261,6 +265,16 @@ function NativeCheckoutPanel({ event }) {
           </dl>
         </aside>
         <form className="checkout-form" onSubmit={submitCheckout}>
+          <div className="checkout-row checkout-contact-row">
+            <label>
+              <span>Name</span>
+              <input name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" autoComplete="name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" required />
+            </label>
+          </div>
           <div className="checkout-row">
             <label>
               <span>Seats</span>

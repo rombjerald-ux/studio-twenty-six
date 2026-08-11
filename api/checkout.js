@@ -44,6 +44,8 @@ module.exports = async function checkout(req, res) {
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const seats = Math.max(1, Math.min(Number(req.body && req.body.seats) || 1, 4));
+  const customerEmail = String(req.body && req.body.email || "").trim().toLowerCase();
+  const customerName = String(req.body && req.body.name || "").trim();
   const key = `${req.body && req.body.date}|${req.body && req.body.title}`;
   const event = EVENTS[key];
 
@@ -51,9 +53,15 @@ module.exports = async function checkout(req, res) {
     return res.status(400).json({ error: "That class is not available for checkout." });
   }
 
+  if (!customerEmail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(customerEmail)) {
+    return res.status(400).json({ error: "Please enter a valid email address for your confirmation." });
+  }
+
   const site = baseUrl(req);
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+    customer_email: customerEmail,
+    customer_creation: "always",
     line_items: [
       {
         quantity: seats,
@@ -71,7 +79,11 @@ module.exports = async function checkout(req, res) {
       class_title: event.title,
       class_date: event.date,
       class_time: event.time,
-      seats: String(seats)
+      seats: String(seats),
+      customer_name: customerName
+    },
+    payment_intent_data: {
+      receipt_email: customerEmail
     },
     success_url: `${site}/site/book.html?success=1&event=${encodeURIComponent(key)}#book`,
     cancel_url: `${site}/site/book.html?event=${encodeURIComponent(key)}#book`
