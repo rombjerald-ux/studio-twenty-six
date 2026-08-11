@@ -37,18 +37,8 @@ function SignupPage(){
   return (
     <React.Fragment>
       <window.Nav />
-      <header className="register-hero" id="top">
-        <div className="register-bg"><img src={copy.hero.image} alt="" /></div>
-        <div className="grain-ov"></div>
-        <div className="wrap register-hero-inner">
-          <div className="eyebrow"><span>{copy.hero.eyebrow}</span><span className="est">{copy.hero.meta}</span></div>
-          <h1>{copy.hero.headline}</h1>
-          <p>{copy.hero.body}</p>
-        </div>
-      </header>
-
       <main>
-        <section className="class-detail-band" id="sessions">
+        <section className="class-detail-band signup-direct" id="sessions">
           <div className="wrap reveal">
             <div className="sec-head pay-head">
               <div className="eyebrow-m">{selectedClass ? "Selected class" : "Choose a date"}</div>
@@ -58,13 +48,31 @@ function SignupPage(){
             <div className="payment-grid">
               {sessions.map((ev) => {
                 return (
-                <div className={`payment-card session-card${bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? " selected" : ""}`} key={ev.date + ev.title}>
-                  <span>{fmtDate(ev.date)} · {ev.time}</span>
+                <div
+                  className={`payment-card session-card${bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? " selected" : ""}${isBookable(ev) ? " is-clickable" : ""}`}
+                  key={ev.date + ev.title}
+                  role={isBookable(ev) ? "button" : undefined}
+                  tabIndex={isBookable(ev) ? 0 : undefined}
+                  onClick={() => {
+                    if (!isBookable(ev)) return;
+                    setBookingEvent(ev);
+                    requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+                  }}
+                  onKeyDown={(e) => {
+                    if (!isBookable(ev) || (e.key !== "Enter" && e.key !== " ")) return;
+                    e.preventDefault();
+                    setBookingEvent(ev);
+                    requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+                  }}
+                >
+                  <span className="session-date">{fmtDate(ev.date)}</span>
+                  <span className="session-time">{ev.time}</span>
                   <strong>{ev.title}</strong>
                   <em>{ev.sub || ev.blurb || copy.emptyLinkText}</em>
                   <small>{ev.price} · {ev.where}</small>
                   {isBookable(ev) ? (
-                    <button className="btn btn-fill" type="button" onClick={() => {
+                    <button className="btn btn-fill" type="button" onClick={(e) => {
+                      e.stopPropagation();
                       setBookingEvent(ev);
                       requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
                     }}>{bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? copy.selectedButton : copy.liveButton}</button>

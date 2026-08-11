@@ -457,6 +457,7 @@ html{scroll-behavior:smooth;}
 .register-prices strong{font-family:var(--font-display);font-size:30px;line-height:1;color:#1C1B22;margin:8px 0 4px;}
 .register-prices em{font-style:normal;font-size:13px;color:#6b626d;}
 .pay-head h2{color:#1C1B22;}
+.signup-direct{padding-top:calc(var(--s-7) + 84px);}
 .payment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:var(--s-4);}
 .payment-card{background:#fff;border:1px solid rgba(28,27,34,.09);border-radius:var(--r-card);padding:20px;min-height:220px;display:flex;flex-direction:column;align-items:flex-start;}
 .payment-card span{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#817781;}
@@ -467,6 +468,11 @@ html{scroll-behavior:smooth;}
 .payment-card button[disabled]{opacity:.55;cursor:not-allowed;}
 .payment-card.selected{border-color:#1C1B22;box-shadow:0 0 0 2px #1C1B22 inset;}
 .payment-card.selected .btn-fill{background:var(--lime);color:#1C1B22;}
+.session-card.is-clickable{cursor:pointer;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;}
+.session-card.is-clickable:hover{transform:translateY(-3px);border-color:rgba(28,27,34,.26);box-shadow:0 14px 36px rgba(28,27,34,.11);}
+.payment-card .session-date{display:block;width:100%;font-family:var(--font-display);font-size:clamp(42px,6vw,70px);line-height:.86;letter-spacing:0;text-transform:uppercase;color:#1C1B22;margin-bottom:12px;}
+.payment-card .session-time{display:block;font-family:var(--font-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta-ink);margin-bottom:8px;}
+.payment-card.selected .session-date{color:var(--teal);}
 
 /* ---------------- COPY REVIEW ---------------- */
 .review-hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--void);}
@@ -551,7 +557,9 @@ html{scroll-behavior:smooth;}
   .class-card-grid,.detail-events,.happening-grid{grid-template-columns:1fr;}
   .classes-hero,.class-detail-hero{min-height:72vh;}
   .register-hero{min-height:76vh;}
+  .signup-direct{padding-top:calc(var(--s-6) + 72px);}
   .register-card form,.register-prices,.payment-grid,.checkout-shell,.checkout-row{grid-template-columns:1fr;}
+  .payment-card .session-date{font-size:clamp(50px,16vw,76px);}
   .checkout-scale{align-items:stretch;flex-direction:column;}
   .dreg.split{grid-template-columns:1fr;}
 }
