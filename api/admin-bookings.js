@@ -1,7 +1,6 @@
 const Stripe = require("stripe");
 
 function unauthorized(res) {
-  res.setHeader("WWW-Authenticate", 'Basic realm="Studio Twenty Six admin"');
   return res.status(401).json({ error: "Admin login required." });
 }
 
