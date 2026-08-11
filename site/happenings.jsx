@@ -36,6 +36,14 @@ function HappeningsPage(){
               <h2>Upcoming <em>happenings.</em></h2>
               <p className="section-note">{copy.intro}</p>
             </div>
+            <div className="private-event-callout">
+              <div>
+                <span className="eyebrow-m">{copy.privateEvents.eyebrow}</span>
+                <h3>{copy.privateEvents.headline}</h3>
+                <p>{copy.privateEvents.body}</p>
+              </div>
+              <a className="btn btn-fill" href={`mailto:${window.S26.SITE.email}?subject=${encodeURIComponent("Private event inquiry for Studio Twenty Six")}`}>{copy.privateEvents.button}</a>
+            </div>
             <div className="happening-grid">
               {happenings.map((ev) => (
                 <a className="happening-card" href={bookingHref(ev)} key={ev.date + ev.title}>

@@ -23,7 +23,7 @@ const EVENTS = {
   "2026-12-01|Ride or Dye": { amount: 6500, title: "Ride or Dye", date: "2026-12-01", time: "6:30-8:30 PM" },
   "2026-12-06|Wake and Make": { amount: 4000, title: "Wake and Make", date: "2026-12-06", time: "8:00-10:00 AM" },
   "2026-12-09|Peace Love Draw": { amount: 2500, title: "Peace Love Draw", date: "2026-12-09", time: "6:00-9:00 PM" },
-  "2026-12-13|Peace Love Draw": { amount: 2500, title: "Peace Love Draw", date: "2026-12-13", time: "6:00-9:00 PM" },
+  "2026-12-13|Art Church": { amount: 5000, title: "Art Church", date: "2026-12-13", time: "1:00-3:00 PM" },
   "2026-12-17|Holiday Party": { amount: 6500, title: "Holiday Party", date: "2026-12-17", time: "6:00-11:00 PM" }
 };
 

@@ -379,7 +379,7 @@ window.S26 = (function () {
     e("2026-12-01", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
     e("2026-12-06", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Come early before the day starts to get creative. Coffee, tea, a simple prompt, and studio time."),
     e("2026-12-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
-    e("2026-12-13", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
+    e("2026-12-13", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
     e("2026-12-17", "Special", "Holiday Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A holiday party and seasonal studio happening.", true),
   ];
 
@@ -514,6 +514,12 @@ window.S26 = (function () {
       body: "A happening is an artistic occurrence: spontaneous, theatrical, communal, and a little hard to contain. Studio Twenty Six will post more events here as they come together.",
     },
     intro: "Opening parties, dinner parties, seasonal gatherings, and studio events live here.",
+    privateEvents: {
+      eyebrow: "Private events",
+      headline: "Want to host something here?",
+      body: "For private parties, team gatherings, birthdays, workshops, or custom creative events, email the studio and tell us what you are imagining.",
+      button: "Email us about a private event",
+    },
   };
 
   return { SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, CLASSES_PAGE, CALENDAR, HAPPENINGS, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE, BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS };
