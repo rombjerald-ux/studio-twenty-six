@@ -38,7 +38,7 @@ window.S26 = (function () {
       {
         heading: "Find us",
         links: [
-          { label: "Instagram", href: "https://www.instagram.com/theartway/" },
+          { label: "Instagram", href: "https://www.instagram.com/studio26ca/" },
           { label: "TikTok", href: "book.html" },
           { label: "Newsletter", href: "book.html" },
         ],
