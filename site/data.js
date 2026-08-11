@@ -355,11 +355,11 @@ window.S26 = (function () {
   const EVENTS = [
     e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
     e("2026-08-20", "Salon", "The Craft Show", "Monthly costume embellishment", "6:30-8:30 PM", COSTS.craft.price, S, "Bring something to transform. If not, you can shop studio blanks."),
-    e("2026-08-23", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "A live choir sings. We make. Something happens that is hard to name."),
+    e("2026-08-23", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Come early before the day starts to get creative. Coffee, tea, a simple prompt, and studio time."),
     e("2026-08-25", "Workshop", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "A rotating paint night built around color, music, and a medium that changes month to month."),
 
     e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "Figure drawing with a live model, flowers, and music. No experience required."),
-    e("2026-09-13", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Come early before the day starts to get creative. Coffee, tea, a simple prompt, and studio time."),
+    e("2026-09-13", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
     e("2026-09-19", "Special", "Opening Block Party", "Happening", "Afternoon", COSTS.free.price, S, "Opening block party for the Studio Twenty Six community.", true),
     e("2026-09-27", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
     e("2026-09-29", "Salon", "The Craft Show", "Monthly costume embellishment", "6:00-9:00 PM", COSTS.craft.price, S, "Bring something to transform. If not, you can shop studio blanks."),
