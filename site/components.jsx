@@ -238,7 +238,8 @@ function NativeCheckoutPanel({ event }) {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Could not save that request.");
-      setStatus(requestType === "sliding_scale" ? "Request saved. Tess can see it in the signup list." : "You are on the signup list. Tess can see it in admin.");
+      const emailNote = data.confirmationSent ? " Confirmation email sent." : "";
+      setStatus((requestType === "sliding_scale" ? "Request saved. Tess can see it in the signup list." : "You are on the signup list. Tess can see it in admin.") + emailNote);
       return true;
     } catch (error) {
       setStatus(error.message || "Could not save that request right now.");

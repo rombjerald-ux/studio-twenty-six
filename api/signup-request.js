@@ -31,6 +31,54 @@ function clean(value, max = 500) {
   return String(value || "").trim().slice(0, max);
 }
 
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>\"]/g, (char) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"
+  }[char]));
+}
+
+function formatDate(iso) {
+  if (!iso) return "";
+  return new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+}
+
+async function sendConfirmation({ event, email, name, seats, requestType }) {
+  if (!process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) return false;
+
+  const isSlidingScale = requestType === "sliding_scale";
+  const subject = isSlidingScale
+    ? `We received your request for ${event.title}`
+    : `You're on the list for ${event.title}`;
+  const headline = isSlidingScale
+    ? "Your sliding scale request is in."
+    : "You're on the signup list.";
+  const body = isSlidingScale
+    ? "Tess and the Studio Twenty Six team can see your request and will follow up if anything else is needed."
+    : "Tess and the Studio Twenty Six team can see your RSVP in the studio list.";
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from: process.env.EMAIL_FROM,
+      to: [email],
+      subject,
+      html: `<p>Hi ${escapeHtml(name)},</p><p><strong>${escapeHtml(headline)}</strong></p><p>${escapeHtml(body)}</p><p><strong>Class/event:</strong> ${escapeHtml(event.title)}<br><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>We can't wait to make something with you.</p><p>Studio Twenty Six</p>`
+    })
+  });
+
+  if (!response.ok) throw new Error(`Email provider returned ${response.status}`);
+  return true;
+}
+
 module.exports = async function signupRequest(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -72,7 +120,14 @@ module.exports = async function signupRequest(req, res) {
       },
     });
 
-    return res.status(200).json({ ok: true, id: customer.id });
+    let confirmationSent = false;
+    try {
+      confirmationSent = await sendConfirmation({ event, email, name, seats, requestType });
+    } catch (error) {
+      console.error("Signup confirmation email failed", error);
+    }
+
+    return res.status(200).json({ ok: true, id: customer.id, confirmationSent });
   } catch (error) {
     console.error("Signup request failed", error);
     return res.status(500).json({ error: "Could not save that signup request right now." });
