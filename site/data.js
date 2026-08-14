@@ -347,6 +347,7 @@ window.S26 = (function () {
     artChurch: { price: "$50", short: "$50", sliding: "$20-$60 sliding scale" },
     craft: { price: "$55", short: "$55", sliding: "$35-$75 sliding scale" },
     workshop: { price: "$65", short: "$65", sliding: "$45-$85 sliding scale" },
+    paint: { price: "$55", short: "$55", sliding: "$35-$75 sliding scale" },
     special: { price: "$65", short: "$65", sliding: "$45-$85 sliding scale" },
     free: { price: "$0", short: "$0", sliding: "" },
   };
@@ -357,7 +358,7 @@ window.S26 = (function () {
     { label: "Ritual", price: COSTS.artChurch.short, note: "Art Church", href: "art-church.html" },
     { label: "Craft", price: COSTS.craft.short, note: "Embellishment nights", href: "the-craft-show.html" },
     { label: "Dye", price: COSTS.workshop.short, note: "Ride or Dye", href: "ride-or-dye.html" },
-    { label: "Paint", price: COSTS.workshop.short, note: "Paint the Town", href: "paint-the-town.html" },
+    { label: "Paint", price: COSTS.paint.short, note: "Paint the Town", href: "paint-the-town.html" },
     { label: "Happenings", price: "Varies", note: "Events + parties", href: "happenings.html" },
   ];
 
@@ -370,7 +371,7 @@ window.S26 = (function () {
     e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
     e("2026-08-20", "Salon", "The Craft Show", "Monthly costume embellishment", "6:30-8:30 PM", COSTS.craft.price, S, "Monthly costume embellishment workshop. Bring a piece of clothing - jeans, jacket, skirt - all other materials provided. Leave with your own masterpiece."),
     e("2026-08-23", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
-    e("2026-08-25", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
+    e("2026-08-25", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
 
     e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
     e("2026-09-13", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
@@ -380,11 +381,11 @@ window.S26 = (function () {
 
     e("2026-10-06", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
     e("2026-10-11", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
-    e("2026-10-13", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
+    e("2026-10-13", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
     e("2026-10-14", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
     e("2026-10-22", "Special", "Surrealist Dinner Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A surrealist dinner party and studio happening.", true),
 
-    e("2026-11-03", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.workshop.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
+    e("2026-11-03", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
     e("2026-11-08", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
     e("2026-11-15", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
     e("2026-11-18", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
@@ -474,8 +475,8 @@ window.S26 = (function () {
       type: "Series",
       kicker: "Paint night",
       tagline: "Different medium. Different DJ. Every month.",
-      price: COSTS.workshop.price,
-      sliding: COSTS.workshop.sliding,
+      price: COSTS.paint.price,
+      sliding: COSTS.paint.sliding,
       duration: "2 hours",
       capacity: "15-25 people",
       space: "Studio Twenty Six",
