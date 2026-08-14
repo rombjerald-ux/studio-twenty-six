@@ -206,6 +206,8 @@ window.S26 = (function () {
     slidingScaleLabel: "Need sliding scale?",
     slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
     slidingScaleButton: "Message the team",
+    promoLabel: "Have a code?",
+    promoPlaceholder: "STUDENT",
   };
 
   const CLASSES_PAGE = {

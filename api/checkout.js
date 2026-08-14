@@ -59,6 +59,20 @@ module.exports = async function checkout(req, res) {
     return res.status(400).json({ error: "Please enter a valid email address for your confirmation." });
   }
 
+  const promoCode = String(req.body && req.body.promoCode || "").trim().toUpperCase();
+  let unitAmount = event.amount;
+  let appliedPromo = "";
+  if (promoCode) {
+    if (promoCode !== "STUDENT") {
+      return res.status(400).json({ error: "That code is not valid." });
+    }
+    if (event.title !== "Peace Love Draw") {
+      return res.status(400).json({ error: "STUDENT is only for Peace Love Draw." });
+    }
+    unitAmount = Math.max(0, event.amount - 1000);
+    appliedPromo = "STUDENT";
+  }
+
   const site = baseUrl(req);
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
@@ -69,10 +83,12 @@ module.exports = async function checkout(req, res) {
         quantity: seats,
         price_data: {
           currency: "usd",
-          unit_amount: event.amount,
+          unit_amount: unitAmount,
           product_data: {
             name: `${event.title} - ${event.date}`,
-            description: `${event.time} at Studio Twenty Six`
+            description: appliedPromo
+              ? `${event.time} at Studio Twenty Six · STUDENT $10 off`
+              : `${event.time} at Studio Twenty Six`
           }
         }
       }
@@ -82,7 +98,8 @@ module.exports = async function checkout(req, res) {
       class_date: event.date,
       class_time: event.time,
       seats: String(seats),
-      customer_name: customerName
+      customer_name: customerName,
+      promo_code: appliedPromo
     },
     payment_intent_data: {
       receipt_email: customerEmail

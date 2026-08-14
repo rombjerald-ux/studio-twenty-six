@@ -207,10 +207,14 @@ function NativeCheckoutPanel({ event }) {
   const [seats, setSeats] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [promoCode, setPromoCode] = useState("");
   const [status, setStatus] = useState("");
   const [savingRequest, setSavingRequest] = useState(false);
   const unitPrice = parsePrice(event.price);
-  const total = unitPrice * seats;
+  const isPeaceLoveDraw = event.title === "Peace Love Draw";
+  const studentApplied = isPeaceLoveDraw && promoCode.trim().toUpperCase() === "STUDENT";
+  const discountedUnit = studentApplied && unitPrice > 10 ? unitPrice - 10 : unitPrice;
+  const total = discountedUnit * seats;
   const priceText = unitPrice ? `$${total}` : "$0";
   const canUseStripe = unitPrice > 0;
 
@@ -272,13 +276,14 @@ function NativeCheckoutPanel({ event }) {
           name,
           email,
           seats,
+          promoCode,
         }),
       });
       const data = await response.json();
       if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
       window.location.href = data.url;
     } catch (error) {
-      setStatus("Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
+      setStatus(error.message || "Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
     }
   };
 
@@ -318,6 +323,12 @@ function NativeCheckoutPanel({ event }) {
                 {[1, 2, 3, 4].map((n) => <option key={n} value={n}>{n}</option>)}
               </select>
             </label>
+            {isPeaceLoveDraw && (
+              <label>
+                <span>{checkout.promoLabel || "Have a code?"}</span>
+                <input name="promo" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} placeholder={checkout.promoPlaceholder || "STUDENT"} autoComplete="off" />
+              </label>
+            )}
           </div>
           <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}
