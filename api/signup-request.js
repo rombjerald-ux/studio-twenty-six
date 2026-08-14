@@ -70,6 +70,7 @@ async function sendConfirmation({ event, email, name, seats, requestType }) {
     body: JSON.stringify({
       from: process.env.EMAIL_FROM,
       to: [email],
+      reply_to: process.env.EMAIL_REPLY_TO || undefined,
       subject,
       html: `<p>Hi ${escapeHtml(name)},</p><p><strong>${escapeHtml(headline)}</strong></p><p>${escapeHtml(body)}</p><p><strong>Class/event:</strong> ${escapeHtml(event.title)}<br><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>We can't wait to make something with you.</p><p>Studio Twenty Six</p>`
     })

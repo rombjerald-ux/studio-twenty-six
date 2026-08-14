@@ -38,6 +38,7 @@ async function sendConfirmation(session) {
     body: JSON.stringify({
       from: process.env.EMAIL_FROM,
       to: [email],
+      reply_to: process.env.EMAIL_REPLY_TO || undefined,
       subject: `You're booked for ${title}`,
       html: `<p>Hi ${escapeHtml(name)},</p><p>Your spot is confirmed for <strong>${escapeHtml(title)}</strong>.</p><p><strong>Date:</strong> ${escapeHtml(date)}<br><strong>Time:</strong> ${escapeHtml(time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>We can't wait to make something with you.</p><p>Studio Twenty Six</p>`
     })
