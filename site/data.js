@@ -7,8 +7,8 @@ window.S26 = (function () {
     shortBrand: "studio26",
     location: "Oakland",
     addressLabel: "Studio Twenty Six, Oakland",
-    email: "hello@theartway.studio",
-    formEndpoint: "https://formsubmit.co/hello@theartway.studio",
+    email: "Studiotwentysix.ca@gmail.com",
+    formEndpoint: "https://formsubmit.co/Studiotwentysix.ca@gmail.com",
     liveUrl: "https://studio26ca.com",
     tagline: "Come find your creative eye.",
     nav: [
@@ -32,7 +32,7 @@ window.S26 = (function () {
         links: [
           { label: "Sign up", href: "book.html" },
           { label: "Private Events", href: "book.html" },
-          { label: "Contact", href: "mailto:hello@theartway.studio" },
+          { label: "Contact", href: "mailto:Studiotwentysix.ca@gmail.com" },
         ],
       },
       {
