@@ -207,7 +207,7 @@ window.S26 = (function () {
     slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
     slidingScaleButton: "Message the team",
     promoLabel: "Have a code?",
-    promoPlaceholder: "STUDENT",
+    promoPlaceholder: "Enter code",
   };
 
   const CLASSES_PAGE = {

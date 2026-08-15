@@ -326,7 +326,7 @@ function NativeCheckoutPanel({ event }) {
             {isPeaceLoveDraw && (
               <label>
                 <span>{checkout.promoLabel || "Have a code?"}</span>
-                <input name="promo" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} placeholder={checkout.promoPlaceholder || "STUDENT"} autoComplete="off" />
+                <input name="s26-promo-code" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} placeholder={checkout.promoPlaceholder || "Enter code"} autoComplete="off" autoCorrect="off" spellCheck={false} />
               </label>
             )}
           </div>
