@@ -25,3 +25,5 @@ image: "../assets/photo-c1.jpg"
 For Stripe checkout, update the matching event list in `api/checkout.js` when adding, removing, or repricing dated sessions.
 
 The `STUDENT` code is $10 off Peace Love Draw only. It is enforced in `api/checkout.js` and shown on that class checkout form.
+
+Pages load React from `site/vendor/` (not unpkg). Do not point those script tags back at a CDN.
