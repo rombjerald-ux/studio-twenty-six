@@ -28,7 +28,7 @@ function AboutPage(){
 
       <window.Marquee variant="mag" items={about.marquee} />
 
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="section bio-section about-intro">
           <div className="wrap about-statement reveal">
             <div>
@@ -72,7 +72,7 @@ function AboutPage(){
 
         <section className="section bio-section">
           <div className="wrap bio-story reveal">
-            <div className="bio-image"><img src={about.story.image} alt="" /></div>
+            <div className="bio-image"><img src={about.story.image} alt="Costume painting and color work from Tess's studio practice" /></div>
             <div className="bio-copy">
               <div className="eyebrow-m">{about.story.eyebrow}</div>
               <h2>{about.story.headline}</h2>

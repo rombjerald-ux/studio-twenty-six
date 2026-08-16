@@ -29,7 +29,7 @@ function HappeningsPage(){
         </div>
       </header>
 
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="section">
           <div className="wrap reveal">
             <div className="sec-head">

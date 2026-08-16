@@ -14,6 +14,7 @@ function App(){
   return (
       <React.Fragment>
       <window.Nav />
+      <main id="main" tabIndex={-1}>
       <window.Hero />
       <window.Marquee variant="mag" items={home.topMarquee} />
       <window.Mission />
@@ -22,6 +23,7 @@ function App(){
       <window.Marquee variant="dark" items={home.classMarquee} />
       <window.Calendar />
       <window.Signup />
+      </main>
       <window.Footer />
     </React.Fragment>
   );

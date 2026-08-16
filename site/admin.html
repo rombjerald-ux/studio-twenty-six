@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Admin — Studio Twenty Six</title>
 <link rel="stylesheet" href="../colors_and_type.css" />
-<link rel="stylesheet" href="site.css?v=43" />
+<link rel="stylesheet" href="site.css?v=50" />
 <style>
 .admin-page{min-height:100vh;padding:48px 24px;background:var(--ink);color:var(--pearl)}
 .admin-wrap{max-width:1180px;margin:0 auto}.admin-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.admin-section{margin-top:34px}
@@ -17,6 +17,8 @@
 </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
 <main class="admin-page"><div class="admin-wrap">
   <div class="admin-head"><div><span class="eyebrow-m">Private studio view</span><h1>Bookings.</h1><p class="section-note">Paid bookings and signup requests from the live site.</p></div><a class="btn btn-outline" href="index.html">Back to site</a></div>
   <section class="admin-login" id="login-panel"><h2>Admin access</h2><p class="section-note">Use the admin username and password saved in Vercel.</p><form id="login-form"><label><span>Username</span><input id="admin-user" autocomplete="username" required /></label><label><span>Password</span><input id="admin-password" type="password" autocomplete="current-password" required /></label><button class="btn btn-fill" type="submit">View bookings</button></form><p class="admin-status" id="login-status" role="status"></p></section>

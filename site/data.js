@@ -39,8 +39,7 @@ window.S26 = (function () {
         heading: "Find us",
         links: [
           { label: "Instagram", href: "https://www.instagram.com/studio26ca/" },
-          { label: "TikTok", href: "book.html" },
-          { label: "Newsletter", href: "book.html" },
+          { label: "Email", href: "mailto:Studiotwentysix.ca@gmail.com" },
         ],
       },
     ],
@@ -83,6 +82,7 @@ window.S26 = (function () {
     },
     tessTeaser: {
       image: "../assets/photo-c6.jpg",
+      imageAlt: "Tescia Seufferlein, founder of Studio Twenty Six",
       eyebrow: "About Tess",
       headline: "Artist, costume painter, textile maker, teacher.",
       body: "Tess came to art the way most people come to air: not by choice, but by necessity. Studio Twenty Six is the synthesis of her work in painting, costume, textiles, performance, teaching, and communal making.",
@@ -125,7 +125,7 @@ window.S26 = (function () {
       eyebrow: "Founder",
       name: "Tescia Seufferlein",
       portrait: "../assets/tess-portrait.jpg",
-      portraitAlt: "Portrait of Tess",
+      portraitAlt: "Tescia Seufferlein, founder of Studio Twenty Six",
       paragraphs: [
         "Tescia Seufferlein came to art the way most people come to air: not by choice, but by necessity.",
         "Tess builds rooms where people can remember that creativity is not a talent reserved for a few people. It is a biological need. It is part of how the body stays alive in the fullest sense of the word.",

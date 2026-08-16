@@ -37,7 +37,7 @@ function SignupPage(){
   return (
     <React.Fragment>
       <window.Nav />
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="class-detail-band signup-direct" id="sessions">
           <div className="wrap reveal">
             <div className="sec-head pay-head">
@@ -53,6 +53,8 @@ function SignupPage(){
                   key={ev.date + ev.title}
                   role={isBookable(ev) ? "button" : undefined}
                   tabIndex={isBookable(ev) ? 0 : undefined}
+                  aria-pressed={isBookable(ev) && bookingEvent && eventKey(bookingEvent) === eventKey(ev)}
+                  aria-label={isBookable(ev) ? `Select ${ev.title} on ${fmtDate(ev.date)}` : undefined}
                   onClick={() => {
                     if (!isBookable(ev)) return;
                     setBookingEvent(ev);

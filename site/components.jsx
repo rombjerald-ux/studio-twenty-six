@@ -23,7 +23,7 @@ function Nav() {
   const navLinks = site.nav.concat([{ label: "Sign up", href: "book.html", cta: true }]);
   return (
     <nav className={`nav${solid ? " solid" : ""}${open ? " open" : ""}`}>
-      <a className="brand" href="index.html#top" aria-label={`${site.shortBrand} — home`}></a>
+      <a className="brand" href="index.html#top"><span className="sr-only">{site.brand} home</span></a>
       <div className="links">
         {site.nav.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
         <a className="nav-cta" href="book.html">Sign up</a>
@@ -56,10 +56,18 @@ function Hero() {
   const hero = home.hero;
   const bgImages = home.heroImages;
   const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => { if (mq.matches) setPaused(true); };
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  useEffect(() => {
+    if (paused) return undefined;
     const timer = window.setInterval(() => setSlide((n) => (n + 1) % bgImages.length), 5200);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [paused, bgImages.length]);
   return (
     <header className="hero" id="top">
       <div className="bg hero-carousel">
@@ -77,8 +85,26 @@ function Hero() {
           <Btn variant="outline" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</Btn>
         </div>
         <div><span className="badge">{hero.badge}</span></div>
-        <div className="hero-dots" aria-hidden="true">
-          {bgImages.map((bg, i) => <span key={bg} className={i === slide ? "active" : ""}></span>)}
+        <div className="hero-controls">
+          <div className="hero-dots">
+            {bgImages.map((bg, i) => (
+              <button
+                key={bg}
+                type="button"
+                className={i === slide ? "active" : ""}
+                aria-label={`Show image ${i + 1} of ${bgImages.length}`}
+                aria-current={i === slide ? "true" : undefined}
+                onClick={() => { setSlide(i); setPaused(true); }}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            className="hero-pause"
+            aria-pressed={paused}
+            aria-label={paused ? "Play hero images" : "Pause hero images"}
+            onClick={() => setPaused((v) => !v)}
+          >{paused ? "Play" : "Pause"}</button>
         </div>
       </div>
     </header>
@@ -102,7 +128,7 @@ function TessTeaser() {
   return (
     <section className="section tess-teaser" id="tess">
       <div className="wrap tess-grid reveal">
-        <div className="tess-photo"><img src={tess.image} alt="" /></div>
+        <div className="tess-photo"><img src={tess.image} alt={tess.imageAlt || "Tescia Seufferlein, founder of Studio Twenty Six"} /></div>
         <div className="tess-copy">
           <div className="eyebrow-m">{tess.eyebrow}</div>
           <h2>{tess.headline}</h2>
@@ -163,7 +189,7 @@ function Footer() {
       <div className="wrap">
         <div className="top">
           <div>
-            <div className="brand"></div>
+            <a className="brand" href="index.html"><span className="sr-only">{site.brand}</span></a>
             <p className="blurb">A community art studio in {site.location} for classes, costumes, rituals, events, and more.</p>
           </div>
           {site.footerColumns.map((group) => col(group.heading, group.links))}

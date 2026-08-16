@@ -24,7 +24,7 @@
   /* ---------- TEXT ---------- */
   --pearl:       #F6EEF2;  /* primary text on dark (warm white) */
   --lilac-mute:  #B9A7B4;  /* secondary text */
-  --faint:       #6E6470;  /* tertiary / captions on dark */
+  --faint:       #9A8E98;  /* tertiary / captions on dark — AA on --void */
   --ink:         #2E1F2A;  /* text on bone/light insets */
 
   /* ---------- LINES ---------- */

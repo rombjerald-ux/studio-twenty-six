@@ -29,7 +29,7 @@ function ClassesPage(){
           <p>{hero.body}</p>
         </div>
       </header>
-      <main className="section">
+      <main id="main" tabIndex={-1} className="section">
         <div className="wrap class-card-grid reveal">
           {Object.keys(details).map((slug) => {
             const c = details[slug];

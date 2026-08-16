@@ -39,7 +39,7 @@ function ClassDetailPage(){
         </div>
       </header>
 
-      <main>
+      <main id="main" tabIndex={-1}>
         <section className="section">
           <div className="wrap class-detail-grid reveal">
             <div className="class-detail-copy">

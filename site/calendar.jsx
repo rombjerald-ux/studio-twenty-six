@@ -26,27 +26,29 @@ function bookingHref(ev){
 }
 
 function EventDrawer({ ev, onClose }){
+  const closeRef = React.useRef(null);
   useCE(() => {
     const k = (e) => { if(e.key === "Escape") onClose(); };
     window.addEventListener("keydown", k);
+    if (ev) closeRef.current && closeRef.current.focus();
     return () => window.removeEventListener("keydown", k);
-  }, [onClose]);
+  }, [ev, onClose]);
   const T = ev && window.S26.TYPES[ev.type];
   const cal = window.S26.CALENDAR;
   const art = ev && cal.artCards[ev.type];
   return (
     <React.Fragment>
       <div className={`drawer-scrim${ev ? " open" : ""}`} onClick={onClose}></div>
-      <aside className={`drawer${ev ? " open" : ""}`} aria-hidden={!ev}>
+      <aside className={`drawer${ev ? " open" : ""}`} role="dialog" aria-modal={!!ev} aria-labelledby="drawer-title" aria-hidden={!ev}>
         {ev && (
           <React.Fragment>
             <div className="dimg">
               <img src={art ? art.src : "../assets/" + DRAWER_IMG[ev.type]} alt="" />
-              <button className="close" onClick={onClose} aria-label="Close">×</button>
+              <button ref={closeRef} className="close" type="button" onClick={onClose} aria-label="Close">×</button>
               <span className="dtype"><i className="dot" style={{ background: ev.special ? "var(--t-special)" : TC[ev.type] }}></i>{ev.special ? "★ Special · " : ""}{T.label}</span>
             </div>
             <div className="dbody">
-              <h3>{ev.title}{ev.sub && <span className="sub">{ev.sub}</span>}</h3>
+              <h3 id="drawer-title">{ev.title}{ev.sub && <span className="sub">{ev.sub}</span>}</h3>
               <p className="blurb">{ev.blurb || T.desc}</p>
               <div className="dmeta">
                 <span className="k">When</span><span className="v">{fmtDate(ev.date)}</span>
@@ -157,7 +159,7 @@ function Calendar(){
         <div className="cal-top">
           <div className="month-tabs">
             {MONTHS.map((mo) => (
-              <button key={mo.key} className={`month-tab${mo.key === monthKey ? " on" : ""}`} onClick={() => setMonth(mo.key)}>
+              <button type="button" key={mo.key} className={`month-tab${mo.key === monthKey ? " on" : ""}`} aria-pressed={mo.key === monthKey} onClick={() => setMonth(mo.key)}>
                 <span>{mo.label}</span><span className="tg">{mo.tag}</span>
               </button>
             ))}
@@ -166,7 +168,7 @@ function Calendar(){
 
         <div className="chips">
           {cal.chips.map((c) => (
-            <button key={c.k} className={`chip${isOn(c) ? " on" : ""}${c.k === "Everything" ? " everything" : ""}`} onClick={() => toggle(c)}>
+            <button type="button" key={c.k} className={`chip${isOn(c) ? " on" : ""}${c.k === "Everything" ? " everything" : ""}`} aria-pressed={isOn(c)} onClick={() => toggle(c)}>
               {c.t && <i className="dot" style={{ background: c.special ? "var(--t-special)" : TC[c.t] }}></i>}
               {c.k}
             </button>
@@ -187,7 +189,7 @@ function Calendar(){
           {Object.keys(cal.artCards).map((type) => {
             const art = cal.artCards[type];
             return (
-              <a className="event-art-card" key={type} href={art.href}>
+              <a className="event-art-card" key={type} href={art.href} aria-label={`${art.label} details and sign up`}>
                 <span className="event-art-img"><img src={art.src} alt="" /></span>
                 <span className="event-art-copy">
                   <strong>{art.label}</strong>
@@ -213,7 +215,7 @@ function Calendar(){
                   {evs.map((ev, j) => {
                     const bg = THEX[ev.type], ink = inkFor(bg);
                     return (
-                      <button className="ev-fill" key={j} style={{ background: bg, color: ink }} onClick={() => setSel(ev)}>
+                      <button type="button" className="ev-fill" key={j} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}`} onClick={() => setSel(ev)}>
                         {cal.artCards[ev.type] && <span className="ev-art"><img src={cal.artCards[ev.type].src} alt="" /></span>}
                         <span className="etitle">{ev.special && <span className="star">★ </span>}{ev.title}</span>
                         {ev.sub && <span className="esub">{ev.sub}</span>}
@@ -234,7 +236,7 @@ function Calendar(){
             const [, mm, dd] = ev.date.split("-").map(Number);
             const bg = THEX[ev.type], ink = inkFor(bg);
             return (
-              <button className="ag-item filled" key={i} style={{ background: bg, color: ink }} onClick={() => setSel(ev)}>
+              <button type="button" className="ag-item filled" key={i} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}`} onClick={() => setSel(ev)}>
                 <span className="ag-date"><span className="d">{dd}</span><span className="mo">{MO[mm-1]}</span></span>
                 <span className="ag-body">
                   <span className="at">{ev.special && "★ "}{ev.title}</span>

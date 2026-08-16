@@ -68,7 +68,7 @@ function ReviewPage(){
         </div>
       </header>
 
-      <main className="review-main">
+      <main id="main" tabIndex={-1} className="review-main">
         <div className="wrap">
           <section className="review-checklist reveal">
             <div>
