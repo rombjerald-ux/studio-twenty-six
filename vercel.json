@@ -5,6 +5,76 @@
       "source": "/",
       "destination": "/site/index.html",
       "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "destination": "/site/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/register.html",
+      "destination": "/site/book.html",
+      "permanent": true
+    },
+    {
+      "source": "/camps.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/bus.html",
+      "destination": "/site/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/site/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/site/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/classes.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/events.html",
+      "destination": "/site/happenings.html",
+      "permanent": true
+    },
+    {
+      "source": "/ride-or-dye.html",
+      "destination": "/site/ride-or-dye.html",
+      "permanent": true
+    },
+    {
+      "source": "/open-studio.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/bad-art-nights.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/costume-chaos.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/messy-mornings.html",
+      "destination": "/site/classes.html",
+      "permanent": true
+    },
+    {
+      "source": "/paint-vinyl.html",
+      "destination": "/site/classes.html",
+      "permanent": true
     }
   ]
 }

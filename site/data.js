@@ -31,7 +31,7 @@ window.S26 = (function () {
         heading: "Book",
         links: [
           { label: "Sign up", href: "book.html" },
-          { label: "Private Events", href: "book.html" },
+          { label: "Private Events", href: "happenings.html" },
           { label: "Contact", href: "mailto:Studiotwentysix.ca@gmail.com" },
         ],
       },
@@ -298,7 +298,7 @@ window.S26 = (function () {
     Salon: {
       label: "The Craft Show",
       chip: "Embellishment",
-      day: "Thursday",
+      day: null,
       who: "Led by Tess",
       desc: "Monthly costume embellishment workshop. Bring a piece of clothing - jeans, jacket, skirt - all other materials provided. Leave with your own masterpiece.",
     },
@@ -334,7 +334,7 @@ window.S26 = (function () {
 
   const RHYTHM = [
     { d: "WED", t: "Peace Love Draw", time: "6:00-9:00 PM", note: "Live model, flowers, music", href: "peace-love-draw.html" },
-    { d: "THU", t: "The Craft Show", time: "6:30-8:30 PM", note: "Monthly costume embellishment", href: "the-craft-show.html" },
+    { d: "EVE", t: "The Craft Show", time: "Evenings", note: "Monthly costume embellishment", href: "the-craft-show.html" },
     { d: "SUN", t: "Wake and Make", time: "8:00-10:00 AM", note: "Coffee, tea, making", href: "wake-and-make.html" },
     { d: "SUN", t: "Art Church", time: "1:00-3:00 PM", note: "Live choir + making", href: "art-church.html" },
     { d: "TUE", t: "Ride or Dye", time: "6:30-8:30 PM", note: "Dye, textiles, color", href: "ride-or-dye.html" },
@@ -423,10 +423,10 @@ window.S26 = (function () {
       tagline: "Bring something. Leave with something entirely different.",
       price: COSTS.craft.price,
       sliding: COSTS.craft.sliding,
-      duration: "2 hours",
+      duration: "2–3 hours",
       capacity: "15-25 people",
       space: "Studio Twenty Six",
-      rhythm: "Thursday evening sessions",
+      rhythm: "Monthly evening sessions",
       image: "../assets/posters/craft-show-poster.png",
       poster: "../assets/posters/craft-show-poster.pdf",
       intro: "A monthly costume embellishment workshop. Bring a piece of clothing - jeans, jacket, skirt - and Studio Twenty Six will provide the rest of the materials. Leave with your own masterpiece.",

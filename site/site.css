@@ -296,7 +296,7 @@ html{scroll-behavior:smooth;}
 .bio-hero .eyebrow{display:flex;gap:16px;align-items:center;font-family:var(--font-mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta-ink);margin-bottom:20px;flex-wrap:wrap;}
 .bio-hero .eyebrow .est{color:var(--lilac-mute);}
 .bio-hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(54px,9vw,126px);line-height:.86;margin:0;text-transform:uppercase;letter-spacing:0;}
-.bio-hero h1 span{color:transparent;-webkit-text-stroke:2px var(--pearl);}
+.bio-hero h1 span{color:#EDE4EA;-webkit-text-stroke:1px var(--pearl);}
 .bio-hero h1 em{font-style:normal;color:var(--pearl);}
 .bio-hero p{font-size:var(--t-lead);line-height:1.55;color:#e4d8e0;max-width:48ch;margin:26px 0 0;}
 .bio-section{background:var(--void);}
