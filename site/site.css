@@ -580,3 +580,13 @@ html{scroll-behavior:smooth;}
   .checkout-scale{align-items:stretch;flex-direction:column;}
   .dreg.split{grid-template-columns:1fr;}
 }
+
+/* ---------------- CRAWL / NO-JS ---------------- */
+.crawl{padding:40px var(--page-pad) 64px;max-width:40rem;color:var(--pearl);}
+.crawl h1{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,6vw,56px);line-height:.95;text-transform:uppercase;margin:0 0 16px;}
+.crawl h2{font-family:var(--font-display);font-size:28px;line-height:1.1;margin:28px 0 10px;}
+.crawl p,.crawl li{font-size:16px;line-height:1.6;color:#e4d8e0;}
+.crawl ul{padding-left:1.2em;}
+.crawl a{color:var(--lime);}
+.crawl .meta{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
+.site.js ~ .crawl{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}

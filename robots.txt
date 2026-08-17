@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /site/
+Disallow: /site/admin.html
+Disallow: /site/review.html
+Disallow: /site/signup.html
+
+Sitemap: https://studio26ca.com/sitemap.xml

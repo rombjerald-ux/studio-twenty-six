@@ -75,6 +75,11 @@
       "source": "/paint-vinyl.html",
       "destination": "/site/classes.html",
       "permanent": true
+    },
+    {
+      "source": "/site/signup.html",
+      "destination": "/site/book.html",
+      "permanent": true
     }
   ]
 }
