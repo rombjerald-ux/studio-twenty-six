@@ -17,6 +17,16 @@ function escapeHtml(value) {
   }[char]));
 }
 
+function formatDate(iso) {
+  if (!iso) return "";
+  return new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+}
+
 async function sendConfirmation(session) {
   if (!process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) return false;
 
@@ -39,8 +49,8 @@ async function sendConfirmation(session) {
       from: process.env.EMAIL_FROM,
       to: [email],
       reply_to: process.env.EMAIL_REPLY_TO || undefined,
-      subject: `You're booked for ${title}`,
-      html: `<p>Hi ${escapeHtml(name)},</p><p>Your spot is confirmed for <strong>${escapeHtml(title)}</strong>.</p><p><strong>Date:</strong> ${escapeHtml(date)}<br><strong>Time:</strong> ${escapeHtml(time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>We can't wait to make something with you.</p><p>Studio Twenty Six</p>`
+      subject: `Welcome to Studio Twenty Six — you're booked for ${title}`,
+      html: `<p>Hi ${escapeHtml(name)},</p><p>I just wanted to say welcome to Studio Twenty Six. Thank you so much for signing up for <strong>${escapeHtml(title)}</strong>. We're so excited to have you.</p><p>More information will be provided before the class.</p><p><strong>Date:</strong> ${escapeHtml(formatDate(date) || date)}<br><strong>Time:</strong> ${escapeHtml(time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>Studio Twenty Six</p>`
     })
   });
   if (!response.ok) throw new Error(`Email provider returned ${response.status}`);

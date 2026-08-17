@@ -51,14 +51,14 @@ async function sendConfirmation({ event, email, name, seats, requestType }) {
 
   const isSlidingScale = requestType === "sliding_scale";
   const subject = isSlidingScale
-    ? `We received your request for ${event.title}`
-    : `You're on the list for ${event.title}`;
-  const headline = isSlidingScale
-    ? "Your sliding scale request is in."
-    : "You're on the signup list.";
-  const body = isSlidingScale
-    ? "Tess and the Studio Twenty Six team can see your request and will follow up if anything else is needed."
-    : "Tess and the Studio Twenty Six team can see your RSVP in the studio list.";
+    ? `Welcome to Studio Twenty Six — we got your request for ${event.title}`
+    : `Welcome to Studio Twenty Six — you're on the list for ${event.title}`;
+  const welcome = isSlidingScale
+    ? `I just wanted to say welcome to Studio Twenty Six. Thank you so much for requesting a spot in <strong>${escapeHtml(event.title)}</strong>. We're so excited to have you.`
+    : `I just wanted to say welcome to Studio Twenty Six. Thank you so much for signing up for <strong>${escapeHtml(event.title)}</strong>. We're so excited to have you.`;
+  const follow = isSlidingScale
+    ? "We'll follow up if anything else is needed. More information will be provided before the class."
+    : "More information will be provided before the class.";
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -71,7 +71,7 @@ async function sendConfirmation({ event, email, name, seats, requestType }) {
       to: [email],
       reply_to: process.env.EMAIL_REPLY_TO || undefined,
       subject,
-      html: `<p>Hi ${escapeHtml(name)},</p><p><strong>${escapeHtml(headline)}</strong></p><p>${escapeHtml(body)}</p><p><strong>Class/event:</strong> ${escapeHtml(event.title)}<br><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>We can't wait to make something with you.</p><p>Studio Twenty Six</p>`
+      html: `<p>Hi ${escapeHtml(name)},</p><p>${welcome}</p><p>${escapeHtml(follow)}</p><p><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>Studio Twenty Six</p>`
     })
   });
 
