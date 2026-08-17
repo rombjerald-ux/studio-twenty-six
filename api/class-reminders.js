@@ -1,8 +1,8 @@
 const Stripe = require("stripe");
 
 const ADDRESS = "5303 Claremont Ave, Oakland";
-const MIN_HOURS = 42;
-const MAX_HOURS = 54;
+const MIN_HOURS = 36;
+const MAX_HOURS = 72;
 
 function escapeHtml(value) {
   return String(value || "").replace(/[&<>"]/g, (char) => ({

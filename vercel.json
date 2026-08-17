@@ -91,7 +91,7 @@
   "crons": [
     {
       "path": "/api/class-reminders",
-      "schedule": "0 * * * *"
+      "schedule": "0 1 * * *"
     }
   ]
 }
