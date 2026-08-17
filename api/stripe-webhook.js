@@ -50,7 +50,7 @@ async function sendConfirmation(session) {
       to: [email],
       reply_to: process.env.EMAIL_REPLY_TO || undefined,
       subject: `Welcome to Studio Twenty Six — you're booked for ${title}`,
-      html: `<p>Hi ${escapeHtml(name)},</p><p>I just wanted to say welcome to Studio Twenty Six. Thank you so much for signing up for <strong>${escapeHtml(title)}</strong>. We're so excited to have you.</p><p>More information will be provided before the class.</p><p><strong>Date:</strong> ${escapeHtml(formatDate(date) || date)}<br><strong>Time:</strong> ${escapeHtml(time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>Studio Twenty Six</p>`
+      html: `<p>Hi ${escapeHtml(name)},</p><p>I just wanted to say welcome to Studio Twenty Six. Thank you so much for signing up for <strong>${escapeHtml(title)}</strong>. We're so excited to have you.</p><p>More information will be provided before the class.</p><p><strong>Class:</strong> ${escapeHtml(title)}<br><strong>Date:</strong> ${escapeHtml(formatDate(date) || date)}<br><strong>Time:</strong> ${escapeHtml(time)}<br><strong>Address:</strong> 5303 Claremont Ave, Oakland</p><p>Studio Twenty Six</p>`
     })
   });
   if (!response.ok) throw new Error(`Email provider returned ${response.status}`);

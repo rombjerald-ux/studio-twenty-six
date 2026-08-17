@@ -1,6 +1,6 @@
 # Studio Twenty Six
 
-> A creative art salon in Temescal, Oakland, California. Est. 2026. Founded by artist Tescia Seufferlein.
+> A creative art salon at 5303 Claremont Ave, Oakland, California. Est. 2026. Founded by artist Tescia Seufferlein.
 
 Studio Twenty Six (also called Studio 26) is a community art studio for classes, costumes, happenings, and communal making. Tagline: Come find your creative eye. No experience required. Supplies included. Sliding scale available by email.
 
@@ -8,7 +8,7 @@ Studio Twenty Six (also called Studio 26) is a community art studio for classes,
 - Site: https://studio26ca.com
 - Email: Studiotwentysix.ca@gmail.com
 - Instagram: https://www.instagram.com/studio26ca/
-- Location: Temescal, Oakland, CA
+- Location: 5303 Claremont Ave, Oakland, CA
 
 ## Classes
 - Peace Love Draw — figure drawing, $25, typically Wednesday evenings

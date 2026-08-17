@@ -195,7 +195,7 @@ function Footer() {
           {site.footerColumns.map((group) => col(group.heading, group.links))}
         </div>
         <div className="colophon">
-          <span>© 2026 {site.brand} · Temescal, Oakland CA</span>
+          <span>© 2026 {site.brand} · {site.addressLabel}</span>
           <span className="tag">Find your <b>✺</b> creative eye</span>
         </div>
       </div>

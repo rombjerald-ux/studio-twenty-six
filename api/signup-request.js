@@ -71,7 +71,7 @@ async function sendConfirmation({ event, email, name, seats, requestType }) {
       to: [email],
       reply_to: process.env.EMAIL_REPLY_TO || undefined,
       subject,
-      html: `<p>Hi ${escapeHtml(name)},</p><p>${welcome}</p><p>${escapeHtml(follow)}</p><p><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Seats:</strong> ${escapeHtml(seats)}</p><p>Studio Twenty Six</p>`
+      html: `<p>Hi ${escapeHtml(name)},</p><p>${welcome}</p><p>${escapeHtml(follow)}</p><p><strong>Class:</strong> ${escapeHtml(event.title)}<br><strong>Date:</strong> ${escapeHtml(formatDate(event.date))}<br><strong>Time:</strong> ${escapeHtml(event.time)}<br><strong>Address:</strong> 5303 Claremont Ave, Oakland</p><p>Studio Twenty Six</p>`
     })
   });
 

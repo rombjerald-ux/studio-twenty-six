@@ -87,5 +87,11 @@
       "source": "/",
       "destination": "/site/index.html"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/class-reminders",
+      "schedule": "0 * * * *"
+    }
   ]
 }

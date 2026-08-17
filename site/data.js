@@ -6,7 +6,7 @@ window.S26 = (function () {
     brand: "Studio Twenty Six",
     shortBrand: "studio26",
     location: "Oakland",
-    addressLabel: "Studio Twenty Six, Oakland",
+    addressLabel: "5303 Claremont Ave, Oakland",
     email: "Studiotwentysix.ca@gmail.com",
     formEndpoint: "https://formsubmit.co/Studiotwentysix.ca@gmail.com",
     liveUrl: "https://studio26ca.com",
@@ -38,6 +38,7 @@ window.S26 = (function () {
       {
         heading: "Find us",
         links: [
+          { label: "5303 Claremont Ave, Oakland", href: "https://maps.google.com/?q=5303+Claremont+Ave+Oakland" },
           { label: "Instagram", href: "https://www.instagram.com/studio26ca/" },
           { label: "Email", href: "mailto:Studiotwentysix.ca@gmail.com" },
         ],
