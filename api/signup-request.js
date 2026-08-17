@@ -2,7 +2,6 @@ const Stripe = require("stripe");
 
 const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
-  "2026-08-20|The Craft Show": { title: "The Craft Show", date: "2026-08-20", time: "6:30-8:30 PM", price: "$55" },
   "2026-08-23|Wake and Make": { title: "Wake and Make", date: "2026-08-23", time: "8:00-10:00 AM", price: "$40" },
   "2026-08-25|Paint the Town": { title: "Paint the Town", date: "2026-08-25", time: "6:30-8:30 PM", price: "$55" },
   "2026-09-09|Peace Love Draw": { title: "Peace Love Draw", date: "2026-09-09", time: "6:00-9:00 PM", price: "$25" },
