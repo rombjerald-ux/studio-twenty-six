@@ -24,7 +24,7 @@ function HappeningsPage(){
         <div className="grain-ov"></div>
         <div className="wrap bio-hero-inner">
           <div className="eyebrow"><span>{copy.hero.eyebrow}</span><span className="est">{copy.hero.meta}</span></div>
-          <h1>{copy.hero.headline} <em>{copy.hero.accent}</em></h1>
+          <h1><span>{copy.hero.headline}</span><br /><em>{copy.hero.accent}</em></h1>
           <p>{copy.hero.body}</p>
         </div>
       </header>
