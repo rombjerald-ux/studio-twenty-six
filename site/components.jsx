@@ -320,7 +320,7 @@ function NativeCheckoutPanel({ event }) {
   };
 
   if (paidSuccess || confirmedFree) {
-    const place = event.where || window.S26.SITE.addressLabel;
+    const place = window.S26.SITE.addressLabel || event.where;
     return (
       <section className="native-checkout" id="book" aria-label={`Confirmed ${event.title}`}>
         <div className="checkout-copy">
