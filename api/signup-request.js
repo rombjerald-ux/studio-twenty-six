@@ -5,7 +5,7 @@ const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
   "2026-08-23|Wake and Make": { title: "Wake and Make", date: "2026-08-23", time: "8:00-10:00 AM", price: "Free" },
   "2026-09-09|Peace Love Draw": { title: "Peace Love Draw", date: "2026-09-09", time: "6:00-9:00 PM", price: "$25" },
-  "2026-09-13|Art Church": { title: "Art Church", date: "2026-09-13", time: "1:00-3:00 PM", price: "$50" },
+  "2026-09-13|Wake and Make": { title: "Wake and Make", date: "2026-09-13", time: "8:00-10:00 AM", price: "$40" },
   "2026-09-19|Opening Block Party": { title: "Opening Block Party", date: "2026-09-19", time: "Afternoon", price: "$0" },
   "2026-09-27|Art Church": { title: "Art Church", date: "2026-09-27", time: "1:00-3:00 PM", price: "$50" },
   "2026-09-29|The Craft Show": { title: "The Craft Show", date: "2026-09-29", time: "6:00-9:00 PM", price: "$55" },
