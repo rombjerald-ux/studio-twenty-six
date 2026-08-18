@@ -209,6 +209,9 @@ window.S26 = (function () {
     slidingScaleButton: "Message the team",
     promoLabel: "Have a code?",
     promoPlaceholder: "Enter code",
+    confirmHeadline: "You're booked.",
+    confirmBody: "Your spot is reserved. A confirmation email is on the way with the same details.",
+    confirmEmailNote: "Check your inbox for class, date, time, and the studio address. If it is not there, look in spam, then email Studiotwentysix.ca@gmail.com.",
   };
 
   const CLASSES_PAGE = {

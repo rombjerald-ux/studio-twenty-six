@@ -230,6 +230,8 @@ function slidingScaleMailto(ev) {
 
 function NativeCheckoutPanel({ event }) {
   const checkout = window.S26.CHECKOUT;
+  const paidSuccess = new URLSearchParams(window.location.search).get("success") === "1";
+  const [confirmedFree, setConfirmedFree] = useState(false);
   const [seats, setSeats] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -269,7 +271,11 @@ function NativeCheckoutPanel({ event }) {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Could not save that request.");
       const emailNote = data.confirmationSent ? " Confirmation email sent." : "";
-      setStatus((requestType === "sliding_scale" ? "Request saved. Tess can see it in the signup list." : "You are on the signup list. Tess can see it in admin.") + emailNote);
+      if (requestType === "free_signup") {
+        setConfirmedFree(true);
+        return true;
+      }
+      setStatus("Request saved. Tess can see it in the signup list." + emailNote);
       return true;
     } catch (error) {
       setStatus(error.message || "Could not save that request right now.");
@@ -312,6 +318,35 @@ function NativeCheckoutPanel({ event }) {
       setStatus(error.message || "Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
     }
   };
+
+  if (paidSuccess || confirmedFree) {
+    const place = event.where || window.S26.SITE.addressLabel;
+    return (
+      <section className="native-checkout" id="book" aria-label={`Confirmed ${event.title}`}>
+        <div className="checkout-copy">
+          <span>Confirmed</span>
+          <h3>{checkout.confirmHeadline}</h3>
+          <p>{checkout.confirmBody}</p>
+        </div>
+        <div className="checkout-shell checkout-confirm">
+          <aside className="checkout-summary">
+            <span>Your class</span>
+            <strong>{event.title}</strong>
+            <dl>
+              <div><dt>Date</dt><dd>{formatEventDate(event.date)}</dd></div>
+              <div><dt>Time</dt><dd>{event.time}</dd></div>
+              <div><dt>Place</dt><dd>{place}</dd></div>
+            </dl>
+          </aside>
+          <div className="checkout-form checkout-ready">
+            <p>{checkout.confirmEmailNote}</p>
+            <a className="btn btn-fill" href="index.html">Back to the studio</a>
+            <a className="btn btn-outline" href="book.html">Book another class</a>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="native-checkout" id="book" aria-label={`Book ${event.title}`}>

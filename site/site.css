@@ -417,6 +417,9 @@ html{scroll-behavior:smooth;}
 .checkout-fallback{margin-top:-2px;}
 .checkout-ready{align-self:stretch;justify-content:center;}
 .checkout-ready p{margin:0;color:var(--lilac-mute);font-size:15px;line-height:1.5;}
+.checkout-confirm .checkout-form{align-content:start;gap:14px;}
+.checkout-confirm .checkout-form .btn{width:100%;justify-content:center;}
+.checkout-confirm .btn-outline{border-color:rgba(246,238,242,.28);color:var(--pearl);}
 .checkout-scale{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#EEE8F1;color:#1C1B22;border-color:rgba(28,27,34,.12);}
 .checkout-scale span{color:#7A5E9E;}
 .checkout-scale p{margin:6px 0 0;color:#5e5662;line-height:1.45;}

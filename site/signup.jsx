@@ -17,16 +17,20 @@ function SignupPage(){
   const params = new URLSearchParams(window.location.search);
   const requested = params.get("class") || "";
   const requestedEvent = params.get("event") || "";
+  const paidSuccess = params.get("success") === "1";
   const events = window.S26.EVENTS;
   const eventKey = (ev) => `${ev.date}|${ev.title}`;
   const isBookable = (ev) => Boolean(ev.price);
   const requestedEventMatch = events.find((ev) => eventKey(ev) === requestedEvent);
+  const successFallback = (!requestedEventMatch && paidSuccess && requestedEvent.includes("|"))
+    ? { date: requestedEvent.split("|")[0], title: requestedEvent.split("|").slice(1).join("|"), time: "", where: window.S26.SITE.addressLabel, price: "", sub: "", blurb: "" }
+    : null;
   const selectedClass = requestedEventMatch ? requestedEventMatch.title : classNames.includes(requested) ? requested : "";
   const sessions = events
     .filter((ev) => !selectedClass || ev.title === selectedClass)
     .slice(0, selectedClass ? 6 : 9);
   const firstBookable = sessions.find(isBookable) || null;
-  const [bookingEvent, setBookingEvent] = React.useState(requestedEventMatch || firstBookable);
+  const [bookingEvent, setBookingEvent] = React.useState(requestedEventMatch || successFallback || firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
   React.useEffect(() => {
     if (requestedEventMatch) {
@@ -41,11 +45,11 @@ function SignupPage(){
         <section className="class-detail-band signup-direct" id="sessions">
           <div className="wrap reveal">
             <div className="sec-head pay-head">
-              <div className="eyebrow-m">{selectedClass ? "Selected class" : "Choose a date"}</div>
-              <h2>{selectedClass || copy.sessionsHeadline} <em>{copy.sessionsAccent}</em></h2>
-              <p className="section-note">{copy.sessionsBody}</p>
+              <div className="eyebrow-m">{paidSuccess ? "Confirmation" : selectedClass ? "Selected class" : "Choose a date"}</div>
+              <h2>{paidSuccess ? "You're booked." : (selectedClass || copy.sessionsHeadline)} {!paidSuccess && <em>{copy.sessionsAccent}</em>}</h2>
+              <p className="section-note">{paidSuccess ? "Your payment went through. Here are the details." : copy.sessionsBody}</p>
             </div>
-            <div className="payment-grid">
+            {!paidSuccess && <div className="payment-grid">
               {sessions.map((ev) => {
                 return (
                 <div
@@ -83,7 +87,7 @@ function SignupPage(){
                   )}
                 </div>
               )})}
-            </div>
+            </div>}
             {bookingEvent && (
               <window.NativeCheckoutPanel event={bookingEvent} />
             )}
