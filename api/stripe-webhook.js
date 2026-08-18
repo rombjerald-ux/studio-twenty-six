@@ -1,4 +1,5 @@
 const Stripe = require("stripe");
+const { sendStudioAlert } = require("../lib/studio-alert");
 
 async function readRawBody(req) {
   if (Buffer.isBuffer(req.body)) return req.body;
@@ -73,11 +74,28 @@ module.exports = async function stripeWebhook(req, res) {
   }
 
   if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
     try {
-      await sendConfirmation(event.data.object);
+      await sendConfirmation(session);
     } catch (error) {
       console.error("Confirmation email failed", error);
       return res.status(500).json({ error: "Confirmation email could not be sent." });
+    }
+    try {
+      const metadata = session.metadata || {};
+      const amount = typeof session.amount_total === "number" ? `$${(session.amount_total / 100).toFixed(0)} paid` : "paid";
+      await sendStudioAlert({
+        kind: "Paid booking",
+        name: metadata.customer_name || (session.customer_details && session.customer_details.name) || "",
+        email: session.customer_details && session.customer_details.email,
+        title: metadata.class_title,
+        date: metadata.class_date,
+        time: metadata.class_time,
+        seats: metadata.seats || "1",
+        extra: amount
+      });
+    } catch (error) {
+      console.error("Studio signup alert failed", error);
     }
   }
 

@@ -1,4 +1,5 @@
 const Stripe = require("stripe");
+const { sendStudioAlert } = require("../lib/studio-alert");
 
 const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
@@ -124,6 +125,20 @@ module.exports = async function signupRequest(req, res) {
       confirmationSent = await sendConfirmation({ event, email, name, seats, requestType });
     } catch (error) {
       console.error("Signup confirmation email failed", error);
+    }
+    try {
+      await sendStudioAlert({
+        kind: requestType === "sliding_scale" ? "Sliding scale request" : "Free signup",
+        name,
+        email,
+        title: event.title,
+        date: event.date,
+        time: event.time,
+        seats: String(seats),
+        extra: event.price || ""
+      });
+    } catch (error) {
+      console.error("Studio signup alert failed", error);
     }
 
     return res.status(200).json({ ok: true, id: customer.id, confirmationSent });
