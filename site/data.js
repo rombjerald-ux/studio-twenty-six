@@ -373,8 +373,7 @@ window.S26 = (function () {
 
   const EVENTS = [
     e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
-    e("2026-08-23", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
-    e("2026-08-25", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
+    e("2026-08-23", "Open", "Wake and Make", "Free collage Sunday", "8:00-10:00 AM", "Free", S, "This Sunday is free. Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
 
     e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
     e("2026-09-13", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
