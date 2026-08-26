@@ -26,8 +26,8 @@ function PrivateEventsPage(){
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email: guestEmail, occasion, date, message }),
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Could not send that note right now.");
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "Could not send that note right now. Email Studiotwentysix.ca@gmail.com.");
       setDone(true);
       setStatus("");
     } catch (error) {

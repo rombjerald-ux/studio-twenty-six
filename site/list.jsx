@@ -21,7 +21,7 @@ function ListPage(){
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "Could not join the list right now.");
       setDone(true);
       setStatus("");

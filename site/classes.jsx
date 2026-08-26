@@ -46,7 +46,7 @@ function ClassesPage(){
                   <small>{c.price} · {c.duration}</small>
                   <span className="class-card-actions">
                     <a className="btn btn-fill" href={next ? window.S26.bookingHref(next) : "book.html"}>Sign up now</a>
-                    <a className="btn btn-outline" href={urls[slug]}>Details</a>
+                    <a href={urls[slug]}><b>Details</b></a>
                   </span>
                 </span>
               </article>

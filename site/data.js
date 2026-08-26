@@ -601,7 +601,7 @@ window.S26 = (function () {
   }
 
   function listingKicker(title) {
-    return LISTING_TITLES[title] || "";
+    return LISTING_TITLES[title] ? title : "";
   }
 
   function bookingHref(ev) {

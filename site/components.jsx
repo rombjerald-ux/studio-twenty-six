@@ -271,7 +271,7 @@ function NativeCheckoutPanel({ event }) {
           waiverAccepted: requestType === "free_signup" ? waiverAccepted : undefined,
         }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "Could not save that request.");
       const emailNote = data.confirmationSent ? " Confirmation email sent." : "";
       if (requestType === "free_signup") {
@@ -319,7 +319,7 @@ function NativeCheckoutPanel({ event }) {
           waiverAccepted,
         }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
       window.location.href = data.url;
     } catch (error) {
