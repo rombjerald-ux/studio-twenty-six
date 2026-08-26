@@ -199,6 +199,7 @@ function Calendar(){
               <a className="event-art-card" key={type} href={art.href} aria-label={`${art.label} details and sign up`}>
                 <span className="event-art-img"><img src={art.src} alt="" /></span>
                 <span className="event-art-copy">
+                  {art.kicker && <em>{art.kicker}</em>}
                   <strong>{art.label}</strong>
                   <em>Details + sign up</em>
                 </span>

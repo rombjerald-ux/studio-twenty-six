@@ -13,16 +13,18 @@ window.S26 = (function () {
     tagline: "Come find your creative eye.",
     nav: [
       { label: "Calendar", href: "index.html#calendar" },
-      { label: "Classes", href: "classes.html" },
+      { label: "Offerings", href: "classes.html" },
       { label: "Happenings", href: "happenings.html" },
+      { label: "Private Events", href: "private-events.html" },
       { label: "About", href: "about.html" },
+      { label: "Join the list", href: "list.html" },
     ],
     footerColumns: [
       {
         heading: "Studio",
         links: [
           { label: "Calendar", href: "index.html#calendar" },
-          { label: "Classes", href: "classes.html" },
+          { label: "Offerings", href: "classes.html" },
           { label: "Happenings", href: "happenings.html" },
           { label: "About", href: "about.html" },
         ],
@@ -30,8 +32,9 @@ window.S26 = (function () {
       {
         heading: "Book",
         links: [
-          { label: "Sign up", href: "book.html" },
-          { label: "Private Events", href: "happenings.html" },
+          { label: "Sign up now", href: "book.html" },
+          { label: "Private Events", href: "private-events.html" },
+          { label: "Join the list", href: "list.html" },
           { label: "Contact", href: "mailto:Studiotwentysix.ca@gmail.com" },
         ],
       },
@@ -97,10 +100,12 @@ window.S26 = (function () {
     },
     classMarquee: ["Peace Love Draw", "Art Church", "Ride or Dye", "Paint the Town", "Wake and Make", "The Craft Show"],
     signupTeaser: {
-      eyebrow: "Interest list",
-      headline: "Tell us what you want to make.",
+      eyebrow: "Join the list",
+      headline: "Get studio notes, not a class booking.",
       success: "✦ You're on the list — see you at the studio.",
-      note: "Prices are listed on each class. Tess can follow up with the right class, date, and payment option.",
+      note: "This is the general mailing list. To book a class, use Sign up now.",
+      primaryCta: { label: "Join the list", href: "list.html" },
+      secondaryCta: { label: "Sign up now", href: "book.html" },
     },
   };
 
@@ -186,11 +191,11 @@ window.S26 = (function () {
       { label: "Step 1", headline: "Choose a class date.", body: "Pick the session that fits your schedule." },
       { label: "Step 2", headline: "Book your spot.", body: "Checkout will collect payment, save your seat, and send confirmation details." },
     ],
-    sessionsHeadline: "Class",
-    sessionsAccent: "dates.",
-    sessionsBody: "Tap a date below. The class and session will carry straight into checkout.",
+    sessionsHeadline: "Pick a",
+    sessionsAccent: "date.",
+    sessionsBody: "Choose a session. Checkout opens on this page with that date already selected.",
     emptyLinkText: "Booking link coming soon",
-    liveButton: "Choose this date →",
+    liveButton: "Sign up now",
     selectedButton: "Selected date",
     missingButton: "Booking link needed",
   };
@@ -199,28 +204,43 @@ window.S26 = (function () {
     enabled: true,
     endpoint: "/api/checkout",
     headline: "Reserve your spot.",
-    body: "Review the class details, then continue to secure checkout.",
+    body: "Name, email, waiver, then pay or reserve. Sliding scale is by email.",
     fallbackLabel: "Continue to checkout",
-    submitLabel: "Continue to checkout",
+    submitLabel: "Pay now",
     disabledNotice: "",
     freeLabel: "Reserve this spot",
     slidingScaleLabel: "Need sliding scale?",
-    slidingScaleBody: "Send the team a quick note and we will help find a rate that works.",
-    slidingScaleButton: "Message the team",
+    slidingScaleBody: "Message for sliding scale pricing. Email the studio and we will help find a rate that works.",
+    slidingScaleButton: "Message for sliding scale pricing",
     promoLabel: "Have a code?",
     promoPlaceholder: "Enter code",
+    waiverLabel: "I understand I take part at my own risk, and I consent to Studio Twenty Six using photos or video from this session.",
     confirmHeadline: "You're booked.",
     confirmBody: "Your spot is reserved. A confirmation email is on the way with the same details.",
     confirmEmailNote: "Check your inbox for class, date, time, and the studio address. If it is not there, look in spam, then email Studiotwentysix.ca@gmail.com.",
   };
 
+  const POLICY = {
+    parking: "No street parking on Sundays — farmers market, and cars get towed. The lot across the street is available after 5pm on Thursdays.",
+    cancel: "No refund within 24 hours of the session.",
+  };
+
   const CLASSES_PAGE = {
     hero: {
       image: "../assets/hero-pink-teal-4.jpg",
-      eyebrow: "Classes",
+      eyebrow: "Monthly Offerings",
       meta: "No experience required",
-      headline: "Choose your way in.",
+      headline: "Monthly Offerings.",
       body: "Drawing, dye, embellishment, ritual, morning making, and costume work from Studio Twenty Six in Oakland.",
+    },
+    faq: {
+      eyebrow: "Before you come",
+      headline: "Parking + cancellation.",
+      items: [
+        { q: "Where do I park?", a: "No street parking on Sundays — farmers market, and cars get towed. The lot across the street is available after 5pm on Thursdays. 5303 Claremont Ave, Oakland." },
+        { q: "What is the cancellation policy?", a: "No refund within 24 hours of the session." },
+        { q: "Is there sliding scale?", a: "Yes. Message for sliding scale pricing at Studiotwentysix.ca@gmail.com." },
+      ],
     },
   };
 
@@ -230,13 +250,13 @@ window.S26 = (function () {
     accent: "the studio.",
     intro: "Monthly classes, workshops, and studio happenings from Tess and Studio Twenty Six. Tap anything for details.",
     pricingHeadline: "Pricing",
-    pricingBody: "Prices are listed on each class. If cost is a barrier, reach out.",
+    pricingBody: "Prices are listed on each class. No refund within 24 hours. Sundays: no street parking (farmers market, tow risk). Thursday evenings: lot across the street after 5pm.",
     recurringNote: "Part of our weekly rhythm — most {day}s, same time.",
     drawerNote: "Prices are listed on each class. If cost is a barrier, message the team about options.",
     artCards: {
-      Atelier: { label: "Peace Love Draw", src: "../images/peace-love-draw-flyer.png", href: "peace-love-draw.html" },
+      Atelier: { label: "Figure Drawing", kicker: "Peace Love Draw", src: "../images/peace-love-draw-flyer.png", href: "peace-love-draw.html" },
       Open: { label: "Wake and Make", src: "../assets/posters/wake-and-make-poster.png", href: "wake-and-make.html" },
-      Salon: { label: "The Craft Show", src: "../assets/posters/craft-show-poster.png", href: "the-craft-show.html" },
+      Salon: { label: "Costume Design", kicker: "The Craft Show", src: "../assets/posters/craft-show-poster.png", href: "the-craft-show.html" },
       Workshop: { label: "Ride or Dye", src: "../assets/posters/ride-or-dye-poster.png", href: "ride-or-dye.html" },
       Series: { label: "Paint the Town", src: "../assets/photo-brushes1.jpg", href: "paint-the-town.html" },
       Restore: { label: "Art Church", src: "../images/art-church-flyer.png", href: "art-church.html" },
@@ -266,9 +286,9 @@ window.S26 = (function () {
     },
     chips: [
       { k: "Everything" },
-      { k: "Peace Love Draw", t: "Atelier" },
+      { k: "Figure Drawing", t: "Atelier" },
       { k: "Wake and Make", t: "Open" },
-      { k: "The Craft Show", t: "Salon" },
+      { k: "Costume Design", t: "Salon" },
       { k: "Ride or Dye", t: "Workshop" },
       { k: "Paint the Town", t: "Series" },
       { k: "Art Church", t: "Restore" },
@@ -290,7 +310,7 @@ window.S26 = (function () {
       chip: "Live Drawing",
       day: "Wednesday",
       who: "Led by Tess",
-      desc: "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow.",
+      desc: "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Live model, music, charcoal and paper provided. Come let your mind and body flow.",
     },
     Open: {
       label: "Wake and Make",
@@ -372,10 +392,10 @@ window.S26 = (function () {
     ({ date, type, title, sub: sub || "", time, price, where: where || S, blurb: blurb || "", special: !!special, bookingUrl: BOOKING_URLS[title] || "" });
 
   const EVENTS = [
-    e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
+    e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-08-23", "Open", "Wake and Make", "Free collage Sunday", "8:00-10:00 AM", "Free", S, "This Sunday is free. Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
 
-    e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
+    e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-09-13", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
     e("2026-09-19", "Special", "Opening Block Party", "Happening", "Afternoon", COSTS.free.price, S, "Opening block party for the Studio Twenty Six community.", true),
     e("2026-09-27", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
@@ -384,18 +404,19 @@ window.S26 = (function () {
     e("2026-10-06", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
     e("2026-10-11", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
     e("2026-10-13", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
-    e("2026-10-14", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
+    e("2026-10-14", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-10-22", "Special", "Surrealist Dinner Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A surrealist dinner party and studio happening.", true),
+    e("2026-10-29", "Salon", "The Craft Show", "Monthly costume embellishment", "6:00-9:00 PM", COSTS.craft.price, S, "Monthly costume embellishment workshop. Bring a piece of clothing - jeans, jacket, skirt - all other materials provided. Leave with your own masterpiece."),
 
     e("2026-11-03", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
     e("2026-11-08", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
     e("2026-11-15", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
-    e("2026-11-18", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
+    e("2026-11-18", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-11-19", "Special", "Friendsgiving Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A Friendsgiving gathering at the studio.", true),
 
     e("2026-12-01", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
     e("2026-12-06", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
-    e("2026-12-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow."),
+    e("2026-12-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-12-13", "Restore", "Art Church", "Live choir + making", "1:00-3:00 PM", COSTS.artChurch.price, S, "No sermon. No affiliation required. Just sound and creation in the same room."),
     e("2026-12-17", "Special", "Holiday Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A holiday party and seasonal studio happening.", true),
   ];
@@ -403,9 +424,10 @@ window.S26 = (function () {
   const CLASS_DETAILS = {
     "peace-love-draw": {
       title: "Peace Love Draw",
+      displayTitle: "Figure Drawing",
       type: "Atelier",
-      kicker: "Live drawing",
-      tagline: "A live model. Flowers. Music. The oldest practice there is.",
+      kicker: "Peace Love Draw",
+      tagline: "Live model, music, charcoal and paper provided.",
       price: COSTS.drawing.price,
       sliding: COSTS.drawing.sliding,
       duration: "3 hours",
@@ -413,16 +435,17 @@ window.S26 = (function () {
       space: "Studio Twenty Six",
       rhythm: "Wednesday evening sessions",
       image: "../images/peace-love-draw-flyer.png",
-      intro: "A figure drawing class with soft music, still lifes, snacks, a nude model, charcoal, and paper. Come let your mind and body flow.",
+      intro: "A figure drawing class with soft music, still lifes, snacks, a nude model, charcoal, and paper. Live model, music, charcoal and paper provided. Come let your mind and body flow.",
       includes: ["Nude model", "Still lifes and soft music", "Charcoal and paper", "Snacks and room to experiment"],
       goodFor: ["People who think they cannot draw", "Artists who want a low-pressure figure practice", "Anyone who wants a beautiful reason to sit still and look"],
       notes: "Bring a sketchbook if you have one. If not, come anyway.",
     },
     "the-craft-show": {
       title: "The Craft Show",
+      displayTitle: "Costume Design",
       type: "Salon",
-      kicker: "Monthly costume embellishment",
-      tagline: "Bring something. Leave with something entirely different.",
+      kicker: "The Craft Show",
+      tagline: "Bring a garment. Leave with something entirely different.",
       price: COSTS.craft.price,
       sliding: COSTS.craft.sliding,
       duration: "2–3 hours",
@@ -535,10 +558,65 @@ window.S26 = (function () {
     privateEvents: {
       eyebrow: "Private events",
       headline: "Want to host something here?",
-      body: "For private parties, team gatherings, birthdays, workshops, or custom creative events, email the studio and tell us what you are imagining.",
-      button: "Email us about a private event",
+      body: "Let us bring your event to life — we're excited to host your birthday, bachelorette, baby shower, mom's group, team building, and more.",
+      button: "Plan a private event",
+      href: "private-events.html",
     },
   };
 
-  return { SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, CLASSES_PAGE, CALENDAR, HAPPENINGS, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE, BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS };
+  const MAILING_LIST = {
+    hero: {
+      image: "../assets/hero-pink-teal-5.jpg",
+      eyebrow: "Join the list",
+      meta: "Studio notes · No class booking",
+      headline: "Stay in the loop.",
+      body: "Name and email only. This is the general mailing list — not a class signup. To book a session, use Sign up now.",
+    },
+    success: "You're on the list. We'll write when there's something worth sharing.",
+    button: "Join the list",
+    note: "We use this for studio news. Class seats are booked separately.",
+  };
+
+  const PRIVATE_EVENTS = {
+    hero: {
+      image: "../assets/photo-c5.jpg",
+      eyebrow: "Private events",
+      meta: "Birthdays · Groups · Teams",
+      headline: "Host it here.",
+      body: "Let us bring your event to life — we're excited to host your birthday, bachelorette, baby shower, mom's group, team building, and more.",
+    },
+    button: "Send the studio a note",
+    mailtoLabel: "Or email Studiotwentysix.ca@gmail.com",
+    success: "Got it. The studio will write back at the email you left.",
+    occasions: ["Birthday", "Bachelorette", "Baby shower", "Mom's group", "Team building", "Other"],
+  };
+
+  const LISTING_TITLES = {
+    "Peace Love Draw": "Figure Drawing",
+    "The Craft Show": "Costume Design",
+  };
+
+  function listingTitle(title) {
+    return LISTING_TITLES[title] || title;
+  }
+
+  function listingKicker(title) {
+    return LISTING_TITLES[title] || "";
+  }
+
+  function bookingHref(ev) {
+    return `book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`;
+  }
+
+  function nextBookable(events, today) {
+    const list = (events || []).filter((ev) => ev && ev.price);
+    const upcoming = list.find((ev) => ev.date >= today);
+    return upcoming || list[0] || null;
+  }
+
+  return {
+    SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, POLICY, CLASSES_PAGE, CALENDAR, HAPPENINGS,
+    MAILING_LIST, PRIVATE_EVENTS, LISTING_TITLES, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE,
+    BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS, listingTitle, listingKicker, bookingHref, nextBookable,
+  };
 })();

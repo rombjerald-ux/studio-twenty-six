@@ -19,8 +19,10 @@ function ClassDetailPage(){
   const exactSessions = window.S26.EVENTS.filter((ev) => ev.title === c.title);
   const related = (exactSessions.length ? exactSessions : window.S26.EVENTS.filter((ev) => ev.type === c.type)).slice(0, 5);
   const isBookable = (ev) => Boolean(ev.price);
-  const firstBookable = related.find(isBookable) || null;
-  const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
+  const today = new Date().toISOString().slice(0, 10);
+  const next = window.S26.nextBookable(related, today);
+  const displayTitle = c.displayTitle || c.title;
+  const policy = window.S26.POLICY;
   return (
     <React.Fragment>
       <window.Nav />
@@ -28,12 +30,12 @@ function ClassDetailPage(){
         <div className="class-detail-bg"><img src={c.image} alt="" /></div>
         <div className="grain-ov"></div>
         <div className="wrap class-detail-inner">
-          <a className="backlink" href="classes.html">← All classes</a>
+          <a className="backlink" href="classes.html">← All offerings</a>
           <div className="eyebrow"><span>{c.kicker}</span><span className="est">{c.rhythm}</span></div>
-          <h1>{c.title}</h1>
+          <h1>{displayTitle}</h1>
           <p>{c.tagline}</p>
           <div className="class-detail-actions">
-            <a className="btn btn-fill" href="#sessions">Sign up now →</a>
+            <a className="btn btn-fill" href={next ? window.S26.bookingHref(next) : "book.html"}>Sign up now</a>
             <a className="btn btn-outline" href="index.html#calendar">See calendar</a>
           </div>
         </div>
@@ -49,10 +51,10 @@ function ClassDetailPage(){
             </div>
             <aside className="class-detail-side">
               <figure className="class-art-panel">
-                <span className="class-art-img"><img src={c.image} alt={`${c.title} class artwork`} /></span>
+                <span className="class-art-img"><img src={c.image} alt={`${displayTitle} class artwork`} /></span>
                 <figcaption>
-                  <span>Class image</span>
-                  <strong>{c.title}</strong>
+                  <span>{c.kicker}</span>
+                  <strong>{displayTitle}</strong>
                   {c.poster && <a href={c.poster} target="_blank" rel="noreferrer">View poster →</a>}
                 </figcaption>
               </figure>
@@ -76,7 +78,7 @@ function ClassDetailPage(){
             <div>
               <h3>Good for</h3>
               <ul>{c.goodFor.map((item) => <li key={item}>{item}</li>)}</ul>
-              <p className="detail-note">If cost is a barrier, reach out. A few community-supported spots are held for each season.</p>
+              <p className="detail-note">If cost is a barrier, message for sliding scale pricing.</p>
             </div>
           </div>
         </section>
@@ -85,7 +87,7 @@ function ClassDetailPage(){
           <div className="wrap reveal">
             <div className="sec-head">
               <h2>Upcoming <em>sessions.</em></h2>
-              <p className="section-note">Choose a date to book your spot. If price is a barrier, message the team and we'll help find a rate that works.</p>
+              <p className="section-note">Sign up now jumps straight to checkout for that date. Message for sliding scale pricing if the listed price is a barrier.</p>
             </div>
             <div className="detail-events">
               {related.map((ev) => (
@@ -95,24 +97,16 @@ function ClassDetailPage(){
                   <em>{ev.sub} · {ev.time} · {ev.price}</em>
                   <div className="detail-event-actions">
                     {isBookable(ev) ? (
-                      <button className="btn btn-fill" type="button" onClick={() => {
-                        setBookingEvent(ev);
-                        requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                      }}>Book this class</button>
+                      <a className="btn btn-fill" href={window.S26.bookingHref(ev)}>Sign up now</a>
                     ) : (
                       <button className="btn btn-outline" type="button" disabled>Payment link coming</button>
                     )}
-                    <button className="btn btn-outline" type="button" onClick={() => {
-                      setBookingEvent(ev);
-                      requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                    }}>Ask about sliding scale</button>
+                    <a className="btn btn-outline" href={window.slidingScaleMailto(ev)}>Message for sliding scale pricing</a>
                   </div>
                 </div>
               ))}
             </div>
-            {bookingEvent && (
-              <window.NativeCheckoutPanel event={bookingEvent} />
-            )}
+            <p className="detail-note">{policy.parking} {policy.cancel}</p>
           </div>
         </section>
       </main>

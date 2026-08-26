@@ -12,6 +12,7 @@ const EVENTS = {
   "2026-10-13|Paint the Town": { amount: 5500, title: "Paint the Town", date: "2026-10-13", time: "6:30-8:30 PM" },
   "2026-10-14|Peace Love Draw": { amount: 2500, title: "Peace Love Draw", date: "2026-10-14", time: "6:00-9:00 PM" },
   "2026-10-22|Surrealist Dinner Party": { amount: 6500, title: "Surrealist Dinner Party", date: "2026-10-22", time: "6:00-11:00 PM" },
+  "2026-10-29|The Craft Show": { amount: 5500, title: "The Craft Show", date: "2026-10-29", time: "6:00-9:00 PM" },
   "2026-11-03|Paint the Town": { amount: 5500, title: "Paint the Town", date: "2026-11-03", time: "6:30-8:30 PM" },
   "2026-11-08|Wake and Make": { amount: 4000, title: "Wake and Make", date: "2026-11-08", time: "8:00-10:00 AM" },
   "2026-11-15|Art Church": { amount: 5000, title: "Art Church", date: "2026-11-15", time: "1:00-3:00 PM" },
@@ -56,6 +57,11 @@ module.exports = async function checkout(req, res) {
     return res.status(400).json({ error: "Please enter a valid email address for your confirmation." });
   }
 
+  const waiverAccepted = req.body && (req.body.waiverAccepted === true || req.body.waiverAccepted === "1" || req.body.waiverAccepted === "true");
+  if (!waiverAccepted) {
+    return res.status(400).json({ error: "Please accept the waiver and photo consent to continue." });
+  }
+
   const promoCode = String(req.body && req.body.promoCode || "").trim().toUpperCase();
   let unitAmount = event.amount;
   let appliedPromo = "";
@@ -96,7 +102,9 @@ module.exports = async function checkout(req, res) {
       class_time: event.time,
       seats: String(seats),
       customer_name: customerName,
-      promo_code: appliedPromo
+      promo_code: appliedPromo,
+      waiver_accepted: "1",
+      photo_consent: "1"
     },
     payment_intent_data: {
       receipt_email: customerEmail

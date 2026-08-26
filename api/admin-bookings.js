@@ -66,7 +66,24 @@ module.exports = async function adminBookings(req, res) {
       })));
       nextPage = page.has_more ? page.next_page : undefined;
     } while (nextPage);
-    return res.status(200).json({ bookings, signupRequests });
+    const mailingList = [];
+    let mailPage;
+    do {
+      const page = await stripe.customers.search({
+        query: "metadata['source']:'studio26_mailing_list'",
+        limit: 100,
+        ...(mailPage ? { page: mailPage } : {})
+      });
+      mailingList.push(...page.data.map((customer) => ({
+        id: customer.id,
+        created: customer.created,
+        name: customer.name || "",
+        email: customer.email || "",
+        type: "mailing_list"
+      })));
+      mailPage = page.has_more ? page.next_page : undefined;
+    } while (mailPage);
+    return res.status(200).json({ bookings, signupRequests, mailingList });
   } catch (error) {
     console.error("Admin bookings failed", error);
     return res.status(500).json({ error: "Could not load bookings right now." });

@@ -20,13 +20,13 @@ function Nav() {
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, []);
-  const navLinks = site.nav.concat([{ label: "Sign up", href: "book.html", cta: true }]);
+  const navLinks = site.nav.concat([{ label: "Sign up now", href: "book.html", cta: true }]);
   return (
     <nav className={`nav${solid ? " solid" : ""}${open ? " open" : ""}`}>
       <a className="brand" href="index.html#top"><span className="sr-only">{site.brand} home</span></a>
       <div className="links">
         {site.nav.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
-        <a className="nav-cta" href="book.html">Sign up</a>
+        <a className="nav-cta" href="book.html">Sign up now</a>
       </div>
       <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
         <span></span><span></span><span></span>
@@ -170,8 +170,8 @@ function Signup() {
         <div className="eyebrow-m">{teaser.eyebrow}</div>
         <h2>{teaser.headline}</h2>
         <div className="signup-actions">
-          <a className="btn btn-fill" href="book.html">Choose a class date</a>
-          <a className="btn btn-outline" href="classes.html">See class details</a>
+          <a className="btn btn-fill" href={teaser.primaryCta.href}>{teaser.primaryCta.label}</a>
+          <a className="btn btn-outline" href={teaser.secondaryCta.href}>{teaser.secondaryCta.label}</a>
         </div>
         <p className="note">{teaser.note}</p>
       </div>
@@ -230,12 +230,14 @@ function slidingScaleMailto(ev) {
 
 function NativeCheckoutPanel({ event }) {
   const checkout = window.S26.CHECKOUT;
+  const policy = window.S26.POLICY;
   const paidSuccess = new URLSearchParams(window.location.search).get("success") === "1";
   const [confirmedFree, setConfirmedFree] = useState(false);
   const [seats, setSeats] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [promoCode, setPromoCode] = useState("");
+  const [waiverAccepted, setWaiverAccepted] = useState(false);
   const [status, setStatus] = useState("");
   const [savingRequest, setSavingRequest] = useState(false);
   const unitPrice = parsePrice(event.price);
@@ -266,6 +268,7 @@ function NativeCheckoutPanel({ event }) {
           name,
           email,
           seats,
+          waiverAccepted: requestType === "free_signup" ? waiverAccepted : undefined,
         }),
       });
       const data = await response.json();
@@ -291,6 +294,10 @@ function NativeCheckoutPanel({ event }) {
       setStatus(checkout.disabledNotice);
       return;
     }
+    if (!waiverAccepted) {
+      setStatus("Check the waiver and photo consent box to continue.");
+      return;
+    }
     if (!canUseStripe) {
       await saveSignupRequest("free_signup");
       return;
@@ -309,6 +316,7 @@ function NativeCheckoutPanel({ event }) {
           email,
           seats,
           promoCode,
+          waiverAccepted,
         }),
       });
       const data = await response.json();
@@ -365,6 +373,10 @@ function NativeCheckoutPanel({ event }) {
             <div><dt>Place</dt><dd>{event.where}</dd></div>
             <div><dt>Price</dt><dd>{event.price}</dd></div>
           </dl>
+          <ul className="checkout-policy">
+            <li>{policy.parking}</li>
+            <li>{policy.cancel}</li>
+          </ul>
         </aside>
         <form className="checkout-form" onSubmit={submitCheckout}>
           <div className="checkout-row checkout-contact-row">
@@ -391,9 +403,13 @@ function NativeCheckoutPanel({ event }) {
               </label>
             )}
           </div>
+          <label className="checkout-waiver">
+            <input type="checkbox" name="waiver" checked={waiverAccepted} onChange={(e) => setWaiverAccepted(e.target.checked)} required />
+            <span>{checkout.waiverLabel}</span>
+          </label>
           <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}
-          <button className="btn btn-fill" type="submit">{canUseStripe ? checkout.submitLabel : checkout.freeLabel}</button>
+          <button className="btn btn-fill" type="submit" disabled={!waiverAccepted}>{canUseStripe ? checkout.submitLabel : checkout.freeLabel}</button>
         </form>
       </div>
       <div className="checkout-scale">

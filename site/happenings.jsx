@@ -42,7 +42,7 @@ function HappeningsPage(){
                 <h3>{copy.privateEvents.headline}</h3>
                 <p>{copy.privateEvents.body}</p>
               </div>
-              <a className="btn btn-fill" href={`mailto:${window.S26.SITE.email}?subject=${encodeURIComponent("Private event inquiry for Studio Twenty Six")}`}>{copy.privateEvents.button}</a>
+              <a className="btn btn-fill" href={copy.privateEvents.href || "private-events.html"}>{copy.privateEvents.button}</a>
             </div>
             <div className="happening-grid">
               {happenings.map((ev) => (

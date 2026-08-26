@@ -26,68 +26,68 @@ function SignupPage(){
     ? { date: requestedEvent.split("|")[0], title: requestedEvent.split("|").slice(1).join("|"), time: "", where: window.S26.SITE.addressLabel, price: "", sub: "", blurb: "" }
     : null;
   const selectedClass = requestedEventMatch ? requestedEventMatch.title : classNames.includes(requested) ? requested : "";
+  const today = new Date().toISOString().slice(0, 10);
   const sessions = events
-    .filter((ev) => !selectedClass || ev.title === selectedClass)
-    .slice(0, selectedClass ? 6 : 9);
-  const firstBookable = sessions.find(isBookable) || null;
-  const [bookingEvent, setBookingEvent] = React.useState(requestedEventMatch || successFallback || firstBookable);
+    .filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev) && ev.date >= today)
+    .concat(events.filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev) && ev.date < today))
+    .slice(0, selectedClass ? 8 : 12);
+  const firstBookable = requestedEventMatch || successFallback || null;
+  const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-  React.useEffect(() => {
-    if (requestedEventMatch) {
-      requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-    }
-  }, []);
+  const hasDirectEvent = Boolean(requestedEventMatch || successFallback);
+  const listing = (title) => window.S26.listingTitle(title);
+
+  const chooseEvent = (ev) => {
+    const url = window.S26.bookingHref(ev);
+    window.history.replaceState({}, "", url);
+    setBookingEvent(ev);
+  };
 
   return (
     <React.Fragment>
       <window.Nav />
       <main id="main" tabIndex={-1}>
-        <section className="class-detail-band signup-direct" id="sessions">
+        <section className={`class-detail-band signup-direct${hasDirectEvent || bookingEvent ? " signup-checkout" : ""}`} id="sessions">
           <div className="wrap reveal">
-            <div className="sec-head pay-head">
-              <div className="eyebrow-m">{paidSuccess ? "Confirmation" : selectedClass ? "Selected class" : "Choose a date"}</div>
-              <h2>{paidSuccess ? "You're booked." : (selectedClass || copy.sessionsHeadline)} {!paidSuccess && <em>{copy.sessionsAccent}</em>}</h2>
-              <p className="section-note">{paidSuccess ? "Your payment went through. Here are the details." : copy.sessionsBody}</p>
-            </div>
-            {!paidSuccess && <div className="payment-grid">
-              {sessions.map((ev) => {
-                return (
-                <div
-                  className={`payment-card session-card${bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? " selected" : ""}${isBookable(ev) ? " is-clickable" : ""}`}
-                  key={ev.date + ev.title}
-                  role={isBookable(ev) ? "button" : undefined}
-                  tabIndex={isBookable(ev) ? 0 : undefined}
-                  aria-pressed={isBookable(ev) && bookingEvent && eventKey(bookingEvent) === eventKey(ev)}
-                  aria-label={isBookable(ev) ? `Select ${ev.title} on ${fmtDate(ev.date)}` : undefined}
-                  onClick={() => {
-                    if (!isBookable(ev)) return;
-                    setBookingEvent(ev);
-                    requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                  }}
-                  onKeyDown={(e) => {
-                    if (!isBookable(ev) || (e.key !== "Enter" && e.key !== " ")) return;
-                    e.preventDefault();
-                    setBookingEvent(ev);
-                    requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                  }}
-                >
-                  <span className="session-date">{fmtDate(ev.date)}</span>
-                  <span className="session-time">{ev.time}</span>
-                  <strong>{ev.title}</strong>
-                  <em>{ev.sub || ev.blurb || copy.emptyLinkText}</em>
-                  <small>{ev.price} · {ev.where}</small>
-                  {isBookable(ev) ? (
-                    <button className="btn btn-fill" type="button" onClick={(e) => {
-                      e.stopPropagation();
-                      setBookingEvent(ev);
-                      requestAnimationFrame(() => document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-                    }}>{bookingEvent && eventKey(bookingEvent) === eventKey(ev) ? copy.selectedButton : copy.liveButton}</button>
-                  ) : (
-                    <button className="btn btn-outline" type="button" disabled>{copy.missingButton}</button>
-                  )}
-                </div>
-              )})}
-            </div>}
+            {paidSuccess ? (
+              <div className="sec-head pay-head">
+                <div className="eyebrow-m">Confirmation</div>
+                <h2>You're booked.</h2>
+                <p className="section-note">Your payment went through. Here are the details.</p>
+              </div>
+            ) : !bookingEvent ? (
+              <div className="sec-head pay-head">
+                <div className="eyebrow-m">{selectedClass ? listing(selectedClass) : "Sign up now"}</div>
+                <h2>{copy.sessionsHeadline} <em>{copy.sessionsAccent}</em></h2>
+                <p className="section-note">{copy.sessionsBody}</p>
+              </div>
+            ) : null}
+            {!paidSuccess && !bookingEvent && (
+              <div className="session-pick">
+                {sessions.map((ev) => (
+                  <a
+                    className="session-pick-row"
+                    key={ev.date + ev.title}
+                    href={window.S26.bookingHref(ev)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      chooseEvent(ev);
+                    }}
+                  >
+                    <span>{fmtDate(ev.date)}</span>
+                    <strong>{listing(ev.title)}</strong>
+                    <em>{ev.title !== listing(ev.title) ? ev.title : ev.sub}</em>
+                    <small>{ev.time} · {ev.price}</small>
+                    <b>{copy.liveButton}</b>
+                  </a>
+                ))}
+              </div>
+            )}
+            {bookingEvent && !paidSuccess && !hasDirectEvent && (
+              <p className="checkout-change">
+                <button type="button" className="text-link" onClick={() => { setBookingEvent(null); window.history.replaceState({}, "", "book.html"); }}>Change date</button>
+              </p>
+            )}
             {bookingEvent && (
               <window.NativeCheckoutPanel event={bookingEvent} />
             )}
