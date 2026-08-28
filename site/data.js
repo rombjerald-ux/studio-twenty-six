@@ -604,19 +604,32 @@ window.S26 = (function () {
     return LISTING_TITLES[title] ? title : "";
   }
 
+  function todayISO() {
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: "America/Los_Angeles",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+  }
+
+  function isFutureSession(ev) {
+    return Boolean(ev && ev.date && ev.date >= todayISO());
+  }
+
   function bookingHref(ev) {
     return `book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`;
   }
 
   function nextBookable(events, today) {
-    const list = (events || []).filter((ev) => ev && ev.price);
-    const upcoming = list.find((ev) => ev.date >= today);
-    return upcoming || list[0] || null;
+    const day = today || todayISO();
+    return (events || []).find((ev) => ev && ev.price && ev.date >= day) || null;
   }
 
   return {
     SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, POLICY, CLASSES_PAGE, CALENDAR, HAPPENINGS,
     MAILING_LIST, PRIVATE_EVENTS, LISTING_TITLES, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE,
-    BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS, listingTitle, listingKicker, bookingHref, nextBookable,
+    BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS, listingTitle, listingKicker, bookingHref,
+    nextBookable, todayISO, isFutureSession,
   };
 })();

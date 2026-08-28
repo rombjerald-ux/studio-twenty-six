@@ -18,7 +18,7 @@ function ClassesPage(){
   const urls = window.S26.CLASS_URLS;
   const hero = window.S26.CLASSES_PAGE.hero;
   const faq = window.S26.CLASSES_PAGE.faq;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = window.S26.todayISO();
   return (
     <React.Fragment>
       <window.Nav />

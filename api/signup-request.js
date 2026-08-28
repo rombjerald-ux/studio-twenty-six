@@ -1,5 +1,6 @@
 const Stripe = require("stripe");
 const { sendStudioAlert } = require("../lib/studio-alert");
+const { isPastDate } = require("../lib/session-date");
 
 const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
@@ -93,6 +94,9 @@ module.exports = async function signupRequest(req, res) {
   const key = `${clean(req.body && req.body.date, 40)}|${clean(req.body && req.body.title, 160)}`;
   const event = EVENTS[key];
   if (!event) return res.status(400).json({ error: "That class or event is not available." });
+  if (isPastDate(event.date)) {
+    return res.status(400).json({ error: "That session has already happened. Please pick an upcoming date." });
+  }
 
   const email = clean(req.body && req.body.email, 160).toLowerCase();
   const name = clean(req.body && req.body.name, 160);

@@ -240,6 +240,8 @@ function NativeCheckoutPanel({ event }) {
   const [waiverAccepted, setWaiverAccepted] = useState(false);
   const [status, setStatus] = useState("");
   const [savingRequest, setSavingRequest] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const pastSession = event.date && window.S26.isFutureSession && !window.S26.isFutureSession(event) && !paidSuccess;
   const unitPrice = parsePrice(event.price);
   const isPeaceLoveDraw = event.title === "Peace Love Draw";
   const studentApplied = isPeaceLoveDraw && promoCode.trim().toUpperCase() === "STUDENT";
@@ -290,6 +292,11 @@ function NativeCheckoutPanel({ event }) {
 
   const submitCheckout = async (submitEvent) => {
     submitEvent.preventDefault();
+    if (submitting) return;
+    if (pastSession) {
+      setStatus("That session has already happened. Pick an upcoming date.");
+      return;
+    }
     if (!checkout.enabled) {
       setStatus(checkout.disabledNotice);
       return;
@@ -298,8 +305,10 @@ function NativeCheckoutPanel({ event }) {
       setStatus("Check the waiver and photo consent box to continue.");
       return;
     }
+    setSubmitting(true);
     if (!canUseStripe) {
-      await saveSignupRequest("free_signup");
+      const ok = await saveSignupRequest("free_signup");
+      if (!ok) setSubmitting(false);
       return;
     }
     setStatus("Opening secure checkout...");
@@ -321,11 +330,25 @@ function NativeCheckoutPanel({ event }) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
-      window.location.href = data.url;
+      window.location.assign(data.url);
     } catch (error) {
-      setStatus(error.message || "Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
+      setSubmitting(false);
+      setStatus(error.message || "Checkout is having trouble connecting. Message the studio and we will help.");
     }
   };
+
+  if (pastSession) {
+    return (
+      <section className="native-checkout" id="book" aria-label={`Past session ${event.title}`}>
+        <div className="checkout-copy">
+          <span>This date has passed</span>
+          <h3>Pick an upcoming session.</h3>
+          <p>That class date is over. Choose another date to pay or reserve.</p>
+        </div>
+        <a className="btn btn-fill" href="book.html">See upcoming dates</a>
+      </section>
+    );
+  }
 
   if (paidSuccess || confirmedFree) {
     const place = window.S26.SITE.addressLabel || event.where;
@@ -409,7 +432,7 @@ function NativeCheckoutPanel({ event }) {
           </label>
           <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}
-          <button className="btn btn-fill" type="submit" disabled={!waiverAccepted}>{canUseStripe ? checkout.submitLabel : checkout.freeLabel}</button>
+          <button className="btn btn-fill" type="submit" disabled={!waiverAccepted || submitting}>{submitting ? "Working..." : (canUseStripe ? checkout.submitLabel : checkout.freeLabel)}</button>
         </form>
       </div>
       <div className="checkout-scale">

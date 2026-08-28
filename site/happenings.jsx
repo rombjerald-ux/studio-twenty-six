@@ -12,7 +12,7 @@ function HappeningsPage(){
   }, []);
 
   const copy = window.S26.HAPPENINGS;
-  const happenings = window.S26.EVENTS.filter((ev) => ev.type === "Special");
+  const happenings = window.S26.EVENTS.filter((ev) => ev.type === "Special" && window.S26.isFutureSession(ev));
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
   const bookingHref = (ev) => `book.html?event=${encodeURIComponent(`${ev.date}|${ev.title}`)}#book`;
 

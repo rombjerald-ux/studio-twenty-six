@@ -20,24 +20,22 @@ function SignupPage(){
   const paidSuccess = params.get("success") === "1";
   const events = window.S26.EVENTS;
   const eventKey = (ev) => `${ev.date}|${ev.title}`;
-  const isBookable = (ev) => Boolean(ev.price);
+  const isBookable = (ev) => Boolean(ev.price) && window.S26.isFutureSession(ev);
   const requestedEventMatch = events.find((ev) => eventKey(ev) === requestedEvent);
-  const successFallback = (!requestedEventMatch && paidSuccess && requestedEvent.includes("|"))
+  const liveRequested = requestedEventMatch && (paidSuccess || isBookable(requestedEventMatch)) ? requestedEventMatch : null;
+  const successFallback = (!liveRequested && paidSuccess && requestedEvent.includes("|"))
     ? { date: requestedEvent.split("|")[0], title: requestedEvent.split("|").slice(1).join("|"), time: "", where: window.S26.SITE.addressLabel, price: "", sub: "", blurb: "" }
     : null;
-  const selectedClass = requestedEventMatch ? requestedEventMatch.title : classNames.includes(requested) ? requested : "";
-  const today = new Date().toISOString().slice(0, 10);
-  const sessions = events
-    .filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev) && ev.date >= today)
-    .concat(events.filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev) && ev.date < today))
-    .slice(0, selectedClass ? 8 : 12);
-  const firstBookable = requestedEventMatch || successFallback || null;
+  const selectedClass = liveRequested ? liveRequested.title : classNames.includes(requested) ? requested : "";
+  const sessions = events.filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev));
+  const firstBookable = liveRequested || successFallback || null;
   const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-  const hasDirectEvent = Boolean(requestedEventMatch || successFallback);
+  const hasDirectEvent = Boolean(liveRequested || successFallback);
   const listing = (title) => window.S26.listingTitle(title);
 
   const chooseEvent = (ev) => {
+    if (!isBookable(ev)) return;
     const url = window.S26.bookingHref(ev);
     window.history.replaceState({}, "", url);
     setBookingEvent(ev);
@@ -64,6 +62,7 @@ function SignupPage(){
             ) : null}
             {!paidSuccess && !bookingEvent && (
               <div className="session-pick">
+                {sessions.length === 0 && <p className="section-note">No upcoming dates for this class. Message the studio and we will help.</p>}
                 {sessions.map((ev) => (
                   <a
                     className="session-pick-row"
@@ -85,7 +84,7 @@ function SignupPage(){
             )}
             {bookingEvent && !paidSuccess && !hasDirectEvent && (
               <p className="checkout-change">
-                <button type="button" className="text-link" onClick={() => { setBookingEvent(null); window.history.replaceState({}, "", "book.html"); }}>Change date</button>
+                <button type="button" className="text-link" onClick={() => { setBookingEvent(null); window.history.replaceState({}, "", selectedClass ? `book.html?class=${encodeURIComponent(selectedClass)}` : "book.html"); }}>Change date</button>
               </p>
             )}
             {bookingEvent && (

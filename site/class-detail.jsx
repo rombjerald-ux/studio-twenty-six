@@ -16,10 +16,10 @@ function ClassDetailPage(){
   useReveal();
   const slug = window.CLASS_SLUG || "peace-love-draw";
   const c = window.S26.CLASS_DETAILS[slug];
-  const exactSessions = window.S26.EVENTS.filter((ev) => ev.title === c.title);
-  const related = (exactSessions.length ? exactSessions : window.S26.EVENTS.filter((ev) => ev.type === c.type)).slice(0, 5);
-  const isBookable = (ev) => Boolean(ev.price);
-  const today = new Date().toISOString().slice(0, 10);
+  const exactSessions = window.S26.EVENTS.filter((ev) => ev.title === c.title && window.S26.isFutureSession(ev));
+  const related = (exactSessions.length ? exactSessions : window.S26.EVENTS.filter((ev) => ev.type === c.type && window.S26.isFutureSession(ev))).slice(0, 5);
+  const isBookable = (ev) => Boolean(ev.price) && window.S26.isFutureSession(ev);
+  const today = window.S26.todayISO();
   const next = window.S26.nextBookable(related, today);
   const displayTitle = c.displayTitle || c.title;
   const policy = window.S26.POLICY;

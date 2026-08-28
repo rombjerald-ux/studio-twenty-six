@@ -1,4 +1,5 @@
 const Stripe = require("stripe");
+const { isPastDate } = require("../lib/session-date");
 
 
 const EVENTS = {
@@ -51,6 +52,10 @@ module.exports = async function checkout(req, res) {
 
   if (!event) {
     return res.status(400).json({ error: "That class is not available for checkout." });
+  }
+
+  if (isPastDate(event.date)) {
+    return res.status(400).json({ error: "That session has already happened. Please pick an upcoming date." });
   }
 
   if (!customerEmail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(customerEmail)) {
@@ -111,6 +116,8 @@ module.exports = async function checkout(req, res) {
     },
     success_url: `${site}/site/book.html?success=1&event=${encodeURIComponent(key)}#book`,
     cancel_url: `${site}/site/book.html?event=${encodeURIComponent(key)}#book`
+  }, {
+    idempotencyKey: `s26:${key}:${customerEmail}:${seats}:${appliedPromo || "none"}`.slice(0, 255)
   });
 
   return res.status(200).json({ url: session.url });
