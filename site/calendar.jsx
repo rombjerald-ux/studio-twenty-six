@@ -19,7 +19,7 @@ function todayISO(){
   const day = String(d.getDate()).padStart(2, "0");
   return y + "-" + m + "-" + day;
 }
-const TODAY = todayISO();
+const TODAY = (window.S26.todayISO && window.S26.todayISO()) || todayISO();
 const RECUR = { Atelier:true, Open:true, Salon:false, Restore:true };
 
 function fmtDate(iso){
@@ -77,7 +77,11 @@ function EventDrawer({ ev, onClose }){
             </div>
             <div className="dreg split">
               <a className="btn btn-outline" href={cal.eventDetailUrls[ev.title] || "classes.html"}>Details</a>
-              <a className="btn btn-fill" href={bookingHref(ev)} onClick={onClose}>Sign up now →</a>
+              {window.S26.isFutureSession(ev) ? (
+                <a className="btn btn-fill" href={bookingHref(ev)} onClick={onClose}>Sign up now →</a>
+              ) : (
+                <button className="btn btn-outline" type="button" disabled>This date has passed</button>
+              )}
             </div>
           </React.Fragment>
         )}
@@ -106,7 +110,7 @@ function Calendar(){
   const monthEvents = EVENTS.filter((ev) => ev.date.startsWith(monthKey) && matches(ev));
   const allMonthEvents = EVENTS.filter((ev) => ev.date.startsWith(monthKey));
   const activeMonth = MONTHS.find((mo) => mo.key === monthKey);
-  const nextFor = (r) => EVENTS.find((ev) => ev.title === r.t || (r.t === "Rotating workshops" && ev.type === "Workshop"));
+  const nextFor = (r) => EVENTS.find((ev) => window.S26.isFutureSession(ev) && (ev.title === r.t || (r.t === "Rotating workshops" && ev.type === "Workshop")));
   const rhythmDate = (r) => {
     const ev = nextFor(r);
     if (!ev) return r.d;
@@ -199,6 +203,7 @@ function Calendar(){
               <a className="event-art-card" key={type} href={art.href} aria-label={`${art.label} details and sign up`}>
                 <span className="event-art-img"><img src={art.src} alt="" /></span>
                 <span className="event-art-copy">
+                  {art.kicker && <em>{art.kicker}</em>}
                   <strong>{art.label}</strong>
                   <em>Details + sign up</em>
                 </span>

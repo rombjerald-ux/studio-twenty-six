@@ -22,6 +22,22 @@ function App(){
       <window.Make />
       <window.Marquee variant="dark" items={home.classMarquee} />
       <window.Calendar />
+      <section className="section" id="faq">
+        <div className="wrap policy-faq reveal">
+          <div className="sec-head">
+            <div className="eyebrow-m">{window.S26.CLASSES_PAGE.faq.eyebrow}</div>
+            <h2>{window.S26.CLASSES_PAGE.faq.headline}</h2>
+          </div>
+          <dl>
+            {window.S26.CLASSES_PAGE.faq.items.map((item) => (
+              <div key={item.q}>
+                <dt>{item.q}</dt>
+                <dd>{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
       <window.Signup />
       </main>
       <window.Footer />

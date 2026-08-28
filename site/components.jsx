@@ -20,13 +20,13 @@ function Nav() {
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, []);
-  const navLinks = site.nav.concat([{ label: "Sign up", href: "book.html", cta: true }]);
+  const navLinks = site.nav.concat([{ label: "Sign up now", href: "book.html", cta: true }]);
   return (
     <nav className={`nav${solid ? " solid" : ""}${open ? " open" : ""}`}>
       <a className="brand" href="index.html#top"><span className="sr-only">{site.brand} home</span></a>
       <div className="links">
         {site.nav.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
-        <a className="nav-cta" href="book.html">Sign up</a>
+        <a className="nav-cta" href="book.html">Sign up now</a>
       </div>
       <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
         <span></span><span></span><span></span>
@@ -170,8 +170,8 @@ function Signup() {
         <div className="eyebrow-m">{teaser.eyebrow}</div>
         <h2>{teaser.headline}</h2>
         <div className="signup-actions">
-          <a className="btn btn-fill" href="book.html">Choose a class date</a>
-          <a className="btn btn-outline" href="classes.html">See class details</a>
+          <a className="btn btn-fill" href={teaser.primaryCta.href}>{teaser.primaryCta.label}</a>
+          <a className="btn btn-outline" href={teaser.secondaryCta.href}>{teaser.secondaryCta.label}</a>
         </div>
         <p className="note">{teaser.note}</p>
       </div>
@@ -230,14 +230,18 @@ function slidingScaleMailto(ev) {
 
 function NativeCheckoutPanel({ event }) {
   const checkout = window.S26.CHECKOUT;
+  const policy = window.S26.POLICY;
   const paidSuccess = new URLSearchParams(window.location.search).get("success") === "1";
   const [confirmedFree, setConfirmedFree] = useState(false);
   const [seats, setSeats] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [promoCode, setPromoCode] = useState("");
+  const [waiverAccepted, setWaiverAccepted] = useState(false);
   const [status, setStatus] = useState("");
   const [savingRequest, setSavingRequest] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const pastSession = event.date && window.S26.isFutureSession && !window.S26.isFutureSession(event) && !paidSuccess;
   const unitPrice = parsePrice(event.price);
   const isPeaceLoveDraw = event.title === "Peace Love Draw";
   const studentApplied = isPeaceLoveDraw && promoCode.trim().toUpperCase() === "STUDENT";
@@ -266,9 +270,10 @@ function NativeCheckoutPanel({ event }) {
           name,
           email,
           seats,
+          waiverAccepted: requestType === "free_signup" ? waiverAccepted : undefined,
         }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "Could not save that request.");
       const emailNote = data.confirmationSent ? " Confirmation email sent." : "";
       if (requestType === "free_signup") {
@@ -287,12 +292,23 @@ function NativeCheckoutPanel({ event }) {
 
   const submitCheckout = async (submitEvent) => {
     submitEvent.preventDefault();
+    if (submitting) return;
+    if (pastSession) {
+      setStatus("That session has already happened. Pick an upcoming date.");
+      return;
+    }
     if (!checkout.enabled) {
       setStatus(checkout.disabledNotice);
       return;
     }
+    if (!waiverAccepted) {
+      setStatus("Check the waiver and photo consent box to continue.");
+      return;
+    }
+    setSubmitting(true);
     if (!canUseStripe) {
-      await saveSignupRequest("free_signup");
+      const ok = await saveSignupRequest("free_signup");
+      if (!ok) setSubmitting(false);
       return;
     }
     setStatus("Opening secure checkout...");
@@ -309,15 +325,30 @@ function NativeCheckoutPanel({ event }) {
           email,
           seats,
           promoCode,
+          waiverAccepted,
         }),
       });
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       if (!response.ok || !data.url) throw new Error(data.error || "Checkout is not ready yet.");
-      window.location.href = data.url;
+      window.location.assign(data.url);
     } catch (error) {
-      setStatus(error.message || "Checkout is having trouble connecting. Use the booking button below, or message the team for help.");
+      setSubmitting(false);
+      setStatus(error.message || "Checkout is having trouble connecting. Message the studio and we will help.");
     }
   };
+
+  if (pastSession) {
+    return (
+      <section className="native-checkout" id="book" aria-label={`Past session ${event.title}`}>
+        <div className="checkout-copy">
+          <span>This date has passed</span>
+          <h3>Pick an upcoming session.</h3>
+          <p>That class date is over. Choose another date to pay or reserve.</p>
+        </div>
+        <a className="btn btn-fill" href="book.html">See upcoming dates</a>
+      </section>
+    );
+  }
 
   if (paidSuccess || confirmedFree) {
     const place = window.S26.SITE.addressLabel || event.where;
@@ -365,6 +396,10 @@ function NativeCheckoutPanel({ event }) {
             <div><dt>Place</dt><dd>{event.where}</dd></div>
             <div><dt>Price</dt><dd>{event.price}</dd></div>
           </dl>
+          <ul className="checkout-policy">
+            <li>{policy.parking}</li>
+            <li>{policy.cancel}</li>
+          </ul>
         </aside>
         <form className="checkout-form" onSubmit={submitCheckout}>
           <div className="checkout-row checkout-contact-row">
@@ -391,9 +426,13 @@ function NativeCheckoutPanel({ event }) {
               </label>
             )}
           </div>
+          <label className="checkout-waiver">
+            <input type="checkbox" name="waiver" checked={waiverAccepted} onChange={(e) => setWaiverAccepted(e.target.checked)} required />
+            <span>{checkout.waiverLabel}</span>
+          </label>
           <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}
-          <button className="btn btn-fill" type="submit">{canUseStripe ? checkout.submitLabel : checkout.freeLabel}</button>
+          <button className="btn btn-fill" type="submit" disabled={!waiverAccepted || submitting}>{submitting ? "Working..." : (canUseStripe ? checkout.submitLabel : checkout.freeLabel)}</button>
         </form>
       </div>
       <div className="checkout-scale">

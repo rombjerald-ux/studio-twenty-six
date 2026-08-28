@@ -86,6 +86,14 @@
     {
       "source": "/",
       "destination": "/site/index.html"
+    },
+    {
+      "source": "/list",
+      "destination": "/site/list.html"
+    },
+    {
+      "source": "/private-events",
+      "destination": "/site/private-events.html"
     }
   ],
   "crons": [

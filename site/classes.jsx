@@ -1,4 +1,4 @@
-/* Studio Twenty Six — classes index */
+/* Studio Twenty Six — offerings index */
 function useReveal(){
   React.useEffect(() => {
     const root = document.querySelector(".site");
@@ -17,6 +17,8 @@ function ClassesPage(){
   const details = window.S26.CLASS_DETAILS;
   const urls = window.S26.CLASS_URLS;
   const hero = window.S26.CLASSES_PAGE.hero;
+  const faq = window.S26.CLASSES_PAGE.faq;
+  const today = window.S26.todayISO();
   return (
     <React.Fragment>
       <window.Nav />
@@ -33,19 +35,37 @@ function ClassesPage(){
         <div className="wrap class-card-grid reveal">
           {Object.keys(details).map((slug) => {
             const c = details[slug];
+            const next = window.S26.nextBookable(window.S26.EVENTS.filter((ev) => ev.title === c.title), today);
             return (
-              <a className="class-card" href={urls[slug]} key={slug}>
-                <span className="class-card-img"><img src={c.image} alt="" /></span>
+              <article className="class-card" key={slug}>
+                <a className="class-card-img" href={urls[slug]}><img src={c.image} alt="" /></a>
                 <span className="class-card-body">
                   <em>{c.kicker}</em>
-                  <strong>{c.title}</strong>
+                  <strong>{c.displayTitle || c.title}</strong>
                   <span>{c.tagline}</span>
                   <small>{c.price} · {c.duration}</small>
-                  <b>View details + sign up</b>
+                  <span className="class-card-actions">
+                    <a className="btn btn-fill" href={next ? window.S26.bookingHref(next) : "book.html"}>Sign up now</a>
+                    <a href={urls[slug]}><b>Details</b></a>
+                  </span>
                 </span>
-              </a>
+              </article>
             );
           })}
+        </div>
+        <div className="wrap policy-faq reveal" id="faq">
+          <div className="sec-head">
+            <div className="eyebrow-m">{faq.eyebrow}</div>
+            <h2>{faq.headline}</h2>
+          </div>
+          <dl>
+            {faq.items.map((item) => (
+              <div key={item.q}>
+                <dt>{item.q}</dt>
+                <dd>{item.a}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </main>
       <window.Footer />

@@ -1,4 +1,5 @@
 const Stripe = require("stripe");
+const { isPastDate } = require("../lib/session-date");
 
 
 const EVENTS = {
@@ -12,6 +13,7 @@ const EVENTS = {
   "2026-10-13|Paint the Town": { amount: 5500, title: "Paint the Town", date: "2026-10-13", time: "6:30-8:30 PM" },
   "2026-10-14|Peace Love Draw": { amount: 2500, title: "Peace Love Draw", date: "2026-10-14", time: "6:00-9:00 PM" },
   "2026-10-22|Surrealist Dinner Party": { amount: 6500, title: "Surrealist Dinner Party", date: "2026-10-22", time: "6:00-11:00 PM" },
+  "2026-10-29|The Craft Show": { amount: 5500, title: "The Craft Show", date: "2026-10-29", time: "6:00-9:00 PM" },
   "2026-11-03|Paint the Town": { amount: 5500, title: "Paint the Town", date: "2026-11-03", time: "6:30-8:30 PM" },
   "2026-11-08|Wake and Make": { amount: 4000, title: "Wake and Make", date: "2026-11-08", time: "8:00-10:00 AM" },
   "2026-11-15|Art Church": { amount: 5000, title: "Art Church", date: "2026-11-15", time: "1:00-3:00 PM" },
@@ -52,8 +54,17 @@ module.exports = async function checkout(req, res) {
     return res.status(400).json({ error: "That class is not available for checkout." });
   }
 
+  if (isPastDate(event.date)) {
+    return res.status(400).json({ error: "That session has already happened. Please pick an upcoming date." });
+  }
+
   if (!customerEmail || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(customerEmail)) {
     return res.status(400).json({ error: "Please enter a valid email address for your confirmation." });
+  }
+
+  const waiverAccepted = req.body && (req.body.waiverAccepted === true || req.body.waiverAccepted === "1" || req.body.waiverAccepted === "true");
+  if (!waiverAccepted) {
+    return res.status(400).json({ error: "Please accept the waiver and photo consent to continue." });
   }
 
   const promoCode = String(req.body && req.body.promoCode || "").trim().toUpperCase();
@@ -96,13 +107,17 @@ module.exports = async function checkout(req, res) {
       class_time: event.time,
       seats: String(seats),
       customer_name: customerName,
-      promo_code: appliedPromo
+      promo_code: appliedPromo,
+      waiver_accepted: "1",
+      photo_consent: "1"
     },
     payment_intent_data: {
       receipt_email: customerEmail
     },
     success_url: `${site}/site/book.html?success=1&event=${encodeURIComponent(key)}#book`,
     cancel_url: `${site}/site/book.html?event=${encodeURIComponent(key)}#book`
+  }, {
+    idempotencyKey: `s26:${key}:${customerEmail}:${seats}:${appliedPromo || "none"}`.slice(0, 255)
   });
 
   return res.status(200).json({ url: session.url });

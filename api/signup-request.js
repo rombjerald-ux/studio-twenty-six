@@ -1,5 +1,6 @@
 const Stripe = require("stripe");
 const { sendStudioAlert } = require("../lib/studio-alert");
+const { isPastDate } = require("../lib/session-date");
 
 const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
@@ -14,6 +15,7 @@ const EVENTS = {
   "2026-10-13|Paint the Town": { title: "Paint the Town", date: "2026-10-13", time: "6:30-8:30 PM", price: "$55" },
   "2026-10-14|Peace Love Draw": { title: "Peace Love Draw", date: "2026-10-14", time: "6:00-9:00 PM", price: "$25" },
   "2026-10-22|Surrealist Dinner Party": { title: "Surrealist Dinner Party", date: "2026-10-22", time: "6:00-11:00 PM", price: "$65" },
+  "2026-10-29|The Craft Show": { title: "The Craft Show", date: "2026-10-29", time: "6:00-9:00 PM", price: "$55" },
   "2026-11-03|Paint the Town": { title: "Paint the Town", date: "2026-11-03", time: "6:30-8:30 PM", price: "$55" },
   "2026-11-08|Wake and Make": { title: "Wake and Make", date: "2026-11-08", time: "8:00-10:00 AM", price: "$40" },
   "2026-11-15|Art Church": { title: "Art Church", date: "2026-11-15", time: "1:00-3:00 PM", price: "$50" },
@@ -92,11 +94,19 @@ module.exports = async function signupRequest(req, res) {
   const key = `${clean(req.body && req.body.date, 40)}|${clean(req.body && req.body.title, 160)}`;
   const event = EVENTS[key];
   if (!event) return res.status(400).json({ error: "That class or event is not available." });
+  if (isPastDate(event.date)) {
+    return res.status(400).json({ error: "That session has already happened. Please pick an upcoming date." });
+  }
 
   const email = clean(req.body && req.body.email, 160).toLowerCase();
   const name = clean(req.body && req.body.name, 160);
   const seats = Math.max(1, Math.min(Number(req.body && req.body.seats) || 1, 10));
   const requestType = clean(req.body && req.body.requestType, 80) === "sliding_scale" ? "sliding_scale" : "free_signup";
+
+  const waiverAccepted = req.body && (req.body.waiverAccepted === true || req.body.waiverAccepted === "1" || req.body.waiverAccepted === "true");
+  if (requestType === "free_signup" && !waiverAccepted) {
+    return res.status(400).json({ error: "Please accept the waiver and photo consent to reserve." });
+  }
 
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return res.status(400).json({ error: "Please enter a valid email address." });
@@ -117,6 +127,8 @@ module.exports = async function signupRequest(req, res) {
         class_time: event.time,
         class_price: event.price,
         seats: String(seats),
+        waiver_accepted: waiverAccepted ? "1" : "",
+        photo_consent: waiverAccepted ? "1" : "",
       },
     });
 
