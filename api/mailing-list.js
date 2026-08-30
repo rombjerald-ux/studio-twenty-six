@@ -1,9 +1,8 @@
 const Stripe = require("stripe");
 const { sendStudioAlert } = require("../lib/studio-alert");
 
-// Existing list to fold in later (do not block this page on import):
-// https://docs.google.com/spreadsheets/d/1hCY5KujGIMsWPSRBL-_RxAoOTyc7uTRk4syM0-uMZcI/edit
-// Export that sheet as CSV, then add rows via this endpoint or /site/admin.html.
+// Existing sheet lives in lib/existing-mailing-list.js and /site/admin.html CSV.
+// Stripe import (no mail): node scripts/import-mailing-list.js
 
 function clean(value, max = 200) {
   return String(value || "").trim().slice(0, max);

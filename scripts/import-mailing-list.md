@@ -1,10 +1,19 @@
 # Fold in the existing mailing list
 
-Existing sheet (import later, do not block the public page):
+Sheet: https://docs.google.com/spreadsheets/d/1hCY5KujGIMsWPSRBL-_RxAoOTyc7uTRk4syM0-uMZcI
 
-https://docs.google.com/spreadsheets/d/1hCY5KujGIMsWPSRBL-_RxAoOTyc7uTRk4syM0-uMZcI/edit
+The addresses from that sheet live in `lib/existing-mailing-list.js`. They are merged into `/site/admin.html` CSV so the studio can export them even before Stripe import.
 
-1. Export the sheet as CSV with `name,email` columns.
-2. New signups already land as Stripe customers with `metadata.source = studio26_mailing_list` and email Studiotwentysix.ca@gmail.com via Resend.
-3. Export current signups from `/site/admin.html` (CSV button) or `GET /api/admin-bookings`.
-4. One-shot import: POST each row to `/api/mailing-list` as `{ "name", "email" }` from a trusted machine with the live site URL.
+This Cloud Agent environment has no `STRIPE_SECRET_KEY`, so the Stripe copy was not written here. Do not email these people.
+
+When a live Stripe secret is available:
+
+```
+node scripts/import-mailing-list.js --check
+STRIPE_SECRET_KEY=sk_live_... node scripts/import-mailing-list.js --dry-run
+STRIPE_SECRET_KEY=sk_live_... node scripts/import-mailing-list.js
+```
+
+The script creates or tags Stripe customers with `metadata.source = studio26_mailing_list` and skips duplicates. It does not send mail.
+
+New public signups from `/site/list.html` still go through `/api/mailing-list.js` and show up in the same admin CSV.

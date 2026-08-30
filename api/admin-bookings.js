@@ -1,4 +1,5 @@
 const Stripe = require("stripe");
+const { existingMailingList, mergeMailingLists } = require("../lib/existing-mailing-list");
 
 function unauthorized(res) {
   return res.status(401).json({ error: "Admin login required." });
@@ -16,7 +17,13 @@ function isAuthorized(req) {
 module.exports = async function adminBookings(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
   if (!isAuthorized(req)) return unauthorized(res);
-  if (!process.env.STRIPE_SECRET_KEY) return res.status(500).json({ error: "Stripe is not configured yet." });
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return res.status(200).json({
+      bookings: [],
+      signupRequests: [],
+      mailingList: existingMailingList(),
+    });
+  }
 
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -83,7 +90,11 @@ module.exports = async function adminBookings(req, res) {
       })));
       mailPage = page.has_more ? page.next_page : undefined;
     } while (mailPage);
-    return res.status(200).json({ bookings, signupRequests, mailingList });
+    return res.status(200).json({
+      bookings,
+      signupRequests,
+      mailingList: mergeMailingLists(existingMailingList(), mailingList),
+    });
   } catch (error) {
     console.error("Admin bookings failed", error);
     return res.status(500).json({ error: "Could not load bookings right now." });
