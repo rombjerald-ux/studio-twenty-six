@@ -38,6 +38,7 @@ function App(){
           </dl>
         </div>
       </section>
+      <window.Instagram />
       <window.Signup />
       </main>
       <window.Footer />

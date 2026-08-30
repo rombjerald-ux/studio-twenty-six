@@ -162,6 +162,87 @@ function Make() {
   );
 }
 
+function loadInstagramEmbed() {
+  const run = () => {
+    const go = () => { if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); };
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(go);
+    else go();
+  };
+  if (window.instgrm && window.instgrm.Embeds) {
+    run();
+    return undefined;
+  }
+  const existing = document.querySelector("script[data-s26-instagram-embed]");
+  if (existing) {
+    existing.addEventListener("load", run);
+    return undefined;
+  }
+  const script = document.createElement("script");
+  script.src = "https://www.instagram.com/embed.js";
+  script.async = true;
+  script.dataset.s26InstagramEmbed = "true";
+  script.addEventListener("load", run);
+  document.body.appendChild(script);
+  return undefined;
+}
+
+function Instagram() {
+  const copy = window.S26.HOME.instagram;
+  const [posts, setPosts] = React.useState(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    fetch("/api/instagram-feed")
+      .then((response) => response.ok ? response.json() : {})
+      .then((data) => {
+        if (cancelled) return;
+        const items = (data.posts || []).filter((post) => post && post.permalink && (post.mediaUrl || post.thumbnailUrl));
+        setPosts(items);
+      })
+      .catch(() => { if (!cancelled) setPosts([]); });
+    return () => { cancelled = true; };
+  }, []);
+
+  React.useEffect(() => {
+    if (posts && posts.length) return undefined;
+    return loadInstagramEmbed();
+  }, [posts]);
+
+  return (
+    <section className="instagram-section" id="instagram">
+      <div className="wrap">
+        <div className="instagram-head reveal">
+          <div>
+            <div className="eyebrow-m">{copy.eyebrow}</div>
+            <div className="sec-head"><h2>{copy.headline}</h2></div>
+            <p className="instagram-lede">{copy.body}</p>
+          </div>
+          <a className="btn btn-fill" href={copy.href} target="_blank" rel="noopener noreferrer">{copy.cta}</a>
+        </div>
+        {posts && posts.length ? (
+          <div className="ig-grid reveal">
+            {posts.map((post) => (
+              <a key={post.id || post.permalink} href={post.permalink} target="_blank" rel="noopener noreferrer">
+                <img src={post.thumbnailUrl || post.mediaUrl} alt="" />
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="ig-embed reveal">
+            <blockquote
+              className="instagram-media"
+              data-instgrm-permalink={copy.href}
+              data-instgrm-version="14"
+            >
+              <a href={copy.href} target="_blank" rel="noopener noreferrer">{copy.handle}</a>
+            </blockquote>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function Signup() {
   const teaser = window.S26.HOME.signupTeaser;
   return (
@@ -447,4 +528,4 @@ function NativeCheckoutPanel({ event }) {
   );
 }
 
-Object.assign(window, { Btn, Nav, Marquee, Hero, Mission, TessTeaser, Make, Signup, Footer, NativeCheckoutPanel, formatEventDate, slidingScaleMailto });
+Object.assign(window, { Btn, Nav, Marquee, Hero, Mission, TessTeaser, Make, Instagram, Signup, Footer, NativeCheckoutPanel, formatEventDate, slidingScaleMailto });

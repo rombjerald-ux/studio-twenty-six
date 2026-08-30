@@ -2,7 +2,7 @@
 *{box-sizing:border-box;}
 html,body{margin:0;}
 html{scroll-behavior:smooth;scroll-padding-top:88px;}
-#book,#sessions,#calendar,#faq,#main{scroll-margin-top:88px;}
+#book,#sessions,#calendar,#faq,#instagram,#main{scroll-margin-top:88px;}
 .skip-link{position:absolute;left:16px;top:12px;z-index:200;transform:translateY(-160%);padding:10px 16px;background:var(--lime);color:var(--void);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:var(--r-pill);font-weight:700;}
 .skip-link:focus,.skip-link:focus-visible{transform:none;outline:3px solid var(--pearl);outline-offset:3px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
@@ -262,6 +262,17 @@ html{scroll-behavior:smooth;scroll-padding-top:88px;}
 .dsub{font-size:12.5px;color:var(--faint);line-height:1.5;font-style:italic;}
 .dreg{position:sticky;bottom:0;background:linear-gradient(180deg,transparent,var(--surface-1) 30%);padding:16px 24px 24px;margin-top:auto;}
 .dreg .btn{width:100%;justify-content:center;}
+
+/* ---------------- INSTAGRAM ---------------- */
+.instagram-section{background:var(--surface-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--s-9) 0;}
+.instagram-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:var(--s-5);}
+.instagram-lede{font-size:16px;line-height:1.55;color:var(--lilac-mute);max-width:48ch;margin:16px 0 0;}
+.ig-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.ig-grid a{display:block;aspect-ratio:1;overflow:hidden;border-radius:var(--r-card);background:var(--void);}
+.ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-fast) var(--ease);}
+.ig-grid a:hover img{transform:scale(1.03);}
+.ig-embed{display:flex;justify-content:center;}
+.ig-embed .instagram-media{margin:0 auto!important;background:var(--pearl)!important;border:1px solid var(--line)!important;border-radius:var(--r-card)!important;min-width:min(326px,100%)!important;max-width:540px!important;}
 
 /* ---------------- SIGNUP ---------------- */
 .signup{position:relative;overflow:hidden;border-radius:var(--r-card);margin:0 var(--page-pad);padding:var(--s-9) var(--s-7);
@@ -569,7 +580,7 @@ html{scroll-behavior:smooth;scroll-padding-top:88px;}
   .tess-portrait-slot{min-height:360px;}
   .rhythm-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
   .event-art-wall{grid-template-columns:repeat(3,minmax(0,1fr));}
-  .class-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .class-card-grid,.ig-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .class-detail-grid,.detail-lists{grid-template-columns:1fr;}
   .detail-events{grid-template-columns:repeat(2,minmax(0,1fr));}
   .register-grid{grid-template-columns:1fr;}
@@ -600,7 +611,8 @@ html{scroll-behavior:smooth;scroll-padding-top:88px;}
   .bio-hero{min-height:84vh;}
   .bio-cards{grid-template-columns:1fr;}
   .bio-cards span{min-height:86px;}
-  .class-card-grid,.detail-events,.happening-grid{grid-template-columns:1fr;}
+  .class-card-grid,.detail-events,.happening-grid,.ig-grid{grid-template-columns:1fr 1fr;}
+  .instagram-head{align-items:flex-start;flex-direction:column;}
   .private-event-callout{display:grid;}
   .private-event-callout .btn{width:100%;justify-content:center;}
   .classes-hero,.class-detail-hero{min-height:72vh;}

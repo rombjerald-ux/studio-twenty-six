@@ -107,6 +107,14 @@ window.S26 = (function () {
       primaryCta: { label: "Join the list", href: "list.html" },
       secondaryCta: { label: "Sign up now", href: "book.html" },
     },
+    instagram: {
+      eyebrow: "Instagram",
+      headline: "From the studio.",
+      body: "Latest from @studio26ca. This feed updates when new posts go up.",
+      handle: "@studio26ca",
+      href: "https://www.instagram.com/studio26ca/",
+      cta: "Follow @studio26ca",
+    },
   };
 
   const ABOUT = {
