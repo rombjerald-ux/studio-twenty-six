@@ -12,13 +12,13 @@ window.S26 = (function () {
     liveUrl: "https://studio26ca.com",
     tagline: "Come find your creative eye.",
     nav: [
-      { label: "Calendar", href: "index.html#calendar" },
-      { label: "Offerings", href: "classes.html" },
-      { label: "Happenings", href: "happenings.html" },
-      { label: "Private Events", href: "private-events.html" },
       { label: "About", href: "about.html" },
-      { label: "Join the list", href: "list.html" },
+      { label: "Offerings", href: "classes.html" },
+      { label: "Calendar", href: "index.html#calendar" },
+      { label: "Private Events", href: "private-events.html" },
+      { label: "Happenings", href: "happenings.html" },
     ],
+    headerCta: { label: "Sign up now", href: "list.html" },
     footerColumns: [
       {
         heading: "Studio",
@@ -32,7 +32,7 @@ window.S26 = (function () {
       {
         heading: "Book",
         links: [
-          { label: "Sign up now", href: "book.html" },
+          { label: "Book a class", href: "book.html" },
           { label: "Private Events", href: "private-events.html" },
           { label: "Join the list", href: "list.html" },
           { label: "Contact", href: "mailto:Studiotwentysix.ca@gmail.com" },

@@ -20,13 +20,14 @@ function Nav() {
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, []);
-  const navLinks = site.nav.concat([{ label: "Sign up now", href: "book.html", cta: true }]);
+  const headerCta = site.headerCta || { label: "Sign up now", href: "list.html" };
+  const navLinks = site.nav.concat([{ ...headerCta, cta: true }]);
   return (
     <nav className={`nav${solid ? " solid" : ""}${open ? " open" : ""}`}>
       <a className="brand" href="index.html#top"><span className="sr-only">{site.brand} home</span></a>
       <div className="links">
         {site.nav.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
-        <a className="nav-cta" href="book.html">Sign up now</a>
+        <a className="nav-cta" href={headerCta.href}>{headerCta.label}</a>
       </div>
       <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
         <span></span><span></span><span></span>
