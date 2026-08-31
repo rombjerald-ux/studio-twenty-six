@@ -413,8 +413,8 @@ window.S26 = (function () {
     e("2026-10-06", "Workshop", "Ride or Dye", "Dye class", "6:30-8:30 PM", COSTS.workshop.price, S, "A color-forward textile workshop for dyeing fabric experiments and wearable transformations."),
     e("2026-10-11", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
     e("2026-10-13", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
-    e("2026-10-14", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-10-22", "Special", "Surrealist Dinner Party", "Happening", "6:00-11:00 PM", COSTS.special.price, S, "A surrealist dinner party and studio happening.", true),
+    e("2026-10-28", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-10-29", "Salon", "The Craft Show", "Monthly costume embellishment", "6:00-9:00 PM", COSTS.craft.price, S, "Monthly costume embellishment workshop. Bring a piece of clothing - jeans, jacket, skirt - all other materials provided. Leave with your own masterpiece."),
 
     e("2026-11-03", "Series", "Paint the Town", "Paint night", "6:30-8:30 PM", COSTS.paint.price, S, "One month, one medium, one set of techniques specific to that material's demands and possibilities."),
