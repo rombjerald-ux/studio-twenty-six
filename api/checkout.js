@@ -64,7 +64,7 @@ module.exports = async function checkout(req, res) {
 
   const waiverAccepted = req.body && (req.body.waiverAccepted === true || req.body.waiverAccepted === "1" || req.body.waiverAccepted === "true");
   if (!waiverAccepted) {
-    return res.status(400).json({ error: "Please accept the waiver and photo consent to continue." });
+    return res.status(400).json({ error: "Please accept the waiver to continue." });
   }
 
   const promoCode = String(req.body && req.body.promoCode || "").trim().toUpperCase();
@@ -109,7 +109,7 @@ module.exports = async function checkout(req, res) {
       customer_name: customerName,
       promo_code: appliedPromo,
       waiver_accepted: "1",
-      photo_consent: "1"
+      photo_consent: (req.body && (req.body.photoConsent === true || req.body.photoConsent === "1" || req.body.photoConsent === "true")) ? "1" : ""
     },
     payment_intent_data: {
       receipt_email: customerEmail

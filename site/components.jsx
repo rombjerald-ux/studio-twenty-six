@@ -320,6 +320,7 @@ function NativeCheckoutPanel({ event }) {
   const [email, setEmail] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [waiverAccepted, setWaiverAccepted] = useState(false);
+  const [photoConsent, setPhotoConsent] = useState(false);
   const [status, setStatus] = useState("");
   const [savingRequest, setSavingRequest] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -353,6 +354,7 @@ function NativeCheckoutPanel({ event }) {
           email,
           seats,
           waiverAccepted: requestType === "free_signup" ? waiverAccepted : undefined,
+          photoConsent: requestType === "free_signup" ? photoConsent : undefined,
         }),
       });
       const data = await response.json().catch(() => ({}));
@@ -384,7 +386,7 @@ function NativeCheckoutPanel({ event }) {
       return;
     }
     if (!waiverAccepted) {
-      setStatus("Check the waiver and photo consent box to continue.");
+      setStatus("Check the waiver to continue. Photo consent is optional.");
       return;
     }
     setSubmitting(true);
@@ -408,6 +410,7 @@ function NativeCheckoutPanel({ event }) {
           seats,
           promoCode,
           waiverAccepted,
+          photoConsent,
         }),
       });
       const data = await response.json().catch(() => ({}));
@@ -511,6 +514,10 @@ function NativeCheckoutPanel({ event }) {
           <label className="checkout-waiver">
             <input type="checkbox" name="waiver" checked={waiverAccepted} onChange={(e) => setWaiverAccepted(e.target.checked)} required />
             <span>{checkout.waiverLabel}</span>
+          </label>
+          <label className="checkout-waiver">
+            <input type="checkbox" name="photo-consent" checked={photoConsent} onChange={(e) => setPhotoConsent(e.target.checked)} />
+            <span>{checkout.photoConsentLabel || "Studio Twenty Six may use photos or video from this session (optional)."}</span>
           </label>
           <div className="checkout-total"><span>Total today</span><strong>{priceText}</strong></div>
           {status && <p className="checkout-status">{status}</p>}

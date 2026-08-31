@@ -23,12 +23,13 @@ function SignupPage(){
   const isBookable = (ev) => Boolean(ev.price) && window.S26.isFutureSession(ev);
   const requestedEventMatch = events.find((ev) => eventKey(ev) === requestedEvent);
   const liveRequested = requestedEventMatch && (paidSuccess || isBookable(requestedEventMatch)) ? requestedEventMatch : null;
+  const pastRequested = requestedEventMatch && !paidSuccess && !isBookable(requestedEventMatch) ? requestedEventMatch : null;
   const successFallback = (!liveRequested && paidSuccess && requestedEvent.includes("|"))
     ? { date: requestedEvent.split("|")[0], title: requestedEvent.split("|").slice(1).join("|"), time: "", where: window.S26.SITE.addressLabel, price: "", sub: "", blurb: "" }
     : null;
   const selectedClass = liveRequested ? liveRequested.title : classNames.includes(requested) ? requested : "";
   const sessions = events.filter((ev) => (!selectedClass || ev.title === selectedClass) && isBookable(ev));
-  const firstBookable = liveRequested || successFallback || null;
+  const firstBookable = liveRequested || successFallback || pastRequested || null;
   const [bookingEvent, setBookingEvent] = React.useState(firstBookable);
   const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
   const hasDirectEvent = Boolean(liveRequested || successFallback);

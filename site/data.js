@@ -212,7 +212,7 @@ window.S26 = (function () {
     enabled: true,
     endpoint: "/api/checkout",
     headline: "Reserve your spot.",
-    body: "Name, email, waiver, then pay or reserve. Sliding scale is by email.",
+    body: "Name, email, waiver, then pay or reserve. Sliding scale is by email. Photo consent is optional.",
     fallbackLabel: "Continue to checkout",
     submitLabel: "Pay now",
     disabledNotice: "",
@@ -222,7 +222,8 @@ window.S26 = (function () {
     slidingScaleButton: "Message for sliding scale pricing",
     promoLabel: "Have a code?",
     promoPlaceholder: "Enter code",
-    waiverLabel: "I understand I take part at my own risk, and I consent to Studio Twenty Six using photos or video from this session.",
+    waiverLabel: "I understand I take part at my own risk.",
+    photoConsentLabel: "Studio Twenty Six may use photos or video from this session (optional).",
     confirmHeadline: "You're booked.",
     confirmBody: "Your spot is reserved. A confirmation email is on the way with the same details.",
     confirmEmailNote: "Check your inbox for class, date, time, and the studio address. If it is not there, look in spam, then email Studiotwentysix.ca@gmail.com.",
@@ -401,7 +402,7 @@ window.S26 = (function () {
 
   const EVENTS = [
     e("2026-08-19", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
-    e("2026-08-23", "Open", "Wake and Make", "Free collage Sunday", "8:00-10:00 AM", "Free", S, "This Sunday is free. Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
+    e("2026-08-23", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),
 
     e("2026-09-09", "Atelier", "Peace Love Draw", "Live model, flowers, music", "6:00-9:00 PM", COSTS.drawing.price, S, "A figure drawing class. Soft music, still lifes, snacks, a nude model, charcoal and paper. Come let your mind and body flow. Live model, music, charcoal and paper provided."),
     e("2026-09-13", "Open", "Wake and Make", "Coffee + tea + making", "8:00-10:00 AM", COSTS.morning.price, S, "Rise early and collage together. Soft music, guided inspiration, all supplies included. Coffee and tea will be available for purchase."),

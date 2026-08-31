@@ -42,6 +42,51 @@
       "permanent": true
     },
     {
+      "source": "/book.html",
+      "destination": "/site/book.html",
+      "permanent": true
+    },
+    {
+      "source": "/happenings.html",
+      "destination": "/site/happenings.html",
+      "permanent": true
+    },
+    {
+      "source": "/private-events.html",
+      "destination": "/site/private-events.html",
+      "permanent": true
+    },
+    {
+      "source": "/list.html",
+      "destination": "/site/list.html",
+      "permanent": true
+    },
+    {
+      "source": "/peace-love-draw.html",
+      "destination": "/site/peace-love-draw.html",
+      "permanent": true
+    },
+    {
+      "source": "/wake-and-make.html",
+      "destination": "/site/wake-and-make.html",
+      "permanent": true
+    },
+    {
+      "source": "/the-craft-show.html",
+      "destination": "/site/the-craft-show.html",
+      "permanent": true
+    },
+    {
+      "source": "/art-church.html",
+      "destination": "/site/art-church.html",
+      "permanent": true
+    },
+    {
+      "source": "/paint-the-town.html",
+      "destination": "/site/paint-the-town.html",
+      "permanent": true
+    },
+    {
       "source": "/events.html",
       "destination": "/site/happenings.html",
       "permanent": true

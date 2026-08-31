@@ -232,7 +232,7 @@ function Calendar(){
                         {cal.artCards[ev.type] && <span className="ev-art"><img src={cal.artCards[ev.type].src} alt="" /></span>}
                         <span className="etitle">{ev.special && <span className="star">★ </span>}{ev.title}</span>
                         {ev.sub && <span className="esub">{ev.sub}</span>}
-                        <span className="etime"><span>{ev.time}</span><span>{ev.price}</span></span>
+                        <span className="etime"><span>{ev.time}</span><span>{past ? "Passed" : ev.price}</span></span>
                       </button>
                     );
                   })}
@@ -255,7 +255,7 @@ function Calendar(){
                 <span className="ag-body">
                   <span className="at">{ev.special && "★ "}{ev.title}</span>
                   {ev.sub && <span className="as">{ev.sub}</span>}
-                  <span className="am"><span>{ev.time}</span><span>·</span><span>{ev.price}</span></span>
+                  <span className="am"><span>{ev.time}</span><span>·</span><span>{past ? "Passed" : ev.price}</span></span>
                 </span>
               </button>
             );
