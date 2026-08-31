@@ -475,7 +475,7 @@ function NativeCheckoutPanel({ event }) {
           <dl>
             <div><dt>Date</dt><dd>{formatEventDate(event.date)}</dd></div>
             <div><dt>Time</dt><dd>{event.time}</dd></div>
-            <div><dt>Place</dt><dd>{event.where}</dd></div>
+            <div><dt>Place</dt><dd>{window.S26.SITE.addressLabel || event.where}</dd></div>
             <div><dt>Price</dt><dd>{event.price}</dd></div>
           </dl>
           <ul className="checkout-policy">

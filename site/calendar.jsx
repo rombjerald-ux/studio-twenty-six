@@ -92,7 +92,7 @@ function EventDrawer({ ev, onClose }){
 
 function Calendar(){
   const { MONTHS, EVENTS, RHYTHM, PRICE_GUIDE, CALENDAR: cal } = window.S26;
-  const [monthKey, setMonth] = useCS(MONTHS[0].key);
+  const [monthKey, setMonth] = useCS((window.S26.initialCalendarMonth && window.S26.initialCalendarMonth()) || MONTHS[0].key);
   const [filters, setFilters] = useCS([]); // empty = Everything
   const [sel, setSel] = useCS(null);
 
@@ -226,8 +226,9 @@ function Calendar(){
                 <div className="ev-stack">
                   {evs.map((ev, j) => {
                     const bg = THEX[ev.type], ink = inkFor(bg);
+                    const past = !window.S26.isFutureSession(ev);
                     return (
-                      <button type="button" className="ev-fill" key={j} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}`} onClick={() => setSel(ev)}>
+                      <button type="button" className={`ev-fill${past ? " past" : ""}`} key={j} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}${past ? ", this date has passed" : ""}`} onClick={() => setSel(ev)}>
                         {cal.artCards[ev.type] && <span className="ev-art"><img src={cal.artCards[ev.type].src} alt="" /></span>}
                         <span className="etitle">{ev.special && <span className="star">★ </span>}{ev.title}</span>
                         {ev.sub && <span className="esub">{ev.sub}</span>}
@@ -247,8 +248,9 @@ function Calendar(){
           {monthEvents.map((ev, i) => {
             const [, mm, dd] = ev.date.split("-").map(Number);
             const bg = THEX[ev.type], ink = inkFor(bg);
+            const past = !window.S26.isFutureSession(ev);
             return (
-              <button type="button" className="ag-item filled" key={i} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}`} onClick={() => setSel(ev)}>
+              <button type="button" className={`ag-item filled${past ? " past" : ""}`} key={i} style={{ background: bg, color: ink }} aria-label={`${ev.title}, ${fmtDate(ev.date)}, ${ev.time}${past ? ", this date has passed" : ""}`} onClick={() => setSel(ev)}>
                 <span className="ag-date"><span className="d">{dd}</span><span className="mo">{MO[mm-1]}</span></span>
                 <span className="ag-body">
                   <span className="at">{ev.special && "★ "}{ev.title}</span>

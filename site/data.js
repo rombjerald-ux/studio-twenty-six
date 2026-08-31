@@ -229,7 +229,7 @@ window.S26 = (function () {
   };
 
   const POLICY = {
-    parking: "No street parking on Sundays — farmers market, and cars get towed. The lot across the street is available after 5pm on Thursdays.",
+    parking: "No street parking on Sundays — farmers market, and cars get towed. The lot across the street is available after 5pm on Thursdays. 5303 Claremont Ave, Oakland.",
     cancel: "No refund within 24 hours of the session.",
   };
 
@@ -634,10 +634,16 @@ window.S26 = (function () {
     return (events || []).find((ev) => ev && ev.price && ev.date >= day) || null;
   }
 
+  function initialCalendarMonth(today) {
+    const day = today || todayISO();
+    const upcoming = MONTHS.find((mo) => EVENTS.some((ev) => ev.date.startsWith(mo.key) && ev.date >= day));
+    return (upcoming || MONTHS[0]).key;
+  }
+
   return {
     SITE, CLASS_URLS, HOME, ABOUT, SIGNUP, CHECKOUT, POLICY, CLASSES_PAGE, CALENDAR, HAPPENINGS,
     MAILING_LIST, PRIVATE_EVENTS, LISTING_TITLES, MONTHS, TYPES, RHYTHM, COSTS, PRICE_GUIDE,
     BOOKING_URLS, EVENTS, CLASS_DETAILS, MEDIUMS, listingTitle, listingKicker, bookingHref,
-    nextBookable, todayISO, isFutureSession,
+    nextBookable, todayISO, isFutureSession, initialCalendarMonth,
   };
 })();
