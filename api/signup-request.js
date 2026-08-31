@@ -4,7 +4,7 @@ const { isPastDate } = require("../lib/session-date");
 
 const EVENTS = {
   "2026-08-19|Peace Love Draw": { title: "Peace Love Draw", date: "2026-08-19", time: "6:00-9:00 PM", price: "$25" },
-  "2026-08-23|Wake and Make": { title: "Wake and Make", date: "2026-08-23", time: "8:00-10:00 AM", price: "Free" },
+  "2026-08-23|Wake and Make": { title: "Wake and Make", date: "2026-08-23", time: "8:00-10:00 AM", price: "$40" },
   "2026-09-09|Peace Love Draw": { title: "Peace Love Draw", date: "2026-09-09", time: "6:00-9:00 PM", price: "$25" },
   "2026-09-13|Wake and Make": { title: "Wake and Make", date: "2026-09-13", time: "8:00-10:00 AM", price: "$40" },
   "2026-09-19|Opening Block Party": { title: "Opening Block Party", date: "2026-09-19", time: "Afternoon", price: "$0" },
@@ -105,7 +105,7 @@ module.exports = async function signupRequest(req, res) {
 
   const waiverAccepted = req.body && (req.body.waiverAccepted === true || req.body.waiverAccepted === "1" || req.body.waiverAccepted === "true");
   if (requestType === "free_signup" && !waiverAccepted) {
-    return res.status(400).json({ error: "Please accept the waiver and photo consent to reserve." });
+    return res.status(400).json({ error: "Please accept the waiver to reserve." });
   }
 
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -128,7 +128,7 @@ module.exports = async function signupRequest(req, res) {
         class_price: event.price,
         seats: String(seats),
         waiver_accepted: waiverAccepted ? "1" : "",
-        photo_consent: waiverAccepted ? "1" : "",
+        photo_consent: (req.body && (req.body.photoConsent === true || req.body.photoConsent === "1" || req.body.photoConsent === "true")) ? "1" : "",
       },
     });
 
