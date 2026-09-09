@@ -376,7 +376,7 @@ window.S26 = (function () {
 
   const COSTS = {
     drawing: { price: "$25", short: "$25", sliding: "$15-$35 sliding scale" },
-    morning: { price: "$40", short: "$40", sliding: "$15-$45 sliding scale" },
+    morning: { price: "$15", short: "$15", sliding: "$15-$45 sliding scale" },
     artChurch: { price: "$50", short: "$50", sliding: "$20-$60 sliding scale" },
     craft: { price: "$55", short: "$55", sliding: "$35-$75 sliding scale" },
     workshop: { price: "$65", short: "$65", sliding: "$45-$85 sliding scale" },
